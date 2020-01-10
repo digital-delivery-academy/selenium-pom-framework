@@ -1,4 +1,4 @@
-package uk.co.evoco.googlesearch;
+package uk.co.evoco.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

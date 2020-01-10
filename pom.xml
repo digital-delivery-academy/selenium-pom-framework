@@ -4,6 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <contributors>
+        <contributor>
+            <name>Steve Walton</name>
+            <email>steve.walton@evoco.co.uk</email>
+            <organization>Evoco</organization>
+            <organizationUrl>https://www.evoco.co.uk</organizationUrl>
+        </contributor>
+    </contributors>
+
+    <description>
+        An simple Selenium base using the page object pattern. Can be an example or a boilerplate. Contains
+        various helpers to get things started and an externalised configuration ready for dynamic configuration (e.g.
+        for use in CI systems).
+    </description>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/digital-delivery-academy/selenium-pom-example/issues</url>
+    </issueManagement>
+
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-example</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -20,6 +40,7 @@
         <logback.version>1.0.1</logback.version>
         <apache.commons.io.version>2.6</apache.commons.io.version>
         <hamcrest.version>2.2</hamcrest.version>
+        <jackson.version>2.10.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -57,6 +78,16 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${apache.commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

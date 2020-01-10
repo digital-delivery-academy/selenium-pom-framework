@@ -1,6 +1,7 @@
 package uk.co.evoco.googlesearch;
 
 import org.junit.jupiter.api.Test;
+import uk.co.evoco.pageobjects.GoogleLandingPage;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,18 +23,20 @@ public class SearchTests extends AbstractTest {
     @Test
     public void testEvocoIsTopOfSearchResultsOnGoogleWithSearchTermForDigitalServices() {
         GoogleLandingPage googleLandingPage = new GoogleLandingPage(this.webDriver);
-        googleLandingPage.enterSearchTerm("evoco digital services");
-        GoogleSearchResultsPage googleSearchResultsPage = googleLandingPage.clickGoogleSearchButton();
-        googleSearchResultsPage.clickLinkBySearchResultIndex(1);
+        googleLandingPage
+                .enterSearchTerm("evoco digital services")
+                .clickGoogleSearchButton()
+                .clickLinkBySearchResultIndex(1);
         assertThat(this.webDriver.getCurrentUrl(), is("https://www.evoco.co.uk/"));
     }
 
     @Test
     public void testEvocoIsTopOfSearchResultsOnGoogleWithSearchTermIncludingAcademies() {
         GoogleLandingPage googleLandingPage = new GoogleLandingPage(this.webDriver);
-        googleLandingPage.enterSearchTerm("evoco academy");
-        GoogleSearchResultsPage googleSearchResultsPage = googleLandingPage.clickGoogleSearchButton();
-        googleSearchResultsPage.clickLinkBySearchResultIndex(1);
+        googleLandingPage
+                .enterSearchTerm("evoco academy")
+                .clickGoogleSearchButton()
+                .clickLinkBySearchResultIndex(1);
         assertThat(this.webDriver.getCurrentUrl(), is("https://www.evoco.co.uk/"));
     }
 }

@@ -1,4 +1,4 @@
-package uk.co.evoco.googlesearch;
+package uk.co.evoco.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

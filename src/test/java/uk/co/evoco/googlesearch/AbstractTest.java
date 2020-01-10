@@ -1,12 +1,29 @@
 package uk.co.evoco.googlesearch;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.WebDriverBuilder;
+import uk.co.evoco.webdriver.configuration.ConfigurationLoader;
+import uk.co.evoco.webdriver.configuration.WebDriverConfig;
+import uk.co.evoco.webdriver.results.ResultsManager;
+
+import java.io.IOException;
 
 public abstract class AbstractTest {
     protected EventFiringWebDriver webDriver;
+    protected static WebDriverConfig webDriverConfig;
+    protected static ResultsManager resultsManager;
+
+    @BeforeAll
+    public static void beforeAll() throws IOException {
+        webDriverConfig = new ConfigurationLoader()
+                .useConfigurationFile()
+                .build();
+        resultsManager = new ResultsManager();
+        resultsManager.createScreenshotDirectory();
+    }
 
     /**
      * This will run before EVERY @Test that extends this class
@@ -15,8 +32,11 @@ public abstract class AbstractTest {
      */
     @BeforeEach
     public void setUp() {
-        this.webDriver = new WebDriverBuilder().build();
-        this.webDriver.get("https://www.google.com");
+        this.webDriver = new WebDriverBuilder()
+                .setConfiguration(webDriverConfig)
+                .setResultsDirectory(this.resultsManager.getScreenshotDirectory())
+                .build();
+        this.webDriver.get(webDriverConfig.getBaseUrl());
     }
 
     /**

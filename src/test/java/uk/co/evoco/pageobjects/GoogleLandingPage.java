@@ -1,4 +1,4 @@
-package uk.co.evoco.googlesearch;
+package uk.co.evoco.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,10 +26,13 @@ public class GoogleLandingPage extends BasePageObject {
 
     /**
      * Type the given generic search term into the Google.com landing page search field
+     * Returns itself as we aren't moving anywhere
      * @param searchTerm
+     * @return GoogleLandingPage
      */
-    public void enterSearchTerm(String searchTerm) {
+    public GoogleLandingPage enterSearchTerm(String searchTerm) {
         searchField.sendKeys(searchTerm);
+        return this;
     }
 
     /**

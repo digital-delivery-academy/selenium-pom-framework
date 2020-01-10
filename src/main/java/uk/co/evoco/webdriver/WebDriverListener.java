@@ -22,8 +22,17 @@ import java.util.UUID;
  */
 public class WebDriverListener implements WebDriverEventListener {
 
-    private static final long WEBDRIVER_WAIT_TIMEOUT = 30L;
+    private static long WEBDRIVER_WAIT_TIMEOUT = 30L;
     private static final Logger logger = LoggerFactory.getLogger(WebDriverListener.class);
+    private File screenshotDirectory;
+
+    public void setWebdriverWaitTimeout(long webDriverWaitTimeout) {
+        this.WEBDRIVER_WAIT_TIMEOUT = webDriverWaitTimeout;
+    }
+
+    public void setScreenshotDirectory(File screenshotDirectory) {
+        this.screenshotDirectory = screenshotDirectory;
+    }
 
     public void beforeAlertAccept(WebDriver webDriver) {}
 
@@ -92,7 +101,6 @@ public class WebDriverListener implements WebDriverEventListener {
 
     /**
      * If we have an exception, lets create a screenshot so we can see the page as it happened.
-     * TODO: We could put these in a folder that is created as part of the run, with a timestamp on them
      * @param throwable
      * @param webDriver
      */
@@ -101,11 +109,11 @@ public class WebDriverListener implements WebDriverEventListener {
         try {
             String filename = new StringBuilder(UUID.randomUUID().toString())
                     .append("-FAILED-")
-                    .append(throwable.getClass().toString())
+                    .append(throwable.getClass().getName())
                     .append(".jpeg")
                     .toString();
 
-            FileUtils.copyFile(scrFile, new File(filename));
+            FileUtils.copyFile(scrFile, new File(screenshotDirectory.getPath() + "/" + filename));
         } catch (Exception e) {
             logger.error("Unable to Save: {}");
         }
@@ -118,4 +126,5 @@ public class WebDriverListener implements WebDriverEventListener {
     public void beforeGetText(WebElement webElement, WebDriver webDriver) {}
 
     public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {}
+
 }
