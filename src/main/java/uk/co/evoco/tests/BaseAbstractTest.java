@@ -1,4 +1,4 @@
-package uk.co.evoco.googlesearch;
+package uk.co.evoco.tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,7 +11,7 @@ import uk.co.evoco.webdriver.results.ResultsManager;
 
 import java.io.IOException;
 
-public abstract class AbstractTest {
+public abstract class BaseAbstractTest {
     protected EventFiringWebDriver webDriver;
     protected static WebDriverConfig webDriverConfig;
     protected static ResultsManager resultsManager;
