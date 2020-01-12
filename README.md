@@ -13,7 +13,7 @@ then you took a wrong turn.  A really wrong turn.  Or you're trying to check som
 
 If you have questions please feel free to contact me (steve.walton@evoco.co.uk) or if you find issues raise a PR or submit an issue ticket.
 
-## Project & pre-requesists
+## Project & prerequisite
 
 You need Git, Java 13 and Maven 3.x.x.  If you're on a Mac, you can install them like this:
 
@@ -23,7 +23,7 @@ You need Git, Java 13 and Maven 3.x.x.  If you're on a Mac, you can install them
 ### Install Maven
 `brew install maven`
 
-### Install Java 13 (OpenJDK version obvs)
+### Install Java 13 (OpenJDK version)
 `brew tap AdoptOpenJDK/openjdk`
 
 `brew cask install adoptopenjdk13-jre`
@@ -97,4 +97,40 @@ the class is concerned with (this is a logical concept not a codified one).
 The test classes all extend/inherit form the AbstractTest which is responsible for the `BeforeAll` and `AfterAll` steps.
 
 Assertions should be in each `@Test` not abstracted away.  The arguments for this are well known, I'm not googling it for you.  
-If you aren't familiar with them though, take a little time to educate yourself about why this is important (from a credible resource like Richard Bradshaw or Mark Winteringham or Alan Richardson or Ministry of Testing etc). 
+If you aren't familiar with them though, take a little time to educate yourself about why this is important (from a credible resource like Richard Bradshaw or Mark Winteringham or Alan Richardson or Ministry of Testing etc).
+
+#### Test Data
+
+There's a utility library included as standard here that can help with generating common test data.  The full documentation 
+for that repository is here: https://www.mockneat.com/
+
+A few basic examples though:
+
+```
+// Get random person details (email address, first and last names)
+emails().get();
+names().first().get();
+names().last().get();
+
+// Get random Strings/Numbers of a given length
+strings().size(5).type(NUMBERS).get();
+```
+
+### Utilities
+
+There are a number of utility classes that hide a tiny bit of complexity from you (if you need it that is).  It's anticipated that 
+a fair few newcomers might use this repo across Evoco's clients, so there's a tiny little wrapper/problems solved in the areas 
+listed below to get things going.
+
+If I was working heavily in Selenium, I'd usually rely more on the WebDriverListener class for adding stablity and only really
+wrap things up in helper classes/methods if I found I had to repeat a more complicated action frequently.
+
+We're not trying to be all things to all people with this repo, so I'm not writing a full set of things *might*
+help people, when the likelihood is that it would just be superfluous.
+
+The helpers are organised here (and are all statically accessed:
+
+- `FindByUtils` 
+- `JavaScriptUtils`
+- `JsonUtils`
+- `SelectBoxUtils`
