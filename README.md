@@ -1,5 +1,6 @@
 # selenium-pom-example
 
+[![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-example.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-example)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/122f56e1b6284b319b8c23a58ab2c664)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-example?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-example&amp;utm_campaign=Badge_Grade)
 
 This is an example of using Selenium to test web applications, utilising the Page Object Model design pattern.
