@@ -51,6 +51,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.10.1</jackson.version>
         <mockneat.version>0.3.8</mockneat.version>
+        <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -122,6 +123,14 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions.maven.plugin.version}</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
             </plugin>
         </plugins>
     </build>
