@@ -12,7 +12,7 @@ install:
 
 deploy:
   - provider: script
-    script: mvn deploy -Dregistry=https://maven.pkg.github.com/digital-delivery-academy -Dtoken=$GITHUB_PACKAGE_DEPLOY_TOKEN
+    script: mvn deploy -Dregistry=https://maven.pkg.github.com/digital-delivery-academy/selenium-pom-example -Dtoken=$GITHUB_PACKAGE_DEPLOY_TOKEN
     on:
       tags: true
   - provider: script
