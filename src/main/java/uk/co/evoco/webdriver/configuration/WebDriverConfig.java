@@ -31,9 +31,18 @@ public class WebDriverConfig {
         return baseUrl.toString();
     }
 
+    /**
+     * Aims to pull the baseUrl from the configuration file.  If, however, a system property has been set
+     * via the command line, then this will be overridden and we will use the baseUrl that comes from the CLI.
+     * This is important to ensure there is support for non-configuration dynamic configuration for CI systems
+     * like Jenkins etc.
+     * @param baseUrl
+     * @throws MalformedURLException
+     */
     @JsonProperty("baseUrl")
     public void setBaseUrl(String baseUrl) throws MalformedURLException {
-        this.baseUrl = new URL(baseUrl);
+        String targetBaseUrl = System.getProperty("baseUrl", baseUrl);
+        this.baseUrl = new URL(targetBaseUrl);
     }
 
     public long getWebDriverWaitTimeout() {

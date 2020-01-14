@@ -38,6 +38,18 @@ public final class JsonUtils {
 
     /**
      * Deserialize a JSON from a File to a given class type
+     * @param file
+     * @param type
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
+    public static <T> T fromFile(File file, Class<T> type) throws IOException {
+        return new ObjectMapper().readValue(file, type);
+    }
+
+    /**
+     * Deserialize a JSON from a File to a given class type
      * @param jsonStream
      * @param type
      * @param <T>

@@ -11,15 +11,25 @@ import uk.co.evoco.webdriver.results.ResultsManager;
 
 import java.io.IOException;
 
+/**
+ * BaseAbstractTest to handle things that testers shouldn't need to worry about (like starting up a WebDriver instance
+ * and getting everything in the right space for consumers to run tests that are correctly configured etc).
+ */
 public abstract class BaseAbstractTest {
     protected EventFiringWebDriver webDriver;
     protected static WebDriverConfig webDriverConfig;
     protected static ResultsManager resultsManager;
 
+    /**
+     * This will run before every test class.
+     * This method gets the configuration and constructs the WebDriver instance, the screenshot
+     * directory and the makes these items accessible.
+     * @throws IOException
+     */
     @BeforeAll
     public static void beforeAll() throws IOException {
         webDriverConfig = new ConfigurationLoader()
-                .useConfigurationFile()
+                .decideWhichConfigurationToUse()
                 .build();
         resultsManager = new ResultsManager();
         resultsManager.createScreenshotDirectory();

@@ -14,6 +14,11 @@ public abstract class BasePageObject {
 
     protected WebDriver webDriver;
 
+    /**
+     * Initiates page elements that are declared as fields annotated @FindBy and makes the WebDriver
+     * instance available to child classes.
+     * @param webDriver
+     */
     public BasePageObject(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;

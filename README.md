@@ -39,6 +39,20 @@ Without even having to open the project in an IDE, you can run it from the comma
 
 `mvn clean test` 
 
+There are two options that can be passed on the command line.  They are `baseUrl` and `configFile`.  Both of these
+values will override what is set else where, and neither are required (they are both optional).
+
+The `configFile` value allows users to set an external configuration file (that is one that is not bundled or on the 
+classpath).  
+
+The `baseUrl` parameter is used to override the baseUrl property that is required in all configuration files.
+
+They can be used like this:
+
+`mvn clean test -DbaseUrl=https://www.google.com -DconfigFile=/path/to/config/file/config.json`
+
+Note: Configuration files still need to be in a `json` format.
+
 ## High level overview
 
 ### Design patterns

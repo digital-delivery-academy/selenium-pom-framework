@@ -75,7 +75,7 @@ public class WebDriverListener implements WebDriverEventListener {
     /**
      * Before we interact with any methods (which is anytime we click() on anything) we want to do a state
      * check that the element is actually clickable.  This ensures that elements that are disabled or not visible are
-     * given time (as little as they need) to be ready to be interactable.
+     * given time (as little as they need) to be ready to be interacted with.
      *
      * A valid case for this is where a button may be disabled until form fields are automatically valid.
      * @param webElement
@@ -115,7 +115,7 @@ public class WebDriverListener implements WebDriverEventListener {
 
             FileUtils.copyFile(scrFile, new File(screenshotDirectory.getPath() + "/" + filename));
         } catch (Exception e) {
-            logger.error("Unable to Save: {}");
+            logger.error("Unable to Save to directory: {}", screenshotDirectory.getPath());
         }
     }
 

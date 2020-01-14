@@ -1,5 +1,6 @@
 package uk.co.evoco.webdriver.configuration;
 
+import uk.co.evoco.webdriver.configuration.utils.FileLoader;
 import uk.co.evoco.webdriver.utils.JsonUtils;
 
 import java.io.IOException;
@@ -9,31 +10,31 @@ import java.io.IOException;
  */
 public class ConfigurationLoader {
 
-    private final String CONFIGURATION_FILE = "config.json";
+    private final String INTERNAL_CONFIGURATION_FILE = "config.json";
+    private String targetConfigurationFile;
     private boolean useDefaultConfig = false;
     private boolean useConfigFile = false;
 
     /**
-     * Great for getting started quickly.  This will bypass the shipped "./src/text/resources/config.json" file
-     * and will simply use CHROME.  There will be, by default though no base URL set to the configuration.
-     * Returns reference to the class instance of WebDriverBuilder to maintain the builder pattern.
+     * Method for figuring out if we're using the internal, default configuration, or we're setting a reference
+     * to an external configuration file (from the file system).
      * @return ConfigurationLoader
      */
-    public ConfigurationLoader useDefaultConfiguration() {
-        this.useDefaultConfig = true;
-        return this;
-    }
+    public ConfigurationLoader decideWhichConfigurationToUse() {
+        String configurationProperty = System.getProperty("config", "DEFAULT");
+        if(configurationProperty.toUpperCase().trim().equals("DEFAULT")) {
+            useDefaultConfig = true;
+            this.targetConfigurationFile = INTERNAL_CONFIGURATION_FILE;
+            return this;
+        }
 
-    /**
-     * Loads a WebDriverConfiguration from the "./src/test/resources/config.json" file and configures a WebDriverConfig
-     * object.
-     * Returns reference to the class instance of WebDriverBuilder to maintain the builder pattern.
-     * @return ConfigurationLoader
-     * @throws IOException
-     */
-    public ConfigurationLoader useConfigurationFile() throws IOException {
-        this.useConfigFile = true;
-        return this;
+        if(configurationProperty.toLowerCase().trim().contains(".json")) {
+            useConfigFile = true;
+            this.targetConfigurationFile = configurationProperty;
+            return this;
+        }
+
+        throw new RuntimeException("Issue figuring out what configuration to use");
     }
 
     /**
@@ -42,15 +43,6 @@ public class ConfigurationLoader {
      * @throws IOException
      */
     public WebDriverConfig build() throws IOException {
-        if(useDefaultConfig) {
-            WebDriverConfig webDriverConfig;
-            webDriverConfig = new WebDriverConfig();
-            webDriverConfig.setBrowserType(BrowserType.CHROME);
-            return webDriverConfig;
-        } else if (useConfigFile) {
-            return JsonUtils.fromFile(ClassLoader.getSystemResourceAsStream(CONFIGURATION_FILE), WebDriverConfig.class);
-        } else {
-            throw new RuntimeException("Must select either default configuration or configuration file");
-        }
+        return JsonUtils.fromFile(FileLoader.loadFromClasspathOrFileSystem(targetConfigurationFile), WebDriverConfig.class);
     }
 }
