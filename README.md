@@ -34,7 +34,24 @@ You need Git, Java 12 and Maven 3.x.x.  If you're on a Mac, you can install them
 ### Getting the project out of git
 `git clone https://github.com/digital-delivery-academy/selenium-pom-example.git`
 
-### Building/running the project
+### Using the framework in your test project
+
+#### With Maven:
+```
+<dependency>
+  <groupId>uk.co.evoco</groupId>
+  <artifactId>selenium-pom-example</artifactId>
+  <version>0.0.1</version>
+</dependency>
+```
+
+### Running unit tests
+
+We have unit tests for our code obviously.  You can run them like this:
+
+`mvn test`
+
+### Building/running from within your own test project 
 Without even having to open the project in an IDE, you can run it from the command line with Maven.
 
 `mvn clean test` 
