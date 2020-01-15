@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.co.evoco</groupId>
-    <artifactId>selenium-pom-example</artifactId>
+    <artifactId>selenium-pom-framework</artifactId>
     <version>0.0.1</version>
 
     <contributors>
@@ -18,21 +18,20 @@
     </contributors>
 
     <description>
-        An simple Selenium base using the page object pattern. Can be an example or a boilerplate. Contains
-        various helpers to get things started and an externalised configuration ready for dynamic configuration (e.g.
-        for use in CI systems).
+        A simple Selenium framework offering externalised configuration, good selection of libraries for supporting
+        test data, simple WebDriver browser binary resolution and an opinionated approach for WebDriver test design.
     </description>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/digital-delivery-academy/selenium-pom-example/issues</url>
+        <url>https://github.com/digital-delivery-academy/selenium-pom-framework/issues</url>
     </issueManagement>
 
     <distributionManagement>
         <repository>
             <id>github</id>
             <name>GitHub digital-delivery-academy Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/digital-delivery-academy/selenium-pom-example</url>
+            <url>https://maven.pkg.github.com/digital-delivery-academy/selenium-pom-framework</url>
         </repository>
     </distributionManagement>
 
