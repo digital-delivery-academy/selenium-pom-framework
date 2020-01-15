@@ -18,7 +18,7 @@ If you have questions please feel free to contact me (steve.walton@evoco.co.uk) 
 
 ## Project & prerequisite
 
-You need Git, Java 13 and Maven 3.x.x.  If you're on a Mac, you can install them like this:
+You need Git, Java 12 and Maven 3.x.x.  If you're on a Mac, you can install them like this:
 
 ### Install Git
 `brew install git`
@@ -26,10 +26,10 @@ You need Git, Java 13 and Maven 3.x.x.  If you're on a Mac, you can install them
 ### Install Maven
 `brew install maven`
 
-### Install Java 13 (OpenJDK version)
+### Install Java 12 (OpenJDK version)
 `brew tap AdoptOpenJDK/openjdk`
 
-`brew cask install adoptopenjdk13-jre`
+`brew cask install adoptopenjdk12-jre`
 
 ### Getting the project out of git
 `git clone https://github.com/digital-delivery-academy/selenium-pom-example.git`
