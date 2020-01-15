@@ -49,7 +49,7 @@ The `baseUrl` parameter is used to override the baseUrl property that is require
 
 They can be used like this:
 
-`mvn clean test -DbaseUrl=https://www.google.com -DconfigFile=/path/to/config/file/config.json`
+`mvn clean test -DbaseUrl=https://www.google.com -Dconfig=/path/to/config/file/config.json`
 
 Note: Configuration files still need to be in a `json` format.
 

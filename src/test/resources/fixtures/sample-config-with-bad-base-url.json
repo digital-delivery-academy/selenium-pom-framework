@@ -1,5 +1,5 @@
 {
   "browser": "chrome",
-  "baseUrl": "https://www.yahoo.com",
+  "baseUrl": "bad-base-url",
   "timeout": "30"
 }

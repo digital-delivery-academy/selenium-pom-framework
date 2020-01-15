@@ -20,11 +20,12 @@ public class ResultsManager {
 
     /**
      * Creates a run specific directory that is timestamped to store screenshots
-     * @throws IOException
+     * @return File
      */
-    public void createScreenshotDirectory() {
+    public File createScreenshotDirectory() {
         this.screenshotDirectory = new File(Paths.get("target").toString() + "/screenshots-" + timestamp.format(new Date()));
         this.screenshotDirectory.mkdir();
+        return this.screenshotDirectory;
     }
 
     /**

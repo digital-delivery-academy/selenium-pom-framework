@@ -15,7 +15,7 @@ public class FileLoaderTests {
 
     @Test
     public void testCanLoadConfigFileFromClasspath() throws IOException {
-        File file = FileLoader.loadFromClasspathOrFileSystem("config.json");
+        File file = FileLoader.loadFromClasspathOrFileSystem("fixtures/sample-config.json");
         WebDriverConfig webDriverConfig = JsonUtils.fromFile(file, WebDriverConfig.class);
         assertThat(file, instanceOf(File.class));
         assertThat(webDriverConfig.getBaseUrl(), is("https://www.google.com"));
@@ -26,6 +26,6 @@ public class FileLoaderTests {
         File file = FileLoader.loadFromClasspathOrFileSystem("./config-fs.json");
         WebDriverConfig webDriverConfig = JsonUtils.fromFile(file, WebDriverConfig.class);
         assertThat(file, instanceOf(File.class));
-        assertThat(webDriverConfig.getBaseUrl(), is("https://www.google.com"));
+        assertThat(webDriverConfig.getBaseUrl(), is("https://www.yahoo.com"));
     }
 }
