@@ -11,11 +11,11 @@ before_install:
   - "cp .travis.settings.xml $HOME/.m2/settings.xml"
 
 install:
-  - mvn clean install -Dmaven.javadoc.skip=true -DskipTests=true -B -V
+  - mvn clean install -Dmaven.javadoc.skip=true -B -V
 
 deploy:
   - provider: script
-    script: mvn deploy -Dregistry=https://maven.pkg.github.com/digital-delivery-academy -Dtoken=$GITHUB_PACKAGE_DEPLOY_TOKEN
+    script: mvn deploy -DskipTests -Dregistry=https://maven.pkg.github.com/digital-delivery-academy -Dtoken=$GITHUB_PACKAGE_DEPLOY_TOKEN
     on:
       tags: true
 
