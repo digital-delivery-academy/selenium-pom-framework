@@ -34,29 +34,53 @@ public class WebDriverListener implements WebDriverEventListener {
         this.screenshotDirectory = screenshotDirectory;
     }
 
-    public void beforeAlertAccept(WebDriver webDriver) {}
+    public void beforeAlertAccept(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterAlertAccept(WebDriver webDriver) {}
+    public void afterAlertAccept(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterAlertDismiss(WebDriver webDriver) {}
+    public void afterAlertDismiss(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeAlertDismiss(WebDriver webDriver) {}
+    public void beforeAlertDismiss(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeNavigateTo(String s, WebDriver webDriver) {}
+    public void beforeNavigateTo(String s, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterNavigateTo(String s, WebDriver webDriver) {}
+    public void afterNavigateTo(String s, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeNavigateBack(WebDriver webDriver) {}
+    public void beforeNavigateBack(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterNavigateBack(WebDriver webDriver) {}
+    public void afterNavigateBack(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeNavigateForward(WebDriver webDriver) {}
+    public void beforeNavigateForward(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterNavigateForward(WebDriver webDriver) {}
+    public void afterNavigateForward(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeNavigateRefresh(WebDriver webDriver) {}
+    public void beforeNavigateRefresh(WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterNavigateRefresh(WebDriver webDriver) {}
+    public void afterNavigateRefresh(WebDriver webDriver) {
+        // nothing yet
+    }
 
     /**
      * Before each webDriver.findBy or @FindBy we want to make sure that we are supply elements
@@ -70,7 +94,9 @@ public class WebDriverListener implements WebDriverEventListener {
         new WebDriverWait(webDriver, WEBDRIVER_WAIT_TIMEOUT).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {}
+    public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
+        // nothing yet
+    }
 
     /**
      * Before we interact with any methods (which is anytime we click() on anything) we want to do a state
@@ -85,19 +111,33 @@ public class WebDriverListener implements WebDriverEventListener {
         new WebDriverWait(webDriver, WEBDRIVER_WAIT_TIMEOUT).until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    public void afterClickOn(WebElement webElement, WebDriver webDriver) {}
+    public void afterClickOn(WebElement webElement, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {}
+    public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
+        // nothing yet
+    }
 
-    public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {}
+    public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
+        // nothing yet
+    }
 
-    public void beforeScript(String s, WebDriver webDriver) {}
+    public void beforeScript(String s, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterScript(String s, WebDriver webDriver) {}
+    public void afterScript(String s, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void beforeSwitchToWindow(String s, WebDriver webDriver) {}
+    public void beforeSwitchToWindow(String s, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterSwitchToWindow(String s, WebDriver webDriver) {}
+    public void afterSwitchToWindow(String s, WebDriver webDriver) {
+        // nothing yet
+    }
 
     /**
      * If we have an exception, lets create a screenshot so we can see the page as it happened.
@@ -119,12 +159,19 @@ public class WebDriverListener implements WebDriverEventListener {
         }
     }
 
-    public <X> void beforeGetScreenshotAs(OutputType<X> outputType) {}
+    public <X> void beforeGetScreenshotAs(OutputType<X> outputType) {
+        // nothing yet
+    }
 
-    public <X> void afterGetScreenshotAs(OutputType<X> outputType, X x) {}
+    public <X> void afterGetScreenshotAs(OutputType<X> outputType, X x) {
+        // nothing yet
+    }
 
-    public void beforeGetText(WebElement webElement, WebDriver webDriver) {}
+    public void beforeGetText(WebElement webElement, WebDriver webDriver) {
+        // nothing yet
+    }
 
-    public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {}
-
+    public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {
+        // nothing yet
+    }
 }
