@@ -36,8 +36,8 @@ Put this in your POM.xml.
 ```
 <dependency>
   <groupId>uk.co.evoco</groupId>
-  <artifactId>selenium-pom-example</artifactId>
-  <version>0.0.1</version>
+  <artifactId>selenium-pom-framework</artifactId>
+  <version>0.0.2</version>
 </dependency>
 ```
 
@@ -45,4 +45,4 @@ See the Documentation in the Wiki to see how to write a test.
 
 ## Documentation
 
-Documentation for committers and users is here: https://github.com/digital-delivery-academy/selenium-pom-example/wiki
+Documentation for committers and users is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
