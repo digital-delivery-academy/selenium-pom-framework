@@ -3,7 +3,7 @@ package uk.co.evoco.webdriver.configuration.utils;
 import java.io.File;
 import java.io.IOException;
 
-public final class FileLoader {
+public final class FileLoaderUtils {
 
     /**
      * Look for a file to load on a fully qualified path, or the classpath

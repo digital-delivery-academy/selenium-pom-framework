@@ -1,7 +1,6 @@
 package uk.co.evoco.webdriver.results;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;

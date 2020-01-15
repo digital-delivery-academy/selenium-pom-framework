@@ -11,11 +11,11 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class FileLoaderTests {
+public class FileLoaderUtilsTests {
 
     @Test
     public void testCanLoadConfigFileFromClasspath() throws IOException {
-        File file = FileLoader.loadFromClasspathOrFileSystem("fixtures/sample-config.json");
+        File file = FileLoaderUtils.loadFromClasspathOrFileSystem("fixtures/sample-config.json");
         WebDriverConfig webDriverConfig = JsonUtils.fromFile(file, WebDriverConfig.class);
         assertThat(file, instanceOf(File.class));
         assertThat(webDriverConfig.getBaseUrl(), is("https://www.google.com"));
@@ -23,7 +23,7 @@ public class FileLoaderTests {
 
     @Test
     public void testCanLoadConfigFileFromPath() throws IOException {
-        File file = FileLoader.loadFromClasspathOrFileSystem("./config-fs.json");
+        File file = FileLoaderUtils.loadFromClasspathOrFileSystem("./config-fs.json");
         WebDriverConfig webDriverConfig = JsonUtils.fromFile(file, WebDriverConfig.class);
         assertThat(file, instanceOf(File.class));
         assertThat(webDriverConfig.getBaseUrl(), is("https://www.yahoo.com"));

@@ -6,9 +6,6 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Dates extends MockUnitBase {
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
