@@ -47,6 +47,7 @@ public abstract class BaseAbstractTest {
                 .setResultsDirectory(this.resultsManager.getScreenshotDirectory())
                 .build();
         this.webDriver.get(webDriverConfig.getBaseUrl());
+        this.webDriver.manage().window().maximize();
     }
 
     /**
