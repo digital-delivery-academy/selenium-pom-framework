@@ -39,8 +39,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>12</maven.compiler.source>
+        <maven.compiler.target>12</maven.compiler.target>
         <maven.surefire.version>2.22.2</maven.surefire.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
         <selenium.version>3.141.59</selenium.version>
@@ -52,6 +52,7 @@
         <jackson.version>2.10.1</jackson.version>
         <mockneat.version>0.3.8</mockneat.version>
         <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
+        <joda.time.version>2.7</joda.time.version>
     </properties>
 
     <dependencies>
@@ -99,6 +100,11 @@
             <groupId>net.andreinc.mockneat</groupId>
             <artifactId>mockneat</artifactId>
             <version>${mockneat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.time.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

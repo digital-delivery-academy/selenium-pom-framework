@@ -133,6 +133,17 @@ names().last().get();
 strings().size(5).type(NUMBERS).get();
 ```
 
+There are a few things that mockneat doesn't deal with, and we've added a few helpers around that:
+
+```
+// futureDate and pastDate can be staticlly imported for use
+// Date formats for arguments and returns are dd/MM/yyyy
+
+futureDate("01/06/2020", 5); // will return 06/06/2020
+
+pastDate("06/06/2020", 5); // will return 01/06/2020
+```
+
 ### Utilities
 
 There are a number of utility classes that hide a tiny bit of complexity from you (if you need it that is).  It's anticipated that 
