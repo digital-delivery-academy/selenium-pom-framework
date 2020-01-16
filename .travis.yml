@@ -18,6 +18,10 @@ deploy:
     script: mvn deploy -DskipTests -Dregistry=https://maven.pkg.github.com/digital-delivery-academy -Dtoken=$GITHUB_PACKAGE_DEPLOY_TOKEN
     on:
       tags: true
+  - provider: script
+    script: mvn package com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
+    on:
+      all_branches: true
 
 notifications:
   slack: evoco:HMLAFFFsZHDFu6xBw0OyXZrp
