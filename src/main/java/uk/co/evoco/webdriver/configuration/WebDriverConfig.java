@@ -1,9 +1,11 @@
 package uk.co.evoco.webdriver.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * A simple representation object for the "./src/test/resources/config.json" file
@@ -13,6 +15,11 @@ public class WebDriverConfig {
     private BrowserType browserType;
     private URL baseUrl;
     private long webDriverWaitTimeout;
+    private boolean isHeadless;
+    private JsonNode testConfig;
+    private GridConfig gridConfig;
+    private RunType runType;
+    private List<String> exceptionsToHandleOnTolerantActions;
 
     public BrowserType getBrowserType() {
         return browserType;
@@ -52,5 +59,50 @@ public class WebDriverConfig {
     @JsonProperty("timeout")
     public void setWebDriverWaitTimeout(String webDriverWaitTimeout) {
         this.webDriverWaitTimeout = Long.parseLong(webDriverWaitTimeout);
+    }
+
+    public String getTestConfigItem(String item) {
+        return this.testConfig.get(item).textValue();
+    }
+
+    @JsonProperty("testConfig")
+    public void setTestConfig(JsonNode testConfig) {
+        this.testConfig = testConfig;
+    }
+
+    public boolean isHeadless() {
+        return isHeadless;
+    }
+
+    @JsonProperty("headless")
+    public void setHeadless(boolean headless) {
+        isHeadless = headless;
+    }
+
+    public GridConfig getGridConfig() {
+        return gridConfig;
+    }
+
+    @JsonProperty("gridConfig")
+    public void setGridConfig(GridConfig gridConfig) {
+        this.gridConfig = gridConfig;
+    }
+
+    public RunType getRunType() {
+        return runType;
+    }
+
+    @JsonProperty("runType")
+    public void setRunType(String runType) {
+        this.runType = RunType.valueOf(runType.toUpperCase());
+    }
+
+    public List<String> getExceptionsToHandleOnTolerantActions() {
+        return exceptionsToHandleOnTolerantActions;
+    }
+
+    @JsonProperty("exceptionsToHandleOnTolerantActions")
+    public void setExceptionsToHandleOnTolerantActions(List<String> exceptionsToHandleOnTolerantActions) {
+        this.exceptionsToHandleOnTolerantActions = exceptionsToHandleOnTolerantActions;
     }
 }

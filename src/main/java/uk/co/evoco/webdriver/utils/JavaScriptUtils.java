@@ -3,6 +3,7 @@ package uk.co.evoco.webdriver.utils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,17 @@ public final class JavaScriptUtils {
     }
 
     /**
+     * Executes a given JavaScript script against a given WebElement
+     * @param webDriver
+     * @param webElement
+     * @param javascript
+     */
+    public static void executeString(WebDriver webDriver, WebElement webElement, String javascript) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
+        javascriptExecutor.executeScript(javascript, webElement);
+    }
+
+    /**
      * Reads a file from the classpath (./src/test/resources/javascript/myfile.js) and executes it via the JavaScript
      * executor.
      * This can make tests a little more readable as there's no inline JavaScript and horrible escape characters to
@@ -41,5 +53,4 @@ public final class JavaScriptUtils {
                 Charset.forName("UTF-8"));
         javascriptExecutor.executeScript(javascript);
     }
-
 }

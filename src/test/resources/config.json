@@ -1,5 +1,18 @@
 {
   "browser": "chrome",
   "baseUrl": "https://www.google.com",
-  "timeout": "30"
+  "timeout": "30",
+  "headless": true,
+  "runType": "LOCAL",
+  "testConfig": {
+    "sample": "sample text"
+  },
+  "gridConfig": {
+    "url": "http://localhost:4444/wd/hub"
+  },
+  "exceptionsToHandleOnTolerantActions": [
+    "StaleElementReferenceException",
+    "ElementClickInterceptedException",
+    "ElementNotInteractableException"
+  ]
 }

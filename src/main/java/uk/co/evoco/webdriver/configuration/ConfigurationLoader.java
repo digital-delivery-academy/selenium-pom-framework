@@ -38,7 +38,11 @@ public class ConfigurationLoader {
      * @return WebDriverConfig
      * @throws IOException
      */
-    public WebDriverConfig build() throws IOException {
-        return JsonUtils.fromFile(FileLoaderUtils.loadFromClasspathOrFileSystem(targetConfigurationFile), WebDriverConfig.class);
+    public WebDriverConfig build() {
+        try {
+            return JsonUtils.fromFile(FileLoaderUtils.loadFromClasspathOrFileSystem(targetConfigurationFile), WebDriverConfig.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to load configuration from " + targetConfigurationFile);
+        }
     }
 }

@@ -35,4 +35,14 @@ public class Dates extends MockUnitBase {
         LocalDate date = DateTime.parse(startDate, dateTimeFormatter).minusDays(daysToRemove).toLocalDate();
         return date.toString(dateTimeFormatter);
     }
+
+    /**
+     * Returns the current date for today
+     * @return String
+     */
+    public static String now() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
+        LocalDate date = DateTime.now().toLocalDate();
+        return date.toString(dateTimeFormatter);
+    }
 }
