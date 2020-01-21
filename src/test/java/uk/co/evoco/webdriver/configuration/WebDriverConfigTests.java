@@ -19,6 +19,9 @@ public class WebDriverConfigTests {
         assertThat(webDriverConfig.getBaseUrl(), is("https://www.google.com"));
         assertThat(webDriverConfig.getBrowserType(), is(BrowserType.CHROME));
         assertThat(webDriverConfig.getWebDriverWaitTimeout(), is(30L));
+        assertThat(webDriverConfig.getTestConfigItem("sample"), is("sample text"));
+        assertThat(webDriverConfig.getRunType(), is(RunType.LOCAL));
+        assertThat(webDriverConfig.getGridConfig().getGridUrl().toString(), is("http://localhost:4444/wd/hub"));
     }
 
     @Test

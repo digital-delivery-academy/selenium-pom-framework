@@ -30,10 +30,18 @@ public class WebDriverListener implements WebDriverEventListener {
     private static final Logger logger = LoggerFactory.getLogger(WebDriverListener.class);
     private File screenshotDirectory;
 
+    /**
+     * Sets the wait for all of the ExpectedConditions calls that we make here
+     * @param webDriverWaitTimeout
+     */
     public void setWebdriverWaitTimeout(long webDriverWaitTimeout) {
         this.WEBDRIVER_WAIT_TIMEOUT = webDriverWaitTimeout;
     }
 
+    /**
+     * Sets the screenshot target directory that will be used for screenshots generated inside onException()
+     * @param screenshotDirectory
+     */
     public void setScreenshotDirectory(File screenshotDirectory) {
         this.screenshotDirectory = screenshotDirectory;
     }

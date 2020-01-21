@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.WebDriverBuilder;
-import uk.co.evoco.webdriver.configuration.ConfigurationLoader;
-import uk.co.evoco.webdriver.configuration.WebDriverConfig;
+import uk.co.evoco.webdriver.configuration.TestConfigManager;
 import uk.co.evoco.webdriver.results.ResultsManager;
 
 import java.io.IOException;
@@ -17,7 +16,6 @@ import java.io.IOException;
  */
 public abstract class BaseAbstractTest {
     protected EventFiringWebDriver webDriver;
-    protected static WebDriverConfig webDriverConfig;
     protected static ResultsManager resultsManager;
 
     /**
@@ -27,10 +25,7 @@ public abstract class BaseAbstractTest {
      * @throws IOException
      */
     @BeforeAll
-    public static void beforeAll() throws IOException {
-        webDriverConfig = new ConfigurationLoader()
-                .decideWhichConfigurationToUse()
-                .build();
+    public static void beforeAll() {
         resultsManager = new ResultsManager();
         resultsManager.createScreenshotDirectory();
     }
@@ -41,12 +36,11 @@ public abstract class BaseAbstractTest {
      * This ensures we always have a fresh browser window and a guaranteed starting point
      */
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws IOException {
         this.webDriver = new WebDriverBuilder()
-                .setConfiguration(webDriverConfig)
                 .setResultsDirectory(this.resultsManager.getScreenshotDirectory())
                 .build();
-        this.webDriver.get(webDriverConfig.getBaseUrl());
+        this.webDriver.get(TestConfigManager.getInstance().getWebDriverConfig().getBaseUrl());
         this.webDriver.manage().window().maximize();
     }
 

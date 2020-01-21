@@ -48,3 +48,4 @@ bin
 *.csv
 
 script/dist
+logs/*

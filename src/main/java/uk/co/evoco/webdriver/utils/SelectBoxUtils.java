@@ -21,11 +21,13 @@ public final class SelectBoxUtils {
     }
 
     /**
-     * Selects an option by the index of the option in the list
+     * Selects an option by the index of the option in the list.
+     * The input is NOT zero based, we're normalising the input internally.
      * @param selectBox
      * @param index
      */
     public static void itemByIndex(WebElement selectBox, int index) {
+        index = index - 1;
         Select select = new Select(selectBox);
         select.selectByIndex(index);
     }
