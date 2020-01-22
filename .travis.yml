@@ -20,7 +20,6 @@ before_install:
   - google-chrome-stable --remote-debugging-port=9222 http://localhost &
   - chmod ugo+x scripts/publish-javadocs-to-github-pages.sh
 
-
 addons:
   firefox: latest
 
@@ -37,7 +36,9 @@ deploy:
     on:
       all_branches: true
   - provider: script
-    script: ./scripts/publish-javadocs-to-github-pages.sh
+    script:
+      -  mvn javadoc:javadoc
+      - ./scripts/publish-javadocs-to-github-pages.sh
     on:
       all_branches: true
 
