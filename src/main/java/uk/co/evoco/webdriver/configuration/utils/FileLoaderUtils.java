@@ -7,9 +7,9 @@ public final class FileLoaderUtils {
 
     /**
      * Look for a file to load on a fully qualified path, or the classpath
-     * @param path
-     * @return File
-     * @throws IOException
+     * @param path location to look for file (either relative or classpath)
+     * @return File the file that represents the found file on either the path or the classpath
+     * @throws IOException if we can't find the file on the path or the classpath
      */
     public static File loadFromClasspathOrFileSystem(String path) throws IOException {
         File file = new File(path);

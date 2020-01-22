@@ -16,7 +16,7 @@ public class ConfigurationLoader {
     /**
      * Method for figuring out if we're using the internal, default configuration, or we're setting a reference
      * to an external configuration file (from the file system).
-     * @return ConfigurationLoader
+     * @return ConfigurationLoader builder pattern so returns self
      */
     public ConfigurationLoader decideWhichConfigurationToUse() {
         String configurationProperty = System.getProperty("config", "DEFAULT");
@@ -35,8 +35,7 @@ public class ConfigurationLoader {
 
     /**
      * This method builds the configuration and returns it
-     * @return WebDriverConfig
-     * @throws IOException
+     * @return WebDriverConfig the loaded WebDriverConfig
      */
     public WebDriverConfig build() {
         try {

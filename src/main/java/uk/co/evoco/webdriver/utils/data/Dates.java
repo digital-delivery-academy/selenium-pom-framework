@@ -13,9 +13,9 @@ public class Dates extends MockUnitBase {
     /**
      * Returns a string that represents the date that is the given days
      * ahead of the start date
-     * @param startDate
-     * @param daysToAdd
-     * @return String
+     * @param startDate start date
+     * @param daysToAdd days to add to start date
+     * @return String representing resulting date
      */
     public static String futureDate(String startDate, int daysToAdd) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
@@ -26,9 +26,9 @@ public class Dates extends MockUnitBase {
     /**
      * Returns a string that represents the date that is the given days
      * behind of the start date
-     * @param startDate
-     * @param daysToRemove
-     * @return String
+     * @param startDate start date
+     * @param daysToRemove days to remove from start date
+     * @return String representing resulting date
      */
     public static String pastDate(String startDate, int daysToRemove) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
@@ -38,7 +38,7 @@ public class Dates extends MockUnitBase {
 
     /**
      * Returns the current date for today
-     * @return String
+     * @return String representing resulting date
      */
     public static String now() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);

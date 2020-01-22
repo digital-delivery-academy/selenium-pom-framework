@@ -27,8 +27,8 @@ public final class ClickUtils {
      *
      * It retries only once and waits for 3 seconds.  This may become configurable in the future.
      *
-     * @param webDriver
-     * @param webElement
+     * @param webDriver active WebDriver instance
+     * @param webElement active WebElement, already located
      * @throws InterruptedException because there is a Thread.sleep in this method.
      */
     public static void tolerantClick(WebDriver webDriver, WebElement webElement) throws InterruptedException {
