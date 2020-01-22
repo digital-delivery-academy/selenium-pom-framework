@@ -40,6 +40,10 @@ submit an issue ticket.
 - A full reference guide is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
 - Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.4
 
+## Example tests
+
+See https://github.com/digital-delivery-academy/selenium-pom-example repository for an example of how to write Selenium tests using the Page Object Model.  This repository uses this framework.
+
 ## Usage
 
 Put this in your POM.xml.
@@ -100,6 +104,3 @@ An example configuration (`settings.xml`) would be:
     </servers>
 </settings>
 ```
-## Example tests
-
-See https://github.com/digital-delivery-academy/selenium-pom-example repository for an example of how to write Selenium tests using the Page Object Model.  This repository uses this framework.
