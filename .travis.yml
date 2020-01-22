@@ -38,7 +38,7 @@ deploy:
   - provider: script
     script: bash scripts/publish-javadocs-to-github-pages.sh
     on:
-      branch: publish-javadocs-issue-#6
+      tags: true
 
 notifications:
   slack: evoco:HMLAFFFsZHDFu6xBw0OyXZrp

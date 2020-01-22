@@ -5,7 +5,6 @@ workingDir=`pwd`
 # Generate javadocs and get current app version
 mvn javadoc:javadoc
 currentAppVersion=`mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec`
-ls
 
 # Get to the Travis build directory, configure git and clone the repo
 cd $HOME
