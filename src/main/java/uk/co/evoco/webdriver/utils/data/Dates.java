@@ -45,4 +45,23 @@ public class Dates extends MockUnitBase {
         LocalDate date = DateTime.now().toLocalDate();
         return date.toString(dateTimeFormatter);
     }
+
+    /**
+     *
+     * @param startDate the date to start with
+     * @param numberOfBusinessDaysToAdd Days to add, avoiding weekends
+     * @return String representing resulting date
+     */
+    public static String futureDateBusinessDays(String startDate, int numberOfBusinessDaysToAdd) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
+        LocalDate futureDate = DateTime.parse(startDate, dateTimeFormatter).toLocalDate();
+        int addedDays = 0;
+        while (addedDays < numberOfBusinessDaysToAdd) {
+            futureDate = futureDate.plusDays(1);
+            if (!((futureDate.getDayOfWeek() == 6) || (futureDate.getDayOfWeek() == 7))) {
+                ++addedDays;
+            }
+        }
+        return futureDate.toString(dateTimeFormatter);
+    }
 }
