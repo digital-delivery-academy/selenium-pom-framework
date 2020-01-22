@@ -3,31 +3,42 @@
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/122f56e1b6284b319b8c23a58ab2c664)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-example?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-example&amp;utm_campaign=Badge_Grade)
 
-This "framework" (don't really like that word) provides an simple, lightweight (and well structured) way to launch,
-control and extend (loosely) tests for Selenium/WebDriver in Java.
+This toolkit is really a culmination in 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure tests for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of our automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
 
-It is also a collection of useful libraries to get things going (like getting hold of random data for tests) and a few
-utility helpers (NOT wrappers) that can support some more complicated tasks that we find are fairly common.
+You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
+- There's no mass "wrapper" on Selenium - that's dumb
+- There's no Cucumber - Acceptance Test Driven Development is overkill, and we won't help you do it, it's not solving the problem you think it is ;)
+- We suggest using the Page Object Model, it's generally a good idea and we provide a starting point for this
+- We resolve Driver binaries from WebDriverManager (https://github.com/bonigarcia/webdrivermanager)
+- We provide random test data generators from Mockneat (https://github.com/nomemory/mockneat) and UK Gov (https://github.com/dwp/nino-format-validation) as well as some of our own (for dates and stuff)
+- There's an externalised (and overridable) configuration system, based on JSON
+- We handle providing JUnit (we use version 5), Selenium and Hamcrest (for writing good assertions)
 
-You'll find no junk (hopefully) here, and it's a fairly opinionated approach:
-- There's no "wrappers" on Selenium - that's dumb
-- There's no Cucumber - Acceptance Test Driven Development is overkill
-- We expose BasePageObjects - Page Object Model is generally a good idea
-- We resolve Driver binaries from WebDriverManager (because Boni Garcias library is cool)
+Coming soon:
+- SauceLabs and BrowserStack configuration.
+- Published artefacts to Maven Central (so you can get the framework without a GitHub membership).
+- Tutorials for writing tests using our toolkit.
+- Builds for Java 13 and older versions of Java.
+- And lots more marked in the issues list: https://github.com/digital-delivery-academy/selenium-pom-framework/issues
 
-This boilerplate is entirely scalable.  Use it as your base and build what you need.
+It really is a one stop shop for getting up and running with a robust toolkit for building Selenium tests, without the massive investment that many business make in hand rolling their own.
 
-It's highly unlikely that you need anything more complicated than this.  
-If you do, then you probably have the scope of what you're trying to check a little wrong.
+All of our code is unit or integration tested.
+
+It's highly unlikely that you need anything more complicated than this.  If you do, then you probably have the scope of what you're trying to check a little wrong.
 
 Remember that testing through a browser is brittle, slow and should be at the very top of your automation pyramid.
 
 5-10% of all of your projects automated tests (if you're building bespoke software) should be here.  
-If you end up with 500 Selenium tests
-then you took a wrong turn.  A really wrong turn.  Or you're trying to check some COTS product.  Good luck to ya.
+If you end up with 500 Selenium tests then it's quite possible that you took a wrong turn.  We'd be happy to talk about getting you back on the right path (get in touch: steve.walton@evoco.co.uk).
 
 If you have questions please feel free to contact me (steve.walton@evoco.co.uk) or if you find issues raise a PR or 
 submit an issue ticket.
+
+## Documentation
+
+- A full reference guide is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
+- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.4
 
 ## Usage
 
@@ -89,12 +100,6 @@ An example configuration (`settings.xml`) would be:
     </servers>
 </settings>
 ```
+## Example tests
 
-See the Documentation in the Wiki to see how to write a test.
-
-## Documentation
-
-Documentation for committers and users is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
-
-Javadocs (more technical documentation) are published for each version on GitHub pages. The current version is here:
-https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.4
+See https://github.com/digital-delivery-academy/selenium-pom-example repository for an example of how to write Selenium tests using the Page Object Model.  This repository uses this framework.
