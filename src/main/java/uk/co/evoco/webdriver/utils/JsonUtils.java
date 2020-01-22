@@ -50,6 +50,18 @@ public final class JsonUtils {
     }
 
     /**
+     *
+     * @param file json file
+     * @param type target class type of collection
+     * @param <T> generic type
+     * @return generic class for mapper
+     * @throws IOException if file cannot be found
+     */
+    public static <T> T fromFile(File file, TypeReference<T> type) throws IOException {
+        return new ObjectMapper().readValue(file, type);
+    }
+
+    /**
      * Deserialize a JSON from a File to a given class type
      * @param jsonStream json stream
      * @param type target class type or collection
