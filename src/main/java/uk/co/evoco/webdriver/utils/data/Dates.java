@@ -6,6 +6,8 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.time.DayOfWeek;
+
 public class Dates extends MockUnitBase {
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
@@ -44,5 +46,24 @@ public class Dates extends MockUnitBase {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
         LocalDate date = DateTime.now().toLocalDate();
         return date.toString(dateTimeFormatter);
+    }
+
+    /**
+     *
+     * @param startDate the date to start with
+     * @param numberOfBusinessDaysToAdd Days to add, avoiding weekends
+     * @return String representing resulting date
+     */
+    public static String futureDateBusinessDays(String startDate, int numberOfBusinessDaysToAdd) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
+        LocalDate futureDate = DateTime.parse(startDate, dateTimeFormatter).toLocalDate();
+        int addedDays = 0;
+        while (addedDays < numberOfBusinessDaysToAdd) {
+            futureDate = futureDate.plusDays(1);
+            if (!((futureDate.getDayOfWeek() == 6) || (futureDate.getDayOfWeek() == 7))) {
+                ++addedDays;
+            }
+        }
+        return futureDate.toString(dateTimeFormatter);
     }
 }
