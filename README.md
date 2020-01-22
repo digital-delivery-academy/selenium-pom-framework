@@ -37,7 +37,7 @@ Put this in your POM.xml.
 <dependency>
   <groupId>uk.co.evoco</groupId>
   <artifactId>selenium-pom-framework</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
 </dependency>
 ```
 
@@ -97,4 +97,4 @@ See the Documentation in the Wiki to see how to write a test.
 Documentation for committers and users is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
 
 Javadocs (more technical documentation) are published for each version on GitHub pages. The current version is here:
-https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.3
+https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.4
