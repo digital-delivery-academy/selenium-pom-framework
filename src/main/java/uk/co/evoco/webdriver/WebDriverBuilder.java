@@ -18,7 +18,7 @@ public class WebDriverBuilder {
     
     /**
      * 
-     * @param screenshotDirectory
+     * @param screenshotDirectory path for the directory storing screenshots
      * @return WebDriverBuilder as using builder pattern
      */
     public WebDriverBuilder setResultsDirectory(File screenshotDirectory) {
