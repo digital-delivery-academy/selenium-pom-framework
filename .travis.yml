@@ -36,9 +36,7 @@ deploy:
     on:
       branch: master
   - provider: script
-    script:
-      -  mvn javadoc:javadoc
-      - ./scripts/publish-javadocs-to-github-pages.sh
+    script: bash scripts/publish-javadocs-to-github-pages.sh
     on:
       branch: publish-javadocs-issue-#6
 
