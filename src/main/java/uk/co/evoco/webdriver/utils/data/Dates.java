@@ -6,8 +6,6 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.time.DayOfWeek;
-
 public class Dates extends MockUnitBase {
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
