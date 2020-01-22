@@ -6,10 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.co.evoco.webdriver.configuration.WebDriverConfig;
-import uk.co.evoco.webdriver.utils.JsonUtils;
-
-import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,10 +15,9 @@ public class ConfiguredEdgeDriverIT {
     private static final Logger logger = LoggerFactory.getLogger(ConfiguredEdgeDriverIT.class);
 
     @Test
-    public void testReturnsLocalWebDriver() throws IOException {
+    public void testReturnsLocalWebDriver() {
         if(System.getProperty("os.name").contains("win")) {
-            WebDriverConfig webDriverConfig = JsonUtils.fromFile(ClassLoader.getSystemResourceAsStream("fixtures/sample-config.json"), WebDriverConfig.class);
-            ConfiguredEdgeDriver configuredEdgeDriver = new ConfiguredEdgeDriver(webDriverConfig);
+            ConfiguredEdgeDriver configuredEdgeDriver = new ConfiguredEdgeDriver();
             WebDriver webDriver = configuredEdgeDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();
