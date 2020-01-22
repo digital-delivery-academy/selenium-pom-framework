@@ -2,10 +2,11 @@
 set -ev
 
 echo "HELLO WORLD"
-
+ls
+pwd
 # Get to the Travis build directory, configure git and clone the repo
-cd $HOME
 mvn javadoc:javadoc
+cd $HOME
 currentAppVersion=`mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec`
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "travis-ci"
