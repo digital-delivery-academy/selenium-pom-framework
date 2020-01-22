@@ -18,6 +18,7 @@ before_install:
   - "cp .travis.settings.xml $HOME/.m2/settings.xml"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   - google-chrome-stable --remote-debugging-port=9222 http://localhost &
+  - chmod ugo+x scripts/publish-javadocs-to-github-pages.sh
 
 addons:
   firefox: latest
@@ -33,7 +34,11 @@ deploy:
   - provider: script
     script: mvn package com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
     on:
-      all_branches: true
+      branch: master
+  - provider: script
+    script: bash scripts/publish-javadocs-to-github-pages.sh
+    on:
+      tags: true
 
 notifications:
   slack: evoco:HMLAFFFsZHDFu6xBw0OyXZrp

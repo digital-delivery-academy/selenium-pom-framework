@@ -32,7 +32,7 @@ public class WebDriverListener implements WebDriverEventListener {
 
     /**
      * Sets the wait for all of the ExpectedConditions calls that we make here
-     * @param webDriverWaitTimeout
+     * @param webDriverWaitTimeout the timeout used for WebDriverWaits
      */
     public void setWebdriverWaitTimeout(long webDriverWaitTimeout) {
         this.WEBDRIVER_WAIT_TIMEOUT = webDriverWaitTimeout;
@@ -40,56 +40,106 @@ public class WebDriverListener implements WebDriverEventListener {
 
     /**
      * Sets the screenshot target directory that will be used for screenshots generated inside onException()
-     * @param screenshotDirectory
+     * @param screenshotDirectory the path to the screenshot directory used in onException
      */
     public void setScreenshotDirectory(File screenshotDirectory) {
         this.screenshotDirectory = screenshotDirectory;
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void beforeAlertAccept(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void afterAlertAccept(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void afterAlertDismiss(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void beforeAlertDismiss(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param s String
+     * @param webDriver active WebDriver instance
+     */
     public void beforeNavigateTo(String s, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param s String
+     * @param webDriver active WebDriver instance
+     */
     public void afterNavigateTo(String s, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void beforeNavigateBack(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void afterNavigateBack(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void beforeNavigateForward(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void afterNavigateForward(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void beforeNavigateRefresh(WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webDriver active WebDriver instance
+     */
     public void afterNavigateRefresh(WebDriver webDriver) {
         // nothing yet
     }
@@ -98,14 +148,20 @@ public class WebDriverListener implements WebDriverEventListener {
      * Before each webDriver.findBy or @FindBy we want to make sure that we are supply elements
      * that are present in the DOM.  This ensures that we avoid, to some degree, StaleElementExceptions (although
      * this is generally not the best way to avoid those types of exceptions).
-     * @param by
-     * @param webElement
-     * @param webDriver
+     * @param by locator
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
      */
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver, WEBDRIVER_WAIT_TIMEOUT).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
+    /**
+     *
+     * @param by locator
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
+     */
     public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
         // nothing yet
     }
@@ -116,45 +172,82 @@ public class WebDriverListener implements WebDriverEventListener {
      * given time (as little as they need) to be ready to be interacted with.
      *
      * A valid case for this is where a button may be disabled until form fields are automatically valid.
-     * @param webElement
-     * @param webDriver
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
      */
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver, WEBDRIVER_WAIT_TIMEOUT).until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
+    /**
+     *
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
+     */
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
+     * @param charSequences character sequence
+     */
     public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
+     * @param charSequences character sequence
+     */
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param s String
+     * @param webDriver active WebDriver instance
+     */
     public void beforeScript(String s, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param s String
+     * @param webDriver active WebDriver instance
+     */
     public void afterScript(String s, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param s String
+     * @param webDriver active WebDriver instance
+     */
     public void beforeSwitchToWindow(String s, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param s String
+     * @param webDriver active WebDriver instance
+     */
     public void afterSwitchToWindow(String s, WebDriver webDriver) {
         // nothing yet
     }
 
     /**
      * If we have an exception, lets create a screenshot so we can see the page as it happened.
-     * @param throwable
-     * @param webDriver
+     * @param throwable the thrown exception that we are holding here
+     * @param webDriver active WebDriver instance
      */
     public void onException(Throwable throwable, WebDriver webDriver) {
         File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
@@ -171,18 +264,40 @@ public class WebDriverListener implements WebDriverEventListener {
         }
     }
 
+    /**
+     *
+     * @param outputType output type
+     * @param <X> x
+     */
     public <X> void beforeGetScreenshotAs(OutputType<X> outputType) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param outputType output type
+     * @param x x
+     * @param <X> x
+     */
     public <X> void afterGetScreenshotAs(OutputType<X> outputType, X x) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
+     */
     public void beforeGetText(WebElement webElement, WebDriver webDriver) {
         // nothing yet
     }
 
+    /**
+     *
+     * @param webElement active WebElement, already located
+     * @param webDriver active WebDriver instance
+     * @param s String
+     */
     public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {
         // nothing yet
     }

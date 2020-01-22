@@ -22,7 +22,6 @@ public abstract class BaseAbstractTest {
      * This will run before every test class.
      * This method gets the configuration and constructs the WebDriver instance, the screenshot
      * directory and the makes these items accessible.
-     * @throws IOException
      */
     @BeforeAll
     public static void beforeAll() {
@@ -34,6 +33,7 @@ public abstract class BaseAbstractTest {
      * This will run before EVERY @Test that extends this class
      * The method will create a new instance of WebDriver and a browser and open Google.com
      * This ensures we always have a fresh browser window and a guaranteed starting point
+     * @throws IOException if results directory isn't created or config file cannot be found
      */
     @BeforeEach
     public void setUp() throws IOException {

@@ -12,8 +12,8 @@ public final class SelectBoxUtils {
 
     /**
      * Selects an option that has a matching value attribute in the Options tag markup
-     * @param selectBox
-     * @param htmlValue
+     * @param selectBox active WebElement, already located
+     * @param htmlValue HTML value attribute
      */
     public static void itemByHtmlValueAttribute(WebElement selectBox, String htmlValue) {
         Select select = new Select(selectBox);
@@ -23,8 +23,8 @@ public final class SelectBoxUtils {
     /**
      * Selects an option by the index of the option in the list.
      * The input is NOT zero based, we're normalising the input internally.
-     * @param selectBox
-     * @param index
+     * @param selectBox active WebElement, already located
+     * @param index index in order of display
      */
     public static void itemByIndex(WebElement selectBox, int index) {
         index = index - 1;
@@ -34,8 +34,8 @@ public final class SelectBoxUtils {
 
     /**
      * Selects an option by the text that is visible in the select box
-     * @param selectBox
-     * @param visibleText
+     * @param selectBox active WebElement, already located
+     * @param visibleText visible text in the select box (NOT the HTML value attribute)
      */
     public static void itemByVisibleText(WebElement selectBox, String visibleText) {
         Select select = new Select(selectBox);

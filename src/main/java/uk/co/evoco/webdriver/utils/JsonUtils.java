@@ -1,5 +1,6 @@
 package uk.co.evoco.webdriver.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -14,35 +15,35 @@ public final class JsonUtils {
 
     /**
      * Deserialize a JSON from a String to a given class type
-     * @param jsonString
-     * @param type
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param jsonString json string
+     * @param type target class type or collection
+     * @param <T> generic type
+     * @return generic class for mapper
+     * @throws JsonProcessingException if JSON cannot be processed
      */
-    public static <T> T fromString(String jsonString, TypeReference<T> type) throws IOException {
+    public static <T> T fromString(String jsonString, TypeReference<T> type) throws JsonProcessingException {
         return new ObjectMapper().readValue(jsonString, type);
     }
 
     /**
      * Deserialize a JSON from a String to a given class type
-     * @param jsonString
-     * @param type
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param jsonString json string
+     * @param type target class type or collection
+     * @param <T> generic type
+     * @return generic class for mapper
+     * @throws JsonProcessingException if JSON cannot be processed
      */
-    public static <T> T fromString(String jsonString, Class<T> type) throws IOException {
+    public static <T> T fromString(String jsonString, Class<T> type) throws JsonProcessingException {
         return new ObjectMapper().readValue(jsonString, type);
     }
 
     /**
      * Deserialize a JSON from a File to a given class type
-     * @param file
-     * @param type
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param file json file
+     * @param type target class type or collection
+     * @param <T> generic type
+     * @return generic class for mapper
+     * @throws IOException if file cannot be found
      */
     public static <T> T fromFile(File file, Class<T> type) throws IOException {
         return new ObjectMapper().readValue(file, type);
@@ -50,11 +51,11 @@ public final class JsonUtils {
 
     /**
      * Deserialize a JSON from a File to a given class type
-     * @param jsonStream
-     * @param type
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param jsonStream json stream
+     * @param type target class type or collection
+     * @param <T> generic type
+     * @return generic class for mapper
+     * @throws IOException if file cannot be found
      */
     public static <T> T fromFile(InputStream jsonStream, Class<T> type) throws IOException {
         return new ObjectMapper().readValue(jsonStream, type);
@@ -62,11 +63,11 @@ public final class JsonUtils {
 
     /**
      * Deserialize a JSON from a File to a given class type
-     * @param filePath
-     * @param type
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param filePath json file path
+     * @param type target class type or collection
+     * @param <T> generic type
+     * @return generic class for mapper
+     * @throws IOException if file cannot be found
      */
     public static <T> T fromFile(String filePath, Class<T> type) throws IOException {
         return new ObjectMapper().readValue(new File(filePath), type);
@@ -74,11 +75,11 @@ public final class JsonUtils {
 
     /**
      * Serializes a given object instance into a JSON and returns it as a String
-     * @param object
-     * @return String
-     * @throws IOException
+     * @param object json object
+     * @return String that represents JSON
+     * @throws JsonProcessingException if JSON cannot be parsed
      */
-    public static String toString(Object object) throws IOException {
+    public static String toString(Object object) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(object);
     }
 }

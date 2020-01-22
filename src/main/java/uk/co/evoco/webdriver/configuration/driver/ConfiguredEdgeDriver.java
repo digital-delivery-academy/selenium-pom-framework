@@ -6,47 +6,58 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import uk.co.evoco.webdriver.configuration.WebDriverConfig;
+import uk.co.evoco.webdriver.configuration.TestConfigManager;
 
 import java.io.File;
 
 public class ConfiguredEdgeDriver implements ConfiguredDriver {
 
-    private WebDriverConfig webDriverConfig;
-    private WebDriver webDriver;
-
-    public ConfiguredEdgeDriver(WebDriverConfig webDriverConfig) {
-        this.webDriverConfig = webDriverConfig;
+    /**
+     *
+     * @return WebDriver representing RemoteWebDriver grid
+     */
+    public WebDriver getRemoteDriver() {
+        return new RemoteWebDriver(TestConfigManager.getInstance().getWebDriverConfig().getGridConfig().getGridUrl(), this.getOptions());
     }
 
-    public void getRemoteDriver(EdgeOptions edgeOptions) {
-        this.webDriver =  new RemoteWebDriver(this.webDriverConfig.getGridConfig().getGridUrl(), edgeOptions);
-    }
-
-    public void getLocalDriver(EdgeOptions edgeOptions) {
+    /**
+     *
+     * @return WebDriver representing RemoteWebDriver grid
+     */
+    public WebDriver getLocalDriver() {
         WebDriverManager.iedriver().setup();
-        this.webDriver = new EdgeDriver(edgeOptions);
+        return new EdgeDriver(this.getOptions());
     }
 
+    /**
+     *
+     * @return configured options object for target browser driver
+     */
     public EdgeOptions getOptions() {
         return new EdgeOptions();
     }
 
+    /**
+     *
+     * @param screenshotPath path to store screenshots
+     * @return configured EventFiringWebDriver
+     */
     @Override
     public EventFiringWebDriver getDriver(File screenshotPath) {
-        switch(this.webDriverConfig.getRunType()) {
+        WebDriver webDriver;
+        switch(TestConfigManager.getInstance().getWebDriverConfig().getRunType()) {
             case LOCAL:
-                getLocalDriver(this.getOptions());
+                webDriver = getLocalDriver();
                 break;
             case GRID:
-                getRemoteDriver(this.getOptions());
+                webDriver = getRemoteDriver();
                 break;
             default:
                 throw new RuntimeException("Must set runType to either LOCAL or GRID in configuration file");
         }
         return configureEventFiringWebDriver(
-                this.webDriver,
-                this.webDriverConfig.getWebDriverWaitTimeout(),
+                webDriver,
+                TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout(),
                 screenshotPath);
     }
 }

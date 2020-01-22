@@ -18,8 +18,8 @@ public final class JavaScriptUtils {
 
     /**
      * Executes a given JavaScript script
-     * @param webDriver
-     * @param javascript
+     * @param webDriver active WebDriver instance
+     * @param javascript String representing javascript expression
      */
     public static void executeString(WebDriver webDriver, String javascript) {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
@@ -28,9 +28,9 @@ public final class JavaScriptUtils {
 
     /**
      * Executes a given JavaScript script against a given WebElement
-     * @param webDriver
-     * @param webElement
-     * @param javascript
+     * @param webDriver active WebDriver instance
+     * @param webElement active WebElement, already located
+     * @param javascript String representing javascript expression
      */
     public static void executeString(WebDriver webDriver, WebElement webElement, String javascript) {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
@@ -42,9 +42,9 @@ public final class JavaScriptUtils {
      * executor.
      * This can make tests a little more readable as there's no inline JavaScript and horrible escape characters to
      * content with.
-     * @param webDriver
-     * @param filename
-     * @throws IOException
+     * @param webDriver active WebDriver instance
+     * @param filename File representing javascript expression
+     * @throws IOException if the file cannot be found
      */
     public static void executeFile(WebDriver webDriver, String filename) throws IOException {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
