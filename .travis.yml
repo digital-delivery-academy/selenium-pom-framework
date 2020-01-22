@@ -40,7 +40,7 @@ deploy:
       -  mvn javadoc:javadoc
       - ./scripts/publish-javadocs-to-github-pages.sh
     on:
-      all_branches: true
+      branch: publish-javadocs-issue-#6
 
 notifications:
   slack: evoco:HMLAFFFsZHDFu6xBw0OyXZrp
