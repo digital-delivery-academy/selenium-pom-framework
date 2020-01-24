@@ -1,7 +1,7 @@
 # selenium-pom-framework
 
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/122f56e1b6284b319b8c23a58ab2c664)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-example?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-example&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce6169f2151d43daaa0db3aab560e1f0)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
 
 This toolkit is really a culmination in 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure tests for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of our automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
 
