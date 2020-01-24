@@ -2,12 +2,12 @@ package uk.co.evoco.webdriver.configuration.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.configuration.TestConfigManager;
-import uk.co.evoco.webdriver.configuration.WebDriverConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
                 webDriver =getRemoteDriver();
                 break;
             default:
-                throw new RuntimeException("Must set runType to either LOCAL or GRID in configuration file");
+                throw new WebDriverException("Must set runType to either LOCAL or GRID in configuration file");
         }
         return configureEventFiringWebDriver(
                 webDriver,

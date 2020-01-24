@@ -9,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.co.evoco.webdriver.configuration.TestConfigManager;
 
-import java.util.List;
-
 /**
  * Only for us in the situations outlined for the provided methods.
  * There's nothing wrong with WebDrivers normal click method, if you don't need this, steer well clear.

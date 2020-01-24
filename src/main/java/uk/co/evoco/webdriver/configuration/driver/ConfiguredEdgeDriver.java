@@ -2,6 +2,7 @@ package uk.co.evoco.webdriver.configuration.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -53,7 +54,7 @@ public class ConfiguredEdgeDriver implements ConfiguredDriver {
                 webDriver = getRemoteDriver();
                 break;
             default:
-                throw new RuntimeException("Must set runType to either LOCAL or GRID in configuration file");
+                throw new WebDriverException("Must set runType to either LOCAL or GRID in configuration file");
         }
         return configureEventFiringWebDriver(
                 webDriver,

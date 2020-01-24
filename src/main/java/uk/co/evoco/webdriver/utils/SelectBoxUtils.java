@@ -27,9 +27,9 @@ public final class SelectBoxUtils {
      * @param index index in order of display
      */
     public static void itemByIndex(WebElement selectBox, int index) {
-        index = index - 1;
+        int normalisedIndex = index - 1;
         Select select = new Select(selectBox);
-        select.selectByIndex(index);
+        select.selectByIndex(normalisedIndex);
     }
 
     /**

@@ -2,7 +2,11 @@ package uk.co.evoco.webdriver;
 
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.configuration.TestConfigManager;
-import uk.co.evoco.webdriver.configuration.driver.*;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredChromeDriver;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredFirefoxDriver;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredEdgeDriver;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredInternetExplorerDriver;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredSafariDriver;
 
 import java.io.File;
 import java.io.IOException;
