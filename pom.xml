@@ -60,6 +60,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.10.1</jackson.version>
         <mockneat.version>0.3.8</mockneat.version>
+        <dwp.formatvalidation.nino>1.3.0</dwp.formatvalidation.nino>
         <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
         <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
         <javadoc.maven.plugin.version>3.1.1</javadoc.maven.plugin.version>
@@ -111,6 +112,11 @@
             <groupId>net.andreinc.mockneat</groupId>
             <artifactId>mockneat</artifactId>
             <version>${mockneat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.gov.dwp.regex</groupId>
+            <artifactId>nino-validation</artifactId>
+            <version>${dwp.formatvalidation.nino}</version>
         </dependency>
         <dependency>
             <groupId>joda-time</groupId>
