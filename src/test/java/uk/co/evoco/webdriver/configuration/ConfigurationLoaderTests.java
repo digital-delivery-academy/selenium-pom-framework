@@ -3,8 +3,6 @@ package uk.co.evoco.webdriver.configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -18,7 +16,7 @@ public class ConfigurationLoaderTests {
     }
 
     @Test
-    public void testCanLoadConfigurationFileWithNoPropertyArgumentsSet() throws IOException {
+    public void testCanLoadConfigurationFileWithNoPropertyArgumentsSet() {
         WebDriverConfig webDriverConfig = configurationLoader
                 .decideWhichConfigurationToUse()
                 .build();
@@ -26,7 +24,7 @@ public class ConfigurationLoaderTests {
     }
 
     @Test
-    public void testCanLoadConfigurationFileWithConfigurationPropertySetToDefault() throws IOException {
+    public void testCanLoadConfigurationFileWithConfigurationPropertySetToDefault() {
         System.setProperty("config", "DEFAULT");
         WebDriverConfig webDriverConfig = configurationLoader
                 .decideWhichConfigurationToUse()
@@ -35,7 +33,7 @@ public class ConfigurationLoaderTests {
     }
 
     @Test
-    public void testCanLoadConfigurationFileWithConfigurationPropertySetToExternalFile() throws IOException {
+    public void testCanLoadConfigurationFileWithConfigurationPropertySetToExternalFile() {
         System.setProperty("config", "./config-fs.json");
         WebDriverConfig webDriverConfig = configurationLoader
                 .decideWhichConfigurationToUse()

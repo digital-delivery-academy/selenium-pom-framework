@@ -3,7 +3,7 @@ dist: trusty
 language: java
 
 jdk:
-  - openjdk12
+  - openjdk8
 
 cache:
   directories:

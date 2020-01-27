@@ -22,7 +22,8 @@ public class ConfiguredSafariDriverIT {
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();
         } else {
-            logger.warn("ConfiguredSafariDriverTests.testReturnsLocalWebDriver is dependant on being on Mac, you're not on Mac so it didn't run.");
+            logger.warn("ConfiguredSafariDriverTests.testReturnsLocalWebDriver is " +
+                    "dependant on being on Mac, you're not on Mac so it didn't run.");
         }
     }
 }

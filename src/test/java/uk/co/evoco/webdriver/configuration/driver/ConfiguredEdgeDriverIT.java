@@ -22,7 +22,8 @@ public class ConfiguredEdgeDriverIT {
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();
         } else {
-            logger.warn("ConfiguredEdgeDriverTests.testReturnsLocalWebDriver is dependant on being on Windows, you're not on Windows so it didn't run.");
+            logger.warn("ConfiguredEdgeDriverTests.testReturnsLocalWebDriver is dependant on " +
+                    "being on Windows, you're not on Windows so it didn't run.");
         }
     }
 }

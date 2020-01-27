@@ -15,7 +15,8 @@ public class WebDriverConfigTests {
 
     @Test
     public void testCanCreateInstanceFromJsonFileAndTestGetters() throws IOException {
-        WebDriverConfig webDriverConfig = JsonUtils.fromFile(ClassLoader.getSystemResourceAsStream("fixtures/sample-config.json"), WebDriverConfig.class);
+        WebDriverConfig webDriverConfig = JsonUtils.fromFile(
+                ClassLoader.getSystemResourceAsStream("fixtures/sample-config.json"), WebDriverConfig.class);
         assertThat(webDriverConfig.getBaseUrl(), is("https://www.google.com"));
         assertThat(webDriverConfig.getBrowserType(), is(BrowserType.CHROME));
         assertThat(webDriverConfig.getWebDriverWaitTimeout(), is(30L));
@@ -27,7 +28,9 @@ public class WebDriverConfigTests {
     @Test
     public void testConstructionFromJsonFileWithBadBaseUrlFails() {
         assertThrows(JsonMappingException.class, () -> {
-            JsonUtils.fromFile(ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-bad-base-url.json"), WebDriverConfig.class);
+            JsonUtils.fromFile(
+                    ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-bad-base-url.json"),
+                    WebDriverConfig.class);
         });
     }
 

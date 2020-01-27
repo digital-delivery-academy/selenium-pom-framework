@@ -19,7 +19,8 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
      * @return WebDriver representing RemoteWebDriver grid
      */
     public WebDriver getRemoteDriver() {
-        return new RemoteWebDriver(TestConfigManager.getInstance().getWebDriverConfig().getGridConfig().getGridUrl(), this.getOptions());
+        return new RemoteWebDriver(
+                TestConfigManager.getInstance().getWebDriverConfig().getGridConfig().getGridUrl(), this.getOptions());
     }
 
     /**

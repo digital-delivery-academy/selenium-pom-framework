@@ -25,7 +25,6 @@ public class EmbeddedJetty {
     }
 
     public int getPort() {
-//        return ((ServerConnector) this.jettyServer.getConnectors()[0]).getLocalPort();
         return 4442;
     }
 }

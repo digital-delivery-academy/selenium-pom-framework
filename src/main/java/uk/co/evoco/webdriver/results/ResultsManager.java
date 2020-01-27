@@ -25,7 +25,8 @@ public class ResultsManager {
      * @return File representing created screenshot directory
      */
     public File createScreenshotDirectory() {
-        this.screenshotDirectory = new File(Paths.get("target").toString() + "/screenshots-" + timestamp.format(new Date()));
+        this.screenshotDirectory = new File(
+                Paths.get("target").toString() + "/screenshots-" + timestamp.format(new Date()));
         this.screenshotDirectory.mkdir();
         return this.screenshotDirectory;
     }

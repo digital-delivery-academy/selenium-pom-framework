@@ -15,6 +15,7 @@ public class TestConfigManagerTests {
 
     @Test
     public void testCanAccessTestConfigurationViaSingleton() {
-        assertThat(TestConfigManager.getInstance().getWebDriverConfig().getBaseUrl(), is("https://www.google.com"));
+        assertThat(TestConfigManager.getInstance().getWebDriverConfig().getBaseUrl(),
+                is("https://www.google.com"));
     }
 }

@@ -28,9 +28,10 @@ public final class ClickUtils {
      *
      * @param webDriver active WebDriver instance
      * @param webElement active WebElement, already located
+     * @param waitTimeBeforeRetry time to wait explicitly before we retry
      * @throws InterruptedException because there is a Thread.sleep in this method.
      */
-    public static void tolerantClick(WebDriver webDriver, WebElement webElement) throws InterruptedException {
+    public static void tolerantClick(WebDriver webDriver, WebElement webElement, int waitTimeBeforeRetry) throws InterruptedException {
         try {
             click(webDriver, webElement, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout());
         } catch(Exception e) {
@@ -39,7 +40,7 @@ public final class ClickUtils {
             for(String exceptionToHandle : TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
                 if(e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error("Exception {} is tolerated, retrying after a 3 second wait", exceptionToHandle);
-                    Thread.sleep(3);
+                    Thread.sleep(waitTimeBeforeRetry);
                     logger.error("Waited 3 seconds after {}, now retrying", exceptionToHandle);
                     click(webDriver, webElement, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout());
                 }
@@ -61,9 +62,10 @@ public final class ClickUtils {
      *
      * @param webDriver active WebDriver instance
      * @param locator locator we will use to re-lookup the element on retry
+     * @param waitTimeBeforeRetry time to wait explicitly before we retry
      * @throws InterruptedException
      */
-    public static void tolerantClick(WebDriver webDriver, By locator) throws InterruptedException {
+    public static void tolerantClick(WebDriver webDriver, By locator, int waitTimeBeforeRetry) throws InterruptedException {
         try {
             click(webDriver, locator, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout());
         } catch(Exception e) {
@@ -72,7 +74,7 @@ public final class ClickUtils {
             for(String exceptionToHandle : TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
                 if(e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error("Exception {} is tolerated, retrying after a 3 second wait", exceptionToHandle);
-                    Thread.sleep(3);
+                    Thread.sleep(waitTimeBeforeRetry);
                     logger.error("Waited 3 seconds after {}, now retrying", exceptionToHandle);
                     click(webDriver, locator, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout());
                 }

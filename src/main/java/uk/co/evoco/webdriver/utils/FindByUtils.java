@@ -26,7 +26,8 @@ public final class FindByUtils {
      * @param locator selector for target WebElement
      * @return active WebElement, already located
      */
-    public static WebElement multipleLocatorMatchGetDisplayed(WebDriver webDriver, By locator) throws WebDriverException {
+    public static WebElement multipleLocatorMatchGetDisplayed(WebDriver webDriver, By locator)
+            throws WebDriverException {
         List<WebElement> elements = webDriver.findElements(locator);
         logger.info("Found {} elements with locator: {}", elements.size(), locator.toString());
         for(WebElement element : elements) {

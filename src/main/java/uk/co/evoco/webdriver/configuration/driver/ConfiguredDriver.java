@@ -25,7 +25,8 @@ public interface ConfiguredDriver {
      * @param screenshotDirectory path to store screenshots
      * @return configured options object for target browser driver
      */
-    default EventFiringWebDriver configureEventFiringWebDriver(WebDriver webDriver, long timeout, File screenshotDirectory) {
+    default EventFiringWebDriver configureEventFiringWebDriver(
+            WebDriver webDriver, long timeout, File screenshotDirectory) {
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(webDriver);
         WebDriverListener eventListener = new WebDriverListener();
         eventListener.setWebdriverWaitTimeout(timeout);

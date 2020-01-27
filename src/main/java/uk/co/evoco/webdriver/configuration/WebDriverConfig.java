@@ -88,7 +88,8 @@ public class WebDriverConfig {
     /**
      *
      * @param item the name of the key for which the value you want to retrieve
-     * @return String returns the target item that exists in the list of open options that can be passed in the config file
+     * @return String returns the target item that exists in the list of open options that can be passed in
+     * the config file
      */
     public String getTestConfigItem(String item) {
         return this.testConfig.get(item).textValue();
@@ -164,7 +165,8 @@ public class WebDriverConfig {
 
     /**
      *
-     * @param exceptionsToHandleOnTolerantActions sets the list of exceptions for WebDriver that we will retry on when using our tolerant wrapper
+     * @param exceptionsToHandleOnTolerantActions sets the list of exceptions for WebDriver that we will retry
+     *                                            on when using our tolerant wrapper
      */
     @JsonProperty("exceptionsToHandleOnTolerantActions")
     public void setExceptionsToHandleOnTolerantActions(List<String> exceptionsToHandleOnTolerantActions) {
