@@ -2,7 +2,6 @@ package uk.co.evoco.testdata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
-import uk.co.evoco.testdata.Locale;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,13 +23,13 @@ public class DatesTests {
     @Test
     public void testCanDataInFutureAvoidingWeekend() {
         assertThat(
-                futureDateBusinessDays("06/06/2019", 5, "dd/MM/yyyy"),
+                futureDateAvoidingWeekends("06/06/2019", 5, "dd/MM/yyyy"),
                 is("13/06/2019"));
     }
 
     @Test
     public void testCanGetDateInFutureAvoidingWeekendsAndBankHolidays() throws JsonProcessingException {
-        assertThat(futureDateBusinessDaysAvoidingBankHolidays(
+        assertThat(futureDataAvoidingWeekendsAndBankHolidays(
                 Locale.ENGLAND_AND_WALES, "28/08/2017", 2, "dd/MM/yyyy"),
                 is("31/08/2017"));
     }
@@ -38,7 +37,7 @@ public class DatesTests {
     @Test
     public void testCanGetDateInFutureAvoidingWeekendsAndBankHolidaysWhenStartDateIsOnFriday()
             throws JsonProcessingException {
-        assertThat(futureDateBusinessDaysAvoidingBankHolidays(
+        assertThat(futureDataAvoidingWeekendsAndBankHolidays(
                 Locale.ENGLAND_AND_WALES, "25/08/2017", 2, "dd/MM/yyyy"),
                 is("30/08/2017"));
     }

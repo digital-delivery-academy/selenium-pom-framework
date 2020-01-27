@@ -58,7 +58,7 @@ public class Dates extends MockUnitBase {
      * @param dateFormat date format (e.g. "dd/MM/yyyy")
      * @return String representing resulting date
      */
-    public static String futureDateBusinessDays(String startDate, int numberOfBusinessDaysToAdd, String dateFormat) {
+    public static String futureDateAvoidingWeekends(String startDate, int numberOfBusinessDaysToAdd, String dateFormat) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateFormat);
         LocalDate futureDate = DateTime.parse(startDate, dateTimeFormatter).toLocalDate();
         int addedDays = 0;
@@ -80,7 +80,7 @@ public class Dates extends MockUnitBase {
      * @return String representing resulting date
      * @throws JsonProcessingException if the JSON source for bank holidays cannot be read
      */
-    public static String futureDateBusinessDaysAvoidingBankHolidays(
+    public static String futureDataAvoidingWeekendsAndBankHolidays(
             Locale locale, String startDate,
             int numberOfBusinessDaysToAdd, String dateFormat) throws JsonProcessingException {
         BankHolidays bankHolidays = JsonUtils.fromString(
@@ -88,7 +88,7 @@ public class Dates extends MockUnitBase {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateFormat);
         LocalDate now = DateTime.parse(startDate, dateTimeFormatter).toLocalDate();
         LocalDate futureDate = DateTime.parse(
-                futureDateBusinessDays(
+                futureDateAvoidingWeekends(
                         startDate,
                         numberOfBusinessDaysToAdd,
                         dateFormat), dateTimeFormatter).toLocalDate();
