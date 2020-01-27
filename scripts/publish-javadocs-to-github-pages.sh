@@ -2,6 +2,8 @@
 set -ev
 workingDir=`pwd`
 
+echo "Starting to generate javadocs..."
+
 # Generate javadocs and get current app version
 mvn javadoc:javadoc
 currentAppVersion=`mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec`
