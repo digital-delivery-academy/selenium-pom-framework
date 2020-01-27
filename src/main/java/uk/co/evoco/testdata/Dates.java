@@ -1,4 +1,4 @@
-package uk.co.evoco.webdriver.utils.data;
+package uk.co.evoco.testdata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import net.andreinc.mockneat.abstraction.MockUnitBase;
@@ -73,7 +73,7 @@ public class Dates extends MockUnitBase {
 
     /**
      *
-     * @param locale the location for UK bank holidays (see @link uk.co.evoco.webdriver.utils.data.Dates)
+     * @param locale the location for UK bank holidays (see @link Dates)
      * @param startDate the date to start with
      * @param numberOfBusinessDaysToAdd Days to add, avoiding weekends and UK bank holidays
      * @param dateFormat date format (e.g. "dd/MM/yyyy")

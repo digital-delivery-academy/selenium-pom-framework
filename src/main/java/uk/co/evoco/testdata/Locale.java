@@ -1,4 +1,4 @@
-package uk.co.evoco.webdriver.utils.data;
+package uk.co.evoco.testdata;
 
 public enum Locale {
     ENGLAND_AND_WALES,

@@ -1,11 +1,12 @@
-package uk.co.evoco.webdriver.utils.data;
+package uk.co.evoco.testdata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
+import uk.co.evoco.testdata.Locale;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.co.evoco.webdriver.utils.data.Dates.*;
+import static uk.co.evoco.testdata.Dates.*;
 
 public class DatesTests {
 

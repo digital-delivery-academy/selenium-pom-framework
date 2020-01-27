@@ -1,4 +1,4 @@
-package uk.co.evoco.webdriver.utils.data;
+package uk.co.evoco.testdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
