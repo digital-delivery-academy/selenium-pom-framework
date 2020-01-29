@@ -82,4 +82,34 @@ public final class RadioButtonUtils {
             }
         }
     }
+
+    /**
+     *
+     * @param elements WebElements
+     * @param visibleLabelText text that is visible on the page in the label tags
+     * @param waitTimeBeforeRetry time to wait before we retry
+     * @throws InterruptedException because there's a Thread.sleep here
+     */
+    public static void tolerantSelectByLabel(List<WebElement> elements, String visibleLabelText, int waitTimeBeforeRetry) throws InterruptedException {
+        try {
+            selectByLabel(elements, visibleLabelText);
+        } catch (Exception e) {
+            logger.error("Encountered an issue while trying to select visible text from select box, will check " +
+                    "to see if we tolerate this exception. Debug this issue to make your tests more stable. " +
+                    "Stacktrace follows.");
+            e.printStackTrace();
+            for (String exceptionToHandle :
+                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                if (e.getClass().getName().contains(exceptionToHandle)) {
+                    logger.error(
+                            "Exception {} is tolerated, retrying after a {} second wait",
+                            waitTimeBeforeRetry,
+                            exceptionToHandle);
+                    Thread.sleep(waitTimeBeforeRetry);
+                    logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
+                    selectByLabel(elements, visibleLabelText);
+                }
+            }
+        }
+    }
 }
