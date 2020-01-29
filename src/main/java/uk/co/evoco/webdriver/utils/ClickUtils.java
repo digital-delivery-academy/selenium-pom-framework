@@ -39,14 +39,12 @@ public final class ClickUtils {
             e.printStackTrace();
             for(String exceptionToHandle : TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
                 if(e.getClass().getName().contains(exceptionToHandle)) {
-                    logger.error("Exception {} is tolerated, retrying after a 3 second wait", exceptionToHandle);
+                    logger.error("Exception {} is tolerated, retrying after a {} second wait", waitTimeBeforeRetry, exceptionToHandle);
                     Thread.sleep(waitTimeBeforeRetry);
-                    logger.error("Waited 3 seconds after {}, now retrying", exceptionToHandle);
+                    logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
                     click(webDriver, webElement, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout());
                 }
             }
-            // Can't handle the exception with a retry so re-throwing the exception
-            throw e;
         }
     }
 
@@ -73,14 +71,12 @@ public final class ClickUtils {
             e.printStackTrace();
             for(String exceptionToHandle : TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
                 if(e.getClass().getName().contains(exceptionToHandle)) {
-                    logger.error("Exception {} is tolerated, retrying after a 3 second wait", exceptionToHandle);
+                    logger.error("Exception {} is tolerated, retrying after a {} second wait", waitTimeBeforeRetry, exceptionToHandle);
                     Thread.sleep(waitTimeBeforeRetry);
-                    logger.error("Waited 3 seconds after {}, now retrying", exceptionToHandle);
+                    logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
                     click(webDriver, locator, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout());
                 }
             }
-            // Can't handle the exception with a retry so re-throwing the exception
-            throw e;
         }
     }
 
