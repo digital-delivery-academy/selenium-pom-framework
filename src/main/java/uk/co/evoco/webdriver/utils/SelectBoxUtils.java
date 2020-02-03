@@ -1,23 +1,16 @@
 package uk.co.evoco.webdriver.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+
+import java.util.Optional;
 
 /**
  * Utilities class providing support methods for Select Boxes
  * While this is straight forward, its less than obvious to newcomers.
  * Feel free not to use this at all and just do it with WebDriver!
  */
-public final class SelectBoxUtils {
-
-    private static final Logger logger = LoggerFactory.getLogger(SelectBoxUtils.class);
+public final class SelectBoxUtils extends TolerantInteraction {
 
     /**
      * Selects an option that has a matching value attribute in the Options tag markup
@@ -52,82 +45,41 @@ public final class SelectBoxUtils {
     }
 
     /**
-     * Selects an option by the text that is visible in the select box
-     * @param webDriver active webdriver to use
-     * @param locator locator for us to manage the lookup of the WebElements
-     * @param visibleText visible text in the select box (NOT the HTML value attribute)
+     *
+     * @param webElement active WebElement, already located
+     * @param htmlValue HTML value attribute
+     * @param timeout time in seconds to keep trying
+     * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void itemByVisibleText(WebDriver webDriver, By locator, String visibleText) {
-        WebElement element = webDriver.findElement(locator);
-        new WebDriverWait(
-                webDriver,
-                TestConfigManager.get().getWebDriverWaitTimeout())
-                .until(ExpectedConditions.elementToBeClickable(element));
-        Select select = new Select(element);
-        select.selectByVisibleText(visibleText);
+    public static void tolerantItemByHtmlValueAttribute(WebElement webElement,  String htmlValue, int timeout)
+            throws Throwable {
+        new SendKeysUtils().tolerantInteraction(
+                webElement, SelectBoxInteractionType.BY_VALUE, Optional.of(htmlValue), Optional.empty(), timeout);
     }
 
     /**
      *
-     * @param webDriver active WebDriver
-     * @param locator locator for us to manage the lookup of the WebElements
+     * @param webElement active WebElement, already located
      * @param visibleText visible text in the select box (NOT the HTML value attribute)
-     * @param waitTimeBeforeRetry time to wait before we retry
-     * @throws InterruptedException because there's a Thread.sleep here
+     * @param timeout time in seconds to keep trying
+     * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantSelectBoxByVisibleText(
-            WebDriver webDriver, By locator, String visibleText, int waitTimeBeforeRetry) throws InterruptedException {
-        try {
-            itemByVisibleText(webDriver, locator, visibleText);
-        } catch (Exception e) {
-            logger.error("Encountered an issue while trying to select visible text from select box, will check " +
-                    "to see if we tolerate this exception. Debug this issue to make your tests more stable. " +
-                    "Stacktrace follows.");
-            e.printStackTrace();
-            for (String exceptionToHandle :
-                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
-                if (e.getClass().getName().contains(exceptionToHandle)) {
-                    logger.error(
-                            "Exception {} is tolerated, retrying after a {} second wait",
-                            waitTimeBeforeRetry,
-                            exceptionToHandle);
-                    Thread.sleep(waitTimeBeforeRetry);
-                    logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
-                    itemByVisibleText(webDriver, locator, visibleText);
-                }
-            }
-        }
+    public static void tolerantItemByVisibleText(WebElement webElement,  String visibleText, int timeout)
+            throws Throwable {
+        new SendKeysUtils().tolerantInteraction(
+                webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
+                Optional.of(visibleText), Optional.empty(), timeout);
     }
-
     /**
      *
-     * @param webDriver active WebDriver
-     * @param element WebElement
-     * @param visibleText visible text in the select box (NOT the HTML value attribute)
-     * @param waitTimeBeforeRetry time to wait before we retry
-     * @throws InterruptedException because there's a Thread.sleep here
+     * @param webElement active WebElement, already located
+     * @param index index in order of display
+     * @param timeout time in seconds to keep trying
+     * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantSelectBoxByVisibleText(
-            WebDriver webDriver, WebElement element, String visibleText, int waitTimeBeforeRetry) throws InterruptedException {
-        try {
-            itemByVisibleText(element, visibleText);
-        } catch (Exception e) {
-            logger.error("Encountered an issue while trying to select visible text from select box, will check " +
-                    "to see if we tolerate this exception. Debug this issue to make your tests more stable. " +
-                    "Stacktrace follows.");
-            e.printStackTrace();
-            for (String exceptionToHandle :
-                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
-                if (e.getClass().getName().contains(exceptionToHandle)) {
-                    logger.error(
-                            "Exception {} is tolerated, retrying after a {} second wait",
-                            waitTimeBeforeRetry,
-                            exceptionToHandle);
-                    Thread.sleep(waitTimeBeforeRetry);
-                    logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
-                    itemByVisibleText(element, visibleText);
-                }
-            }
-        }
+    public static void tolerantItemByIndex(WebElement webElement,  int index, int timeout) throws Throwable {
+        new SendKeysUtils().tolerantInteraction(
+                webElement, SelectBoxInteractionType.BY_INDEX, Optional.empty(), Optional.of(index), timeout);
     }
+
 }

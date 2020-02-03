@@ -141,7 +141,9 @@ public class WebDriverListener implements WebDriverEventListener {
      * @param webDriver active WebDriver instance
      */
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        new WebDriverWait(webDriver, TestConfigManager.get().getWebDriverWaitTimeout()).until(ExpectedConditions.presenceOfElementLocated(by));
+        new WebDriverWait(webDriver,
+                TestConfigManager.get().getWebDriverWaitTimeout()).until(
+                        ExpectedConditions.presenceOfElementLocated(by));
     }
 
     /**
@@ -164,7 +166,9 @@ public class WebDriverListener implements WebDriverEventListener {
      * @param webDriver active WebDriver instance
      */
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-        new WebDriverWait(webDriver, TestConfigManager.get().getWebDriverWaitTimeout()).until(ExpectedConditions.elementToBeClickable(webElement));
+        new WebDriverWait(webDriver,
+                TestConfigManager.get().getWebDriverWaitTimeout()).until(
+                        ExpectedConditions.elementToBeClickable(webElement));
     }
 
     /**

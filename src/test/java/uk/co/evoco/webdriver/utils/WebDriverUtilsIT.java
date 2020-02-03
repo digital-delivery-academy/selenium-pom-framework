@@ -80,14 +80,14 @@ public class WebDriverUtilsIT extends BaseAbstractTest {
     @Test
     public void testCanClickOnHrefWithTolerantPollingWaitBeforeClickingHelperWhenElementStartsDisabled() throws Throwable {
         WebElement element = webDriver.findElement(By.id("clickutils-href-disabled"));
-        ClickUtils.tolerantPollingClick(webDriver, element, 30);
+        ClickUtils.tolerantClick(element, 30);
         assertThat(webDriver.getCurrentUrl(), is("http://localhost:4442/hello-passed.html"));
     }
 
     @Test
     public void testCanClickOnHrefWithTolerantPollingWaitBeforeClickingHelperWhenElementStartsEnabled() throws Throwable {
         WebElement element = webDriver.findElement(By.id("clickutils-href"));
-        ClickUtils.tolerantPollingClick(webDriver, element, 30);
+        ClickUtils.tolerantClick(element, 30);
         assertThat(webDriver.getCurrentUrl(), is("http://localhost:4442/hello-passed.html"));
     }
 }
