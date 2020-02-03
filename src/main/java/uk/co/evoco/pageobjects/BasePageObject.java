@@ -2,6 +2,8 @@ package uk.co.evoco.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import uk.co.evoco.webdriver.configuration.TestConfigManager;
 
 /**
  * This class is a base that all page objects can inherit from.  It ensures that we have
@@ -13,6 +15,7 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class BasePageObject {
 
     protected WebDriver webDriver;
+    protected WebDriverWait wait;
 
     /**
      * Initiates page elements that are declared as fields annotated @FindBy and makes the WebDriver
@@ -22,5 +25,6 @@ public abstract class BasePageObject {
     public BasePageObject(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
+        this.wait = new WebDriverWait(this.webDriver, TestConfigManager.get().getWebDriverWaitTimeout());
      }
 }

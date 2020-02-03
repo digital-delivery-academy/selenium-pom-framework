@@ -40,7 +40,7 @@ public abstract class BaseAbstractTest {
         this.webDriver = new WebDriverBuilder()
                 .setResultsDirectory(this.resultsManager.getScreenshotDirectory())
                 .build();
-        this.webDriver.get(TestConfigManager.getInstance().getWebDriverConfig().getBaseUrl());
+        this.webDriver.get(TestConfigManager.get().getBaseUrl());
         this.webDriver.manage().window().maximize();
     }
 

@@ -6,7 +6,7 @@ package uk.co.evoco.webdriver.configuration;
 public class TestConfigManager {
 
     private static TestConfigManager testConfigManager;
-    private WebDriverConfig webDriverConfig;
+    private static WebDriverConfig webDriverConfig;
 
     /**
      *
@@ -21,18 +21,10 @@ public class TestConfigManager {
      *
      * @return TestConfigManager returns the instance of the singleton to access the member methods
      */
-    public static TestConfigManager getInstance() {
+    public static WebDriverConfig get() {
         if(null == testConfigManager) {
             testConfigManager = new TestConfigManager();
         }
-        return testConfigManager;
-    }
-
-    /**
-     *
-     * @return provides the globally available WebDriverConfig
-     */
-    public WebDriverConfig getWebDriverConfig() {
         return webDriverConfig;
     }
 }

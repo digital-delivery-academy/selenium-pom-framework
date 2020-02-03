@@ -10,12 +10,12 @@ public class TestConfigManagerTests {
 
     @Test
     public void testCanAccessTestConfigurationIsCorrectType() {
-        assertThat(TestConfigManager.getInstance().getWebDriverConfig(), instanceOf(WebDriverConfig.class));
+        assertThat(TestConfigManager.get(), instanceOf(WebDriverConfig.class));
     }
 
     @Test
     public void testCanAccessTestConfigurationViaSingleton() {
-        assertThat(TestConfigManager.getInstance().getWebDriverConfig().getBaseUrl(),
+        assertThat(TestConfigManager.get().getBaseUrl(),
                 is("https://www.google.com"));
     }
 }

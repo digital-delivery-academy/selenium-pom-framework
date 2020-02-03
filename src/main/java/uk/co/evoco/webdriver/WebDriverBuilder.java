@@ -37,7 +37,7 @@ public class WebDriverBuilder {
      * @throws IOException if log file for browser driver logs cannot be created
      */
     public EventFiringWebDriver build() throws IOException {
-        switch(TestConfigManager.getInstance().getWebDriverConfig().getBrowserType()) {
+        switch(TestConfigManager.get().getBrowserType()) {
             case CHROME:
                 return new ConfiguredChromeDriver().getDriver(this.screenshotDirectory);
             case FIREFOX:

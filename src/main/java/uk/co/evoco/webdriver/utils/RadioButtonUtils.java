@@ -41,7 +41,7 @@ public final class RadioButtonUtils {
      */
     public static void selectByLabel(WebDriver webDriver, By locator, String visibleLabelText) {
         List<WebElement> webElements = new WebDriverWait(
-                webDriver, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout())
+                webDriver, TestConfigManager.get().getWebDriverWaitTimeout())
                 .until(ExpectedConditions.presenceOfElementLocated(locator)).findElements(locator);
         for (WebElement webElement : webElements) {
             if (webElement.getText().equals(visibleLabelText)) {
@@ -69,7 +69,7 @@ public final class RadioButtonUtils {
                     "Stacktrace follows.");
             e.printStackTrace();
             for (String exceptionToHandle :
-                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
                 if (e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error(
                             "Exception {} is tolerated, retrying after a {} second wait",
@@ -99,7 +99,7 @@ public final class RadioButtonUtils {
                     "Stacktrace follows.");
             e.printStackTrace();
             for (String exceptionToHandle :
-                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
                 if (e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error(
                             "Exception {} is tolerated, retrying after a {} second wait",

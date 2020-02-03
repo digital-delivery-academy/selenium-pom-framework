@@ -25,7 +25,7 @@ public class SendKeysUtils {
             WebDriver webDriver, By locator, String textToType, int waitTimeBeforeRetry) throws InterruptedException {
         try {
             new WebDriverWait(
-                    webDriver, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout())
+                    webDriver, TestConfigManager.get().getWebDriverWaitTimeout())
                     .until(ExpectedConditions.visibilityOfElementLocated(locator)).sendKeys(textToType);
         } catch (Exception e) {
             logger.error("Encountered an issue while trying to select visible text from select box, will check " +
@@ -33,7 +33,7 @@ public class SendKeysUtils {
                     "Stacktrace follows.");
             e.printStackTrace();
             for (String exceptionToHandle :
-                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
                 if (e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error(
                             "Exception {} is tolerated, retrying after a {} second wait",
@@ -42,7 +42,7 @@ public class SendKeysUtils {
                     Thread.sleep(waitTimeBeforeRetry);
                     logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
                     new WebDriverWait(
-                            webDriver, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout())
+                            webDriver, TestConfigManager.get().getWebDriverWaitTimeout())
                             .until(ExpectedConditions.visibilityOfElementLocated(locator)).sendKeys(textToType);
                 }
             }
@@ -60,7 +60,7 @@ public class SendKeysUtils {
     public static void tolerantType(WebDriver webDriver, WebElement element, String textToType, int waitTimeBeforeRetry) throws InterruptedException {
         try {
             new WebDriverWait(
-                    webDriver, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout())
+                    webDriver, TestConfigManager.get().getWebDriverWaitTimeout())
                     .until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);
         } catch (Exception e) {
             logger.error("Encountered an issue while trying to select visible text from select box, will check " +
@@ -68,7 +68,7 @@ public class SendKeysUtils {
                     "Stacktrace follows.");
             e.printStackTrace();
             for (String exceptionToHandle :
-                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
                 if (e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error(
                             "Exception {} is tolerated, retrying after a {} second wait",
@@ -77,7 +77,7 @@ public class SendKeysUtils {
                     Thread.sleep(waitTimeBeforeRetry);
                     logger.error("Waited {} seconds after {}, now retrying", waitTimeBeforeRetry, exceptionToHandle);
                     new WebDriverWait(
-                            webDriver, TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout())
+                            webDriver, TestConfigManager.get().getWebDriverWaitTimeout())
                             .until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);
                 }
             }

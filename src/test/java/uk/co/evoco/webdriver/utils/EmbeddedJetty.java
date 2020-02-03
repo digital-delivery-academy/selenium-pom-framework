@@ -3,16 +3,23 @@ package uk.co.evoco.webdriver.utils;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.util.resource.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EmbeddedJetty {
+
+    private static final Logger logger = LoggerFactory.getLogger(EmbeddedJetty.class);
 
     private Server jettyServer;
 
     public EmbeddedJetty() {
-        jettyServer = new Server(4442);
+        System.setProperty("org.eclipse.jetty.util.log.class", "org.eclipse.jetty.util.log.StdErrLog");
+        System.setProperty("org.eclipse.jetty.LEVEL", "OFF");
+        jettyServer = new Server(getPort());
     }
 
     public void start() throws Exception {
+        logger.info("Starting embedded jetty on port {} for integration test web app - jetty logs are disabled", getPort());
         ResourceHandler resHandler = new ResourceHandler();
         resHandler.setBaseResource(Resource.newClassPathResource("/www"));
         jettyServer.setHandler(resHandler);
@@ -26,5 +33,15 @@ public class EmbeddedJetty {
 
     public int getPort() {
         return 4442;
+    }
+
+    /**
+     * This is here for debugging the integration test app
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        EmbeddedJetty embeddedJetty = new EmbeddedJetty();
+        embeddedJetty.start();
     }
 }

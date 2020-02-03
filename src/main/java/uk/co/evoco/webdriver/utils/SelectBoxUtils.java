@@ -61,7 +61,7 @@ public final class SelectBoxUtils {
         WebElement element = webDriver.findElement(locator);
         new WebDriverWait(
                 webDriver,
-                TestConfigManager.getInstance().getWebDriverConfig().getWebDriverWaitTimeout())
+                TestConfigManager.get().getWebDriverWaitTimeout())
                 .until(ExpectedConditions.elementToBeClickable(element));
         Select select = new Select(element);
         select.selectByVisibleText(visibleText);
@@ -85,7 +85,7 @@ public final class SelectBoxUtils {
                     "Stacktrace follows.");
             e.printStackTrace();
             for (String exceptionToHandle :
-                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
                 if (e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error(
                             "Exception {} is tolerated, retrying after a {} second wait",
@@ -117,7 +117,7 @@ public final class SelectBoxUtils {
                     "Stacktrace follows.");
             e.printStackTrace();
             for (String exceptionToHandle :
-                    TestConfigManager.getInstance().getWebDriverConfig().getExceptionsToHandleOnTolerantActions()) {
+                    TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
                 if (e.getClass().getName().contains(exceptionToHandle)) {
                     logger.error(
                             "Exception {} is tolerated, retrying after a {} second wait",

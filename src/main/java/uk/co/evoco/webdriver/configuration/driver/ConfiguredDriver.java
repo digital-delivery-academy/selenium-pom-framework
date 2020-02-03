@@ -2,21 +2,42 @@ package uk.co.evoco.webdriver.configuration.driver;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.WebDriverListener;
+import uk.co.evoco.webdriver.configuration.TestConfigManager;
 
 import java.io.File;
 import java.io.IOException;
 
 public interface ConfiguredDriver {
 
+     WebDriver getLocalDriver() throws IOException;
+     WebDriver getRemoteDriver();
+
     /**
-     *
+     *ß
      * @param screenshotPath path to store screenshots
      * @return configured EventFiringWebDriver
      * @throws IOException if log directory doesn't exist
      */
-    EventFiringWebDriver getDriver(File screenshotPath) throws IOException;
+    default EventFiringWebDriver getDriver(File screenshotPath) throws IOException {
+        WebDriver webDriver;
+        switch(TestConfigManager.get().getRunType()) {
+            case LOCAL:
+                webDriver = getLocalDriver();
+                break;
+            case GRID:
+                webDriver = getRemoteDriver();
+                break;
+            default:
+                throw new WebDriverException("Must set runType to either LOCAL or GRID in configuration file");
+        }
+        return configureEventFiringWebDriver(
+                webDriver,
+                TestConfigManager.get().getWebDriverWaitTimeout(),
+                screenshotPath);
+    }
 
     /**
      *
@@ -29,7 +50,6 @@ public interface ConfiguredDriver {
             WebDriver webDriver, long timeout, File screenshotDirectory) {
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(webDriver);
         WebDriverListener eventListener = new WebDriverListener();
-        eventListener.setWebdriverWaitTimeout(timeout);
         eventListener.setScreenshotDirectory(screenshotDirectory);
         eventFiringWebDriver.register(eventListener);
 

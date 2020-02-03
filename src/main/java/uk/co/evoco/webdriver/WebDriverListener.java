@@ -1,16 +1,13 @@
 package uk.co.evoco.webdriver;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.co.evoco.webdriver.configuration.TestConfigManager;
 
 import java.io.File;
 import java.util.UUID;
@@ -26,17 +23,8 @@ import java.util.UUID;
  */
 public class WebDriverListener implements WebDriverEventListener {
 
-    private static long WEBDRIVER_WAIT_TIMEOUT = 30L;
     private static final Logger logger = LoggerFactory.getLogger(WebDriverListener.class);
     private File screenshotDirectory;
-
-    /**
-     * Sets the wait for all of the ExpectedConditions calls that we make here
-     * @param webDriverWaitTimeout the timeout used for WebDriverWaits
-     */
-    public void setWebdriverWaitTimeout(long webDriverWaitTimeout) {
-        this.WEBDRIVER_WAIT_TIMEOUT = webDriverWaitTimeout;
-    }
 
     /**
      * Sets the screenshot target directory that will be used for screenshots generated inside onException()
@@ -153,7 +141,7 @@ public class WebDriverListener implements WebDriverEventListener {
      * @param webDriver active WebDriver instance
      */
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        new WebDriverWait(webDriver, WEBDRIVER_WAIT_TIMEOUT).until(ExpectedConditions.presenceOfElementLocated(by));
+        new WebDriverWait(webDriver, TestConfigManager.get().getWebDriverWaitTimeout()).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
     /**
@@ -176,7 +164,7 @@ public class WebDriverListener implements WebDriverEventListener {
      * @param webDriver active WebDriver instance
      */
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-        new WebDriverWait(webDriver, WEBDRIVER_WAIT_TIMEOUT).until(ExpectedConditions.elementToBeClickable(webElement));
+        new WebDriverWait(webDriver, TestConfigManager.get().getWebDriverWaitTimeout()).until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     /**
