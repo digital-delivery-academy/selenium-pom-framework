@@ -70,6 +70,7 @@ public final class SelectBoxUtils extends TolerantInteraction {
                 webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                 Optional.of(visibleText), Optional.empty(), timeout);
     }
+
     /**
      *
      * @param webElement active WebElement, already located

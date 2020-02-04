@@ -7,6 +7,9 @@
                 setTimeout(function() {
                     document.getElementById("clickutils-href-disabled").disabled = false;
                 }, 10000);
+                setTimeout(function() {
+                    document.getElementById("clickutils-staleelement").innerText("Text value has changed");
+                }, 1000);
             });
         </script>
     </head>
@@ -40,7 +43,9 @@
         </div>
         <div id="ClickUtils-elements">
             <a href="/hello-passed.html" id="clickutils-href">Click me</a>
-            <button onclick="window.location.href = '/hello-passed.html';" href="/hello-passed.html" id="clickutils-href-disabled" disabled>Click me</button>
+            <button onclick="window.location.href = '/hello-passed.html';" id="clickutils-href-disabled" disabled>Click me</button>
+            <button onclick="window.location.href = '/hello-passed.html';" id="clickutils-href-always-disabled" disabled>Click me</button>
+            <button onclick="window.location.href = '/hello-passed.html';" id="clickutils-staleelement">Click me</button>
         </div>
         <div id="WindowUtils-elements">
             <a id="out-of-viewport-link" href="hello-passed.html" stype="margin-top:2000px;">Link out of viewport on page load</a>

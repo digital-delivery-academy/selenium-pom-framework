@@ -5,11 +5,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import uk.co.evoco.tests.BaseAbstractTest;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class WebDriverUtilsIT extends BaseAbstractTest {
 
@@ -89,5 +92,13 @@ public class WebDriverUtilsIT extends BaseAbstractTest {
         WebElement element = webDriver.findElement(By.id("clickutils-href"));
         ClickUtils.tolerantClick(element, 30);
         assertThat(webDriver.getCurrentUrl(), is("http://localhost:4442/hello-passed.html"));
+    }
+
+    @Test
+    public void testCanClickOnHrefWithTolerantPollingWaitBeforeClickingHelperWhenElementIsDisabledAllTheTime() {
+        assertThrows(TimeoutException.class, () -> {
+            WebElement element = webDriver.findElement(By.id("clickutils-href-always-disabled"));
+            ClickUtils.tolerantClick(element, 5);
+        });
     }
 }
