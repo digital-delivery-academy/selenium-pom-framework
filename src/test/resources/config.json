@@ -10,6 +10,13 @@
   "gridConfig": {
     "url": "http://localhost:4444/wd/hub"
   },
+  "browserPreferences" : {
+    "firefox": {
+      "browser.download.defaultFolder": "downloads/reports",
+      "pdfjs.disabled": true,
+      "browser.download.folderList": 2
+    }
+  },
   "exceptionsToHandleOnTolerantActions": [
     "StaleElementReferenceException",
     "ElementClickInterceptedException",
