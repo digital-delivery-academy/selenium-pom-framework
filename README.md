@@ -104,3 +104,7 @@ An example configuration (`settings.xml`) would be:
     </servers>
 </settings>
 ```
+## Contributors
+- @stevewalton28
+- @akwanashie
+- @balu836
