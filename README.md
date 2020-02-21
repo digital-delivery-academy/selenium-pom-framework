@@ -1,4 +1,7 @@
 # selenium-pom-framework
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce6169f2151d43daaa0db3aab560e1f0)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
@@ -107,4 +110,16 @@ An example configuration (`settings.xml`) would be:
 ## Contributors
 - @stevewalton28
 - @akwanashie
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://www.evoco.co.uk"><img src="https://avatars2.githubusercontent.com/u/8415117?v=4" width="100px;" alt=""/><br /><sub><b>Steve Walton</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=stevewalton28" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 - @balu836
