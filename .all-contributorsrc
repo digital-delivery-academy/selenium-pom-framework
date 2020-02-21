@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "balu836",
+      "name": "balu836",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/33576087?v=4",
+      "profile": "https://github.com/balu836",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "selenium-pom-framework",
+  "projectOwner": "digital-delivery-academy",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
