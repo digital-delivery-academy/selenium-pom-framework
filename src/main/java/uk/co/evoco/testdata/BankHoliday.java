@@ -2,7 +2,6 @@ package uk.co.evoco.testdata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -12,7 +11,6 @@ public class BankHoliday {
 
     private String title;
     private LocalDate localDate;
-    private DateTime dateTime;
 
     public String getTitle() {
         return title;
@@ -23,18 +21,17 @@ public class BankHoliday {
         this.title = title;
     }
 
-    public String getLocalDateTime(String dateFormat) {
+    public String getLocalDate(String dateFormat) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateFormat);
         return this.localDate.toString(dateTimeFormatter);
     }
 
-    public DateTime getLocalDateTime() {
-        return this.dateTime;
+    public LocalDate getLocalDate() {
+        return this.localDate;
     }
 
     @JsonProperty("date")
-    public void setLocalDateTime(String localDate) {
-        this.dateTime=new DateTime(this.localDate).toDateTime();
-
+    public void setLocalDate(String localDate) {
+        this.localDate = new LocalDate().parse(localDate);
     }
 }
