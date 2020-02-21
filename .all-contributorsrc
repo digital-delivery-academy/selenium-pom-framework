@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "stevewalton28",
+      "name": "Steve Walton",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8415117?v=4",
+      "profile": "https://www.evoco.co.uk",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "selenium-pom-framework",
+  "projectOwner": "digital-delivery-academy",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
