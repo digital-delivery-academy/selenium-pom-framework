@@ -109,13 +109,14 @@ An example configuration (`settings.xml`) would be:
 ```
 
 ## Contributors
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/balu836"><img src="https://avatars2.githubusercontent.com/u/33576087?v=4" width="100px;" alt=""/><br /><sub><b>balu836</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=balu836" title="Code">💻</a></td>
     <td align="center"><a href="https://www.evoco.co.uk"><img src="https://avatars2.githubusercontent.com/u/8415117?v=4" width="100px;" alt=""/><br /><sub><b>Steve Walton</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=stevewalton28" title="Code">💻</a></td>
+<td align="center"><a href="https://github.com/akwanashie"><img src="https://avatars2.githubusercontent.com/u/4432756?v=4" width="100px;" alt=""/><br /><sub><b>Augustine K</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=akwanashie" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/balu836"><img src="https://avatars2.githubusercontent.com/u/33576087?v=4" width="100px;" alt=""/><br /><sub><b>balu836</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=balu836" title="Code">💻</a></td>
   </tr>
 </table>
 <!-- markdownlint-enable -->
