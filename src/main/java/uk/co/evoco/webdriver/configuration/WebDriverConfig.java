@@ -2,10 +2,14 @@ package uk.co.evoco.webdriver.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * A simple representation object for the "./src/test/resources/config.json" file
@@ -20,6 +24,7 @@ public class WebDriverConfig {
     private GridConfig gridConfig;
     private RunType runType;
     private List<String> exceptionsToHandleOnTolerantActions;
+    private Map<String, ObjectNode> browserPreferences;
 
     /**
      *
@@ -136,6 +141,29 @@ public class WebDriverConfig {
     @JsonProperty("gridConfig")
     public void setGridConfig(GridConfig gridConfig) {
         this.gridConfig = gridConfig;
+    }
+
+    /**
+     *
+     * @return the BrowserPreferences configuration
+     */
+    public ObjectNode getBrowserPreferences(BrowserType browserType) {
+        return Optional.ofNullable(browserPreferences)
+                .flatMap(options -> options.entrySet().stream()
+                        .filter(entry -> entry.getKey().equalsIgnoreCase((browserType.toString())))
+                        .findFirst()
+                        .map(Map.Entry::getValue)
+                )
+                .orElse(JsonNodeFactory.instance.objectNode());
+    }
+
+    /**
+     *
+     * @param browserPreferences the configuration properties for the various browsers supported by the webdriver
+     */
+    @JsonProperty("browserPreferences")
+    public void setBrowserPreferences(Map<String, ObjectNode> browserPreferences) {
+        this.browserPreferences = browserPreferences;
     }
 
     /**
