@@ -107,9 +107,8 @@ An example configuration (`settings.xml`) would be:
     </servers>
 </settings>
 ```
+
 ## Contributors
-- @stevewalton28
-- @akwanashie
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -122,4 +121,3 @@ An example configuration (`settings.xml`) would be:
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-- @balu836
