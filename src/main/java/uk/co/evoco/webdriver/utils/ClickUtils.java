@@ -1,6 +1,7 @@
 package uk.co.evoco.webdriver.utils;
 
 import org.openqa.selenium.WebElement;
+import uk.co.evoco.webdriver.configuration.TestConfigManager;
 
 import java.util.Optional;
 
@@ -18,5 +19,9 @@ public final class ClickUtils extends TolerantInteraction {
      */
     public static void tolerantClick(WebElement webElement, int timeout) throws Throwable {
         new SendKeysUtils().tolerantInteraction(webElement, Optional.empty(), timeout);
+    }
+
+    public static void tolerantClick(WebElement webElement) throws Throwable {
+        new SendKeysUtils().tolerantInteraction(webElement, Optional.empty(), TestConfigManager.get().getExceptionsWaitTimeOut());
     }
 }

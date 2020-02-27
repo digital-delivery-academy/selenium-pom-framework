@@ -91,4 +91,20 @@ public class WebDriverConfigTests {
             webDriverConfig.setBaseUrl("bad-url");
         });
     }
+
+    @Test
+    public void testExceptionsWaitTimeOutReturnValue() throws JsonProcessingException {
+        String configJson = "{\"timeout\": \"30\",\"exceptionsWaitTimeOut\": \"5\"}";
+        WebDriverConfig webDriverConfig = JsonUtils.fromString(configJson, WebDriverConfig.class);
+        assertThat(webDriverConfig.getExceptionsWaitTimeOut(), is(5));
+
+    }
+
+    @Test
+    public void testExceptionsWaitTimeOutNotReturnValue() throws JsonProcessingException {
+        String configJson = "{\"timeout\": \"30\"}";
+        WebDriverConfig webDriverConfig = JsonUtils.fromString(configJson, WebDriverConfig.class);
+        assertThat(webDriverConfig.getExceptionsWaitTimeOut(), is(30));
+
+    }
 }

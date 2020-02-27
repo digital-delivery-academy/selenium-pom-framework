@@ -17,6 +17,7 @@
       "browser.download.folderList": 2
     }
   },
+  "exceptionsWaitTimeOut": "5",
   "exceptionsToHandleOnTolerantActions": [
     "StaleElementReferenceException",
     "ElementClickInterceptedException",
