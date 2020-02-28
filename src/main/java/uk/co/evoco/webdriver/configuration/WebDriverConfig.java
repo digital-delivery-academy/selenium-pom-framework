@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -207,7 +206,7 @@ public class WebDriverConfig {
      * other wise return default webdriver time out
      */
     public int getTolerantActionWaitTimeoutInSeconds() {
-        return Optional.ofNullable(tolerantActionExceptions.getTolerantActionWaitTimeoutInSeconds())
+        return Optional.ofNullable(tolerantActionExceptions.getWaitTimeoutInSeconds())
                 .map(Integer::parseInt)
                 .orElse((int) webDriverWaitTimeout);
     }

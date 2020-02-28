@@ -6,41 +6,41 @@ import java.util.List;
 
 public class TolerantActionExceptions {
 
-    private String tolerantActionWaitTimeoutInSeconds;
-    private List<String> exceptionsToHandleOnTolerantActions;
+    private String waitTimeoutInSeconds;
+    private List<String> exceptionsToHandle;
 
     /**
      *
      * @return the tolerant action wait time in seconds
      */
-    String getTolerantActionWaitTimeoutInSeconds() {
-        return tolerantActionWaitTimeoutInSeconds;
+    String getWaitTimeoutInSeconds() {
+        return waitTimeoutInSeconds;
     }
 
     /**
      *
-     * @param tolerantActionWaitTimeoutInSeconds set the tolerant action wait time in seconds
+     * @param waitTimeoutInSeconds set the tolerant action wait time in seconds
      */
-    @JsonProperty("tolerantActionWaitTimeoutInSeconds")
-    public void setTolerantActionWaitTimeoutInSeconds(String tolerantActionWaitTimeoutInSeconds) {
-        this.tolerantActionWaitTimeoutInSeconds = tolerantActionWaitTimeoutInSeconds;
+    @JsonProperty("waitTimeoutInSeconds")
+    public void setWaitTimeoutInSeconds(String waitTimeoutInSeconds) {
+        this.waitTimeoutInSeconds = waitTimeoutInSeconds;
     }
 
     /**
      *
      * @return Exceptions list that we will use to tolerate in tolerable action wrappers
      */
-    public List<String> getExceptionsToHandleOnTolerantActions() {
-        return exceptionsToHandleOnTolerantActions;
+    public List<String> getExceptionsToHandle() {
+        return exceptionsToHandle;
     }
 
     /**
      *
-     * @param exceptionsToHandleOnTolerantActions sets the list of exceptions for WebDriver that we will retry
+     * @param exceptionsToHandle sets the list of exceptions for WebDriver that we will retry
      *                                            on when using our tolerant wrapper
      */
-    @JsonProperty("exceptionsToHandleOnTolerantActions")
-    public void setExceptionsToHandleOnTolerantActions(List<String> exceptionsToHandleOnTolerantActions) {
-        this.exceptionsToHandleOnTolerantActions = exceptionsToHandleOnTolerantActions;
+    @JsonProperty("exceptionsToHandle")
+    public void setExceptionsToHandle(List<String> exceptionsToHandle) {
+        this.exceptionsToHandle = exceptionsToHandle;
     }
 }
