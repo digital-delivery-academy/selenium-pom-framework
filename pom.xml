@@ -6,7 +6,7 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>0.0.12</version>
+    <version>0.0.13</version>
 
     <contributors>
         <contributor>
