@@ -41,7 +41,7 @@ submit an issue ticket.
 ## Documentation
 
 - A full reference guide is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
-- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.12
+- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-0.0.13
 
 ## Example tests
 
@@ -55,7 +55,7 @@ Put this in your POM.xml.
 <dependency>
   <groupId>uk.co.evoco</groupId>
   <artifactId>selenium-pom-framework</artifactId>
-  <version>0.0.12</version>
+  <version>0.0.13</version>
 </dependency>
 ```
 
