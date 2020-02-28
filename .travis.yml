@@ -39,6 +39,3 @@ deploy:
     script: bash scripts/publish-javadocs-to-github-pages.sh
     on:
       tags: true
-
-notifications:
-  slack: evoco:HMLAFFFsZHDFu6xBw0OyXZrp
