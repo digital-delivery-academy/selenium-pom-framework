@@ -101,4 +101,12 @@ public class WebDriverUtilsIT extends BaseAbstractTest {
             ClickUtils.tolerantClick(element, 5);
         });
     }
+
+    @Test
+    public void testCanClickOnHrefWithTolerantPollingWaitTimeGetFromConfigBeforeClickingHelperWhenElementIsDisabledAllTheTime() {
+        assertThrows(TimeoutException.class, () -> {
+            WebElement element = webDriver.findElement(By.id("clickutils-href-always-disabled"));
+            ClickUtils.tolerantClick(element);
+        });
+    }
 }
