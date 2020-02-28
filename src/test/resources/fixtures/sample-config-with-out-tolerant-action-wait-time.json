@@ -18,7 +18,6 @@
     }
   },
   "tolerantActionExceptions": {
-    "waitTimeoutInSeconds": 5,
     "exceptionsToHandle": [
       "StaleElementReferenceException",
       "ElementClickInterceptedException",

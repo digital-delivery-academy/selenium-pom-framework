@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -23,8 +22,8 @@ public class WebDriverConfig {
     private JsonNode testConfig;
     private GridConfig gridConfig;
     private RunType runType;
-    private List<String> exceptionsToHandleOnTolerantActions;
     private Map<String, ObjectNode> browserPreferences;
+    private TolerantActionExceptions tolerantActionExceptions;
 
     /**
      *
@@ -185,19 +184,30 @@ public class WebDriverConfig {
 
     /**
      *
-     * @return Exceptions list that we will use to tolerate in tolerable action wrappers
+     * @return the tolerant action exceptions config
      */
-    public List<String> getExceptionsToHandleOnTolerantActions() {
-        return exceptionsToHandleOnTolerantActions;
+
+    public TolerantActionExceptions getTolerantActionExceptions() {
+        return tolerantActionExceptions;
     }
 
     /**
      *
-     * @param exceptionsToHandleOnTolerantActions sets the list of exceptions for WebDriver that we will retry
-     *                                            on when using our tolerant wrapper
+     * @param tolerantActionExceptions set the tolerant action exceptions and tolerant action wait time in Seconds
      */
-    @JsonProperty("exceptionsToHandleOnTolerantActions")
-    public void setExceptionsToHandleOnTolerantActions(List<String> exceptionsToHandleOnTolerantActions) {
-        this.exceptionsToHandleOnTolerantActions = exceptionsToHandleOnTolerantActions;
+    @JsonProperty("tolerantActionExceptions")
+    public void setTolerantActionExceptions(TolerantActionExceptions tolerantActionExceptions) {
+        this.tolerantActionExceptions = tolerantActionExceptions;
+    }
+
+    /**
+     *
+     * @return tolerant action wait time in seconds if user specify the time in config file
+     * other wise return default webdriver time out
+     */
+    public int getTolerantActionWaitTimeoutInSeconds() {
+        return Optional.ofNullable(tolerantActionExceptions.getWaitTimeoutInSeconds())
+                .map(Integer::parseInt)
+                .orElse((int) webDriverWaitTimeout);
     }
 }

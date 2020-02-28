@@ -91,4 +91,22 @@ public class WebDriverConfigTests {
             webDriverConfig.setBaseUrl("bad-url");
         });
     }
+
+    @Test
+    public void testExceptionsWaitTimeOutReturnValue() throws IOException {
+        WebDriverConfig webDriverConfig = JsonUtils.fromFile(
+                ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-tolerant-action-wait-time.json")
+                , WebDriverConfig.class);
+        assertThat(webDriverConfig.getTolerantActionWaitTimeoutInSeconds(), is(5));
+
+    }
+
+    @Test
+    public void testExceptionsWaitTimeOutNotReturnValue() throws IOException {
+        WebDriverConfig webDriverConfig = JsonUtils.fromFile(
+                ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-out-tolerant-action-wait-time.json")
+                , WebDriverConfig.class);
+        assertThat(webDriverConfig.getTolerantActionWaitTimeoutInSeconds(), is(30));
+
+    }
 }
