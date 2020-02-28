@@ -22,6 +22,7 @@ public final class ClickUtils extends TolerantInteraction {
     }
 
     public static void tolerantClick(WebElement webElement) throws Throwable {
-        new SendKeysUtils().tolerantInteraction(webElement, Optional.empty(), TestConfigManager.get().getExceptionsWaitTimeOut());
+        new SendKeysUtils().tolerantInteraction(webElement, Optional.empty(),
+                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
     }
 }

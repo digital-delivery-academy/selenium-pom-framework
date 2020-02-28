@@ -18,7 +18,7 @@
     }
   },
   "tolerantActionExceptions": {
-    "tolerantActionWaitTimeoutInSeconds": 5,
+    "tolerantActionWaitTimeoutInSeconds": "5",
     "exceptionsToHandleOnTolerantActions": [
       "StaleElementReferenceException",
       "ElementClickInterceptedException",

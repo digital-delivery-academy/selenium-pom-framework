@@ -93,18 +93,20 @@ public class WebDriverConfigTests {
     }
 
     @Test
-    public void testExceptionsWaitTimeOutReturnValue() throws JsonProcessingException {
-        String configJson = "{\"timeout\": \"30\",\"exceptionsWaitTimeOut\": \"5\"}";
-        WebDriverConfig webDriverConfig = JsonUtils.fromString(configJson, WebDriverConfig.class);
-        assertThat(webDriverConfig.getExceptionsWaitTimeOut(), is(5));
+    public void testExceptionsWaitTimeOutReturnValue() throws IOException {
+        WebDriverConfig webDriverConfig = JsonUtils.fromFile(
+                ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-tolerant-action-wait-time.json")
+                , WebDriverConfig.class);
+        assertThat(webDriverConfig.getTolerantActionWaitTimeoutInSeconds(), is(5));
 
     }
 
     @Test
-    public void testExceptionsWaitTimeOutNotReturnValue() throws JsonProcessingException {
-        String configJson = "{\"timeout\": \"30\"}";
-        WebDriverConfig webDriverConfig = JsonUtils.fromString(configJson, WebDriverConfig.class);
-        assertThat(webDriverConfig.getExceptionsWaitTimeOut(), is(30));
+    public void testExceptionsWaitTimeOutNotReturnValue() throws IOException {
+        WebDriverConfig webDriverConfig = JsonUtils.fromFile(
+                ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-out-tolerant-action-wait-time.json")
+                , WebDriverConfig.class);
+        assertThat(webDriverConfig.getTolerantActionWaitTimeoutInSeconds(), is(30));
 
     }
 }

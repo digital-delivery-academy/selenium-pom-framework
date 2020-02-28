@@ -88,7 +88,8 @@ public final class SelectBoxUtils extends TolerantInteraction {
             throws Throwable {
         new SendKeysUtils().tolerantInteraction(
                 webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
-                Optional.of(visibleText), Optional.empty(), TestConfigManager.get().getExceptionsWaitTimeOut());
+                Optional.of(visibleText), Optional.empty(),
+                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
     }
 
 }

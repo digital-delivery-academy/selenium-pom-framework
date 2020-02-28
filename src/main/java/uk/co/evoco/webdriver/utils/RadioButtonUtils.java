@@ -39,6 +39,7 @@ public final class RadioButtonUtils extends TolerantInteraction {
 
     public static void tolerantSelectByLabel(List<WebElement> webElements, String visibleLabelText)
             throws Throwable {
-        new RadioButtonUtils().tolerantInteraction(webElements, visibleLabelText, TestConfigManager.get().getExceptionsWaitTimeOut());
+        new RadioButtonUtils().tolerantInteraction(webElements, visibleLabelText,
+                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
     }
 }

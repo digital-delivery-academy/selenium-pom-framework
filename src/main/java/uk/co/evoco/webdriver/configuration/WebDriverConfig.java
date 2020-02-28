@@ -23,13 +23,11 @@ public class WebDriverConfig {
     private JsonNode testConfig;
     private GridConfig gridConfig;
     private RunType runType;
-    private List<String> exceptionsToHandleOnTolerantActions;
-    private String exceptionsWaitTimeOut;
     private Map<String, ObjectNode> browserPreferences;
-
-
+    private TolerantActionExceptions tolerantActionExceptions;
 
     /**
+     *
      * @return BrowserType for the run from the configuration file
      */
     public BrowserType getBrowserType() {
@@ -37,6 +35,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param browserType the browser for the run
      */
     @JsonProperty("browser")
@@ -45,6 +44,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param browserType the browser for the run
      */
     public void setBrowserType(BrowserType browserType) {
@@ -52,6 +52,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @return the base URL for the application under test
      */
     public String getBaseUrl() {
@@ -63,7 +64,6 @@ public class WebDriverConfig {
      * via the command line, then this will be overridden and we will use the baseUrl that comes from the CLI.
      * This is important to ensure there is support for non-configuration dynamic configuration for CI systems
      * like Jenkins etc.
-     *
      * @param baseUrl the base URL for the application under test
      * @throws MalformedURLException if the base URL is not a valid URL
      */
@@ -74,6 +74,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @return the timeout used in the framework for WebDriverWaits
      */
     public long getWebDriverWaitTimeout() {
@@ -81,6 +82,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param webDriverWaitTimeout the timeout used in the framework for WebDriverWaits
      */
     @JsonProperty("timeout")
@@ -89,6 +91,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param item the name of the key for which the value you want to retrieve
      * @return String returns the target item that exists in the list of open options that can be passed in
      * the config file
@@ -98,6 +101,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param testConfig the list of key/value pairs for the non-specific configuration items in the config file
      */
     @JsonProperty("testConfig")
@@ -106,6 +110,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @return boolean configuring headless running
      */
     public boolean isHeadless() {
@@ -113,6 +118,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param headless boolean configuring headless running
      */
     @JsonProperty("headless")
@@ -121,6 +127,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @return the GridConfig configuration
      */
     public GridConfig getGridConfig() {
@@ -128,6 +135,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param gridConfig the GridConfig configuration
      */
     @JsonProperty("gridConfig")
@@ -136,6 +144,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @return the BrowserPreferences configuration
      */
     public ObjectNode getBrowserPreferences(BrowserType browserType) {
@@ -149,6 +158,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param browserPreferences the configuration properties for the various browsers supported by the webdriver
      */
     @JsonProperty("browserPreferences")
@@ -157,6 +167,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @return the run type
      */
     public RunType getRunType() {
@@ -164,6 +175,7 @@ public class WebDriverConfig {
     }
 
     /**
+     *
      * @param runType the run type
      */
     @JsonProperty("runType")
@@ -172,39 +184,31 @@ public class WebDriverConfig {
     }
 
     /**
-     * @return exceptionsWaitTimeOut if user specified the exception time out in the config file otherwise
-     * return default webdriver time out
+     *
+     * @return the tolerant action exceptions config
      */
-    public int getExceptionsWaitTimeOut() {
 
-        return Optional.ofNullable(exceptionsWaitTimeOut)
+    public TolerantActionExceptions getTolerantActionExceptions() {
+        return tolerantActionExceptions;
+    }
+
+    /**
+     *
+     * @param tolerantActionExceptions set the tolerant action exceptions and tolerant action wait time in Seconds
+     */
+    @JsonProperty("tolerantActionExceptions")
+    public void setTolerantActionExceptions(TolerantActionExceptions tolerantActionExceptions) {
+        this.tolerantActionExceptions = tolerantActionExceptions;
+    }
+
+    /**
+     *
+     * @return tolerant action wait time in seconds if user specify the time in config file
+     * other wise return default webdriver time out
+     */
+    public int getTolerantActionWaitTimeoutInSeconds() {
+        return Optional.ofNullable(tolerantActionExceptions.getTolerantActionWaitTimeoutInSeconds())
                 .map(Integer::parseInt)
                 .orElse((int) webDriverWaitTimeout);
     }
-
-    /**
-     * @param exceptionsWaitTimeOut set the timeout for exceptions which is using for tolerant methods
-     */
-    @JsonProperty("exceptionsWaitTimeOut")
-    public void setExceptionsWaitTimeOut(String exceptionsWaitTimeOut) {
-        this.exceptionsWaitTimeOut = exceptionsWaitTimeOut;
-    }
-
-    /**
-     * @return Exceptions list that we will use to tolerate in tolerable action wrappers
-     */
-    public List<String> getExceptionsToHandleOnTolerantActions() {
-        return exceptionsToHandleOnTolerantActions;
-    }
-
-    /**
-     * @param exceptionsToHandleOnTolerantActions sets the list of exceptions for WebDriver that we will retry
-     *                                            on when using our tolerant wrapper
-     */
-    @JsonProperty("exceptionsToHandleOnTolerantActions")
-    public void setExceptionsToHandleOnTolerantActions(List<String> exceptionsToHandleOnTolerantActions) {
-        this.exceptionsToHandleOnTolerantActions = exceptionsToHandleOnTolerantActions;
-    }
-
-
 }

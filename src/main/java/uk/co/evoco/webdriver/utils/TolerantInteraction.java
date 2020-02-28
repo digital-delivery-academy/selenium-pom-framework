@@ -190,7 +190,8 @@ public class TolerantInteraction {
     }
 
     private Throwable propagateIfNotIgnored(Throwable e) throws Throwable {
-        for (String ignoredException : TestConfigManager.get().getExceptionsToHandleOnTolerantActions()) {
+        for (String ignoredException : TestConfigManager.get()
+                .getTolerantActionExceptions().getExceptionsToHandleOnTolerantActions()) {
             if (Class.forName(ignoredException).isInstance(e)) {
                 logger.info("Exception {} will be ignored", ignoredException);
             } else {

@@ -18,6 +18,7 @@ public final class SendKeysUtils extends TolerantInteraction {
     }
 
     public static void tolerantType(WebElement webElement, String textToType) throws Throwable {
-        new SendKeysUtils().tolerantInteraction(webElement, Optional.of(textToType), TestConfigManager.get().getExceptionsWaitTimeOut());
+        new SendKeysUtils().tolerantInteraction(webElement, Optional.of(textToType),
+                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
     }
 }
