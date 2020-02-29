@@ -6,4 +6,5 @@ exclude_paths:
   - '**.xml'
   - '**.yml'
   - '**.json'
-  - '**/tests/**'
+  - '**.Tests.java'
+  - '**.IT.java'
