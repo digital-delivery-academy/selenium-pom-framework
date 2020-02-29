@@ -4,7 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&utm_medium=referral&utm_content=digital-delivery-academy/selenium-pom-framework&utm_campaign=Badge_Coverage)
 [![GitHub Issues badge](https://img.shields.io/github/issues-raw/digital-delivery-academy/selenium-pom-framework?color=green)](https://github.com/digital-delivery-academy/selenium-pom-framework/issues)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)
+[![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)](https://github.com/digital-delivery-academy/selenium-pom-framework/releases)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
