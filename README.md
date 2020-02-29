@@ -1,6 +1,6 @@
 # selenium-pom-framework
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce6169f2151d43daaa0db3aab560e1f0)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
