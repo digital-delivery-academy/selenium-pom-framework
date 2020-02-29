@@ -2,4 +2,8 @@
 exclude_paths:
   - '**.md'
   - '**.sh'
+  - '**.html'
+  - '**.xml'
+  - '**.yml'
+  - '**.json'
   - '**/tests/**'
