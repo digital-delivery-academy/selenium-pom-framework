@@ -5,7 +5,9 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-This toolkit is really a culmination in 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure tests for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of your automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
+**We've released version 1.0.0!**
+
+This toolkit is really a culmination of 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure tests for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of your automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
 
 You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - There's no mass "wrapper" on Selenium - that's dumb
@@ -15,12 +17,14 @@ You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - We provide random test data generators from Mockneat (https://github.com/nomemory/mockneat) and UK Gov (https://github.com/dwp/nino-format-validation) as well as some of our own (for dates and stuff)
 - There's an externalised (and overridable) configuration system, based on JSON
 - We handle providing JUnit (we use version 5), Selenium and Hamcrest (for writing good assertions)
+- Our framework is unit and integration tested as well as monitored for code quality; we treat this as a production code base, not a second class citizen.
+- We have a (developing) open roadmap in GitHub Issues (click the Issues tab to see what we have so far)
 
 Coming soon:
-- SauceLabs and BrowserStack configuration.
-- Published artefacts to Maven Central (so you can get the framework without a GitHub membership).
-- Tutorials for writing tests using our toolkit.
-- Builds for Java 13 and older versions of Java.
+- SauceLabs and BrowserStack configuration (issues #2 and #3).
+- Instrumentation of the framework components to help visualise slow or under performing checks over time (issue #44).
+- Published artefacts to Maven Central (so you can get the framework without a GitHub membership) (issue #27).
+- Expand documentation and tutorials (issue #45)
 - And lots more marked in the issues list: https://github.com/digital-delivery-academy/selenium-pom-framework/issues
 
 It really is a one stop shop for getting up and running with a robust toolkit for building Selenium tests, without the massive investment that many business make in hand rolling their own.
@@ -106,6 +110,12 @@ An example configuration (`settings.xml`) would be:
     </servers>
 </settings>
 ```
+
+## References/thanks
+We're using repositories from the guys below to provide some of our features:
+- https://github.com/bonigarcia/webdrivermanager from Boni Garcia (for getting WebDriver binaries in a lovely way)
+- https://github.com/nomemory/mockneat from nomemory (for generating random test data easily)
+- https://github.com/dwp/nino-format-validation from UK Gov. Department for Work and Pensions (for testing Ninos)
 
 ## Contributors
 <!-- markdownlint-enable -->
