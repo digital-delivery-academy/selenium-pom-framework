@@ -181,6 +181,8 @@ public class TolerantInteraction {
             case BY_VISIBLE_TEXT:
                 selectBox.selectByVisibleText(value);
                 break;
+            default:
+                throw new WebDriverException("Must be one of BY_VALUE or BY_VISIBLE_TEXT");
         }
     }
 
