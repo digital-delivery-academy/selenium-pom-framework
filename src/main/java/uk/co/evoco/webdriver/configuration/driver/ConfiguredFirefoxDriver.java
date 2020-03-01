@@ -3,13 +3,11 @@ package uk.co.evoco.webdriver.configuration.driver;
 import com.fasterxml.jackson.databind.JsonNode;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import uk.co.evoco.webdriver.configuration.BrowserType;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -23,7 +21,7 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
      */
     public WebDriver getRemoteDriver() {
         return new RemoteWebDriver(
-                TestConfigManager.get().getGridConfig().getGridUrl(), this.getOptions());
+                TestConfigHelper.get().getGridConfig().getGridUrl(), this.getOptions());
     }
 
     /**
@@ -44,7 +42,7 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
      */
     public FirefoxOptions getOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        Iterator<Map.Entry<String, JsonNode>> firefoxPreferences = TestConfigManager.get()
+        Iterator<Map.Entry<String, JsonNode>> firefoxPreferences = TestConfigHelper.get()
                 .getBrowserPreferences(BrowserType.FIREFOX)
                 .fields();
 
@@ -65,7 +63,7 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
             }
         }
 
-        firefoxOptions.setHeadless(TestConfigManager.get().isHeadless());
+        firefoxOptions.setHeadless(TestConfigHelper.get().isHeadless());
         return firefoxOptions;
     }
 }

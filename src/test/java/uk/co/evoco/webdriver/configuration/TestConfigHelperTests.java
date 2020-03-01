@@ -6,16 +6,16 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 
-public class TestConfigManagerTests {
+public class TestConfigHelperTests {
 
     @Test
     public void testCanAccessTestConfigurationIsCorrectType() {
-        assertThat(TestConfigManager.get(), instanceOf(WebDriverConfig.class));
+        assertThat(TestConfigHelper.get(), instanceOf(WebDriverConfig.class));
     }
 
     @Test
     public void testCanAccessTestConfigurationViaSingleton() {
-        assertThat(TestConfigManager.get().getBaseUrl(),
+        assertThat(TestConfigHelper.get().getBaseUrl(),
                 is("https://www.google.com"));
     }
 }

@@ -3,15 +3,15 @@ package uk.co.evoco.webdriver.configuration;
 /**
  *
  */
-public class TestConfigManager {
+public class TestConfigHelper {
 
-    private static TestConfigManager testConfigManager;
+    private static TestConfigHelper testConfigHelper;
     private static WebDriverConfig webDriverConfig;
 
     /**
      *
      */
-    private TestConfigManager() {
+    private TestConfigHelper() {
         this.webDriverConfig = new ConfigurationLoader()
                 .decideWhichConfigurationToUse()
                 .build();
@@ -22,8 +22,8 @@ public class TestConfigManager {
      * @return TestConfigManager returns the instance of the singleton to access the member methods
      */
     public static WebDriverConfig get() {
-        if(null == testConfigManager) {
-            testConfigManager = new TestConfigManager();
+        if(null == testConfigHelper) {
+            testConfigHelper = new TestConfigHelper();
         }
         return webDriverConfig;
     }

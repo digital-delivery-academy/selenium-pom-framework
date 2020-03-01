@@ -1,7 +1,7 @@
 package uk.co.evoco.webdriver;
 
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 import uk.co.evoco.webdriver.configuration.driver.ConfiguredChromeDriver;
 import uk.co.evoco.webdriver.configuration.driver.ConfiguredFirefoxDriver;
 import uk.co.evoco.webdriver.configuration.driver.ConfiguredEdgeDriver;
@@ -37,7 +37,7 @@ public class WebDriverBuilder {
      * @throws IOException if log file for browser driver logs cannot be created
      */
     public EventFiringWebDriver build() throws IOException {
-        switch(TestConfigManager.get().getBrowserType()) {
+        switch(TestConfigHelper.get().getBrowserType()) {
             case CHROME:
                 return new ConfiguredChromeDriver().getDriver(this.screenshotDirectory);
             case FIREFOX:

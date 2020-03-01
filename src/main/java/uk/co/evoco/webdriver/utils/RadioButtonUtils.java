@@ -1,7 +1,7 @@
 package uk.co.evoco.webdriver.utils;
 
 import org.openqa.selenium.WebElement;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.util.List;
 
@@ -40,6 +40,6 @@ public final class RadioButtonUtils extends TolerantInteraction {
     public static void tolerantSelectByLabel(List<WebElement> webElements, String visibleLabelText)
             throws Throwable {
         new RadioButtonUtils().tolerantInteraction(webElements, visibleLabelText,
-                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
     }
 }

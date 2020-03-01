@@ -2,7 +2,7 @@ package uk.co.evoco.webdriver.utils;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.util.Optional;
 
@@ -89,7 +89,7 @@ public final class SelectBoxUtils extends TolerantInteraction {
         new SendKeysUtils().tolerantInteraction(
                 webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                 Optional.of(visibleText), Optional.empty(),
-                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
     }
 
 }

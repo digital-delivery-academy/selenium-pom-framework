@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.WebDriverBuilder;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 import uk.co.evoco.webdriver.results.ResultsManager;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public abstract class BaseAbstractTest {
         this.webDriver = new WebDriverBuilder()
                 .setResultsDirectory(this.resultsManager.getScreenshotDirectory())
                 .build();
-        this.webDriver.get(TestConfigManager.get().getBaseUrl());
+        this.webDriver.get(TestConfigHelper.get().getBaseUrl());
         this.webDriver.manage().window().maximize();
     }
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
      */
     public WebDriver getRemoteDriver() {
         return new RemoteWebDriver(
-                TestConfigManager.get().getGridConfig().getGridUrl(), this.getOptions());
+                TestConfigHelper.get().getGridConfig().getGridUrl(), this.getOptions());
     }
 
     /**
@@ -38,7 +38,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
      */
     private ChromeOptions getOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setHeadless(TestConfigManager.get().isHeadless());
+        chromeOptions.setHeadless(TestConfigHelper.get().isHeadless());
         return chromeOptions;
     }
 }
