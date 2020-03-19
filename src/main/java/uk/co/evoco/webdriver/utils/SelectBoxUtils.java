@@ -15,7 +15,6 @@ public final class SelectBoxUtils extends TolerantInteraction {
 
     /**
      * Selects an option that has a matching value attribute in the Options tag markup
-     *
      * @param selectBox active WebElement, already located
      * @param htmlValue HTML value attribute
      */
@@ -89,6 +88,29 @@ public final class SelectBoxUtils extends TolerantInteraction {
         new SendKeysUtils().tolerantInteraction(
                 webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                 Optional.of(visibleText), Optional.empty(),
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
+    }
+
+    /**
+     * @param webElement active WebElement, already located
+     * @param index      index in order of display
+     * @throws Throwable any unhandled or un-tolerated exception
+     */
+    public static void tolerantItemByIndex(WebElement webElement, int index) throws Throwable {
+        new SendKeysUtils().tolerantInteraction(
+                webElement, SelectBoxInteractionType.BY_INDEX, Optional.empty(), Optional.of(index),
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
+    }
+
+    /**
+     * @param webElement active WebElement, already located
+     * @param htmlValue  HTML value attribute
+     * @throws Throwable any unhandled or un-tolerated exception
+     */
+    public static void tolerantItemByHtmlValueAttribute(WebElement webElement, String htmlValue)
+            throws Throwable {
+        new SendKeysUtils().tolerantInteraction(
+                webElement, SelectBoxInteractionType.BY_VALUE, Optional.of(htmlValue), Optional.empty(),
                 TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
     }
 
