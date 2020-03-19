@@ -99,7 +99,7 @@ public final class SelectBoxUtils extends TolerantInteraction {
     public static void tolerantItemByIndex(WebElement webElement, int index) throws Throwable {
         new SendKeysUtils().tolerantInteraction(
                 webElement, SelectBoxInteractionType.BY_INDEX, Optional.empty(), Optional.of(index),
-                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
     }
 
     /**

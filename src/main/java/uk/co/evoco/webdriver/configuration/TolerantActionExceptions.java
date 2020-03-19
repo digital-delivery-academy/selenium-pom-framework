@@ -13,7 +13,7 @@ public class TolerantActionExceptions {
      *
      * @return the tolerant action wait time in seconds
      */
-    public String getWaitTimeoutInSeconds() {
+    String getWaitTimeoutInSeconds() {
         return waitTimeoutInSeconds;
     }
 
