@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import uk.co.evoco.webdriver.WebDriverListener;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public interface ConfiguredDriver {
      */
     default EventFiringWebDriver getDriver(File screenshotPath) throws IOException {
         WebDriver webDriver;
-        switch(TestConfigManager.get().getRunType()) {
+        switch(TestConfigHelper.get().getRunType()) {
             case LOCAL:
                 webDriver = getLocalDriver();
                 break;
@@ -35,7 +35,7 @@ public interface ConfiguredDriver {
         }
         return configureEventFiringWebDriver(
                 webDriver,
-                TestConfigManager.get().getWebDriverWaitTimeout(),
+                TestConfigHelper.get().getWebDriverWaitTimeout(),
                 screenshotPath);
     }
 

@@ -2,3 +2,10 @@
 exclude_paths:
   - '**.md'
   - '**.sh'
+  - '**.html'
+  - '**.xml'
+  - '**.yml'
+  - '**.json'
+  - '**.Tests.java'
+  - '**.IT.java'
+  - '**EmbeddedJetty.java'

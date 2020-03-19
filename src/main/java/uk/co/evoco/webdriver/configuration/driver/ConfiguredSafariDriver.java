@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 public class ConfiguredSafariDriver implements ConfiguredDriver {
 
@@ -14,7 +14,7 @@ public class ConfiguredSafariDriver implements ConfiguredDriver {
      */
     public WebDriver getRemoteDriver() {
         return new RemoteWebDriver(
-                TestConfigManager.get().getGridConfig().getGridUrl(), this.getOptions());
+                TestConfigHelper.get().getGridConfig().getGridUrl(), this.getOptions());
     }
 
     /**

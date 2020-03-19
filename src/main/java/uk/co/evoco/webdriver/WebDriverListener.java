@@ -1,13 +1,17 @@
 package uk.co.evoco.webdriver;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.File;
 import java.util.UUID;
@@ -142,7 +146,7 @@ public class WebDriverListener implements WebDriverEventListener {
      */
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver,
-                TestConfigManager.get().getWebDriverWaitTimeout()).until(
+                TestConfigHelper.get().getWebDriverWaitTimeout()).until(
                         ExpectedConditions.presenceOfElementLocated(by));
     }
 
@@ -167,7 +171,7 @@ public class WebDriverListener implements WebDriverEventListener {
      */
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver,
-                TestConfigManager.get().getWebDriverWaitTimeout()).until(
+                TestConfigHelper.get().getWebDriverWaitTimeout()).until(
                         ExpectedConditions.elementToBeClickable(webElement));
     }
 

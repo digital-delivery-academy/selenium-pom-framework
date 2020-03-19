@@ -6,7 +6,7 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>0.0.12</version>
+    <version>1.0.0</version>
 
     <contributors>
         <contributor>
@@ -166,6 +166,7 @@
                 <version>${maven.failsafe.version}</version>
                 <executions>
                     <execution>
+                        <phase>test</phase>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>

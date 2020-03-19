@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 public class ConfiguredEdgeDriver implements ConfiguredDriver {
 
@@ -15,7 +15,7 @@ public class ConfiguredEdgeDriver implements ConfiguredDriver {
      */
     public WebDriver getRemoteDriver() {
         return new RemoteWebDriver(
-                TestConfigManager.get().getGridConfig().getGridUrl(), this.getOptions());
+                TestConfigHelper.get().getGridConfig().getGridUrl(), this.getOptions());
     }
 
     /**

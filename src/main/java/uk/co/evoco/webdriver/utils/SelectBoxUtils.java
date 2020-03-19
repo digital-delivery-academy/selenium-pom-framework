@@ -2,7 +2,7 @@ package uk.co.evoco.webdriver.utils;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.util.Optional;
 
@@ -15,7 +15,6 @@ public final class SelectBoxUtils extends TolerantInteraction {
 
     /**
      * Selects an option that has a matching value attribute in the Options tag markup
-     *
      * @param selectBox active WebElement, already located
      * @param htmlValue HTML value attribute
      */
@@ -89,7 +88,7 @@ public final class SelectBoxUtils extends TolerantInteraction {
         new SendKeysUtils().tolerantInteraction(
                 webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                 Optional.of(visibleText), Optional.empty(),
-                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
     }
 
     /**
@@ -112,7 +111,7 @@ public final class SelectBoxUtils extends TolerantInteraction {
             throws Throwable {
         new SendKeysUtils().tolerantInteraction(
                 webElement, SelectBoxInteractionType.BY_VALUE, Optional.of(htmlValue), Optional.empty(),
-                TestConfigManager.get().getTolerantActionWaitTimeoutInSeconds());
+                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
     }
 
 }

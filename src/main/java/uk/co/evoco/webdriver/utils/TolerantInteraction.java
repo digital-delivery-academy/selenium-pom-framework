@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Sleeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.co.evoco.webdriver.configuration.TestConfigManager;
+import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -181,6 +181,8 @@ public class TolerantInteraction {
             case BY_VISIBLE_TEXT:
                 selectBox.selectByVisibleText(value);
                 break;
+            default:
+                throw new WebDriverException("Must be one of BY_VALUE or BY_VISIBLE_TEXT");
         }
     }
 
@@ -190,7 +192,7 @@ public class TolerantInteraction {
     }
 
     private Throwable propagateIfNotIgnored(Throwable e) throws Throwable {
-        for (String ignoredException : TestConfigManager.get()
+        for (String ignoredException : TestConfigHelper.get()
                 .getTolerantActionExceptions().getExceptionsToHandle()) {
             if (Class.forName(ignoredException).isInstance(e)) {
                 logger.info("Exception {} will be ignored", ignoredException);
