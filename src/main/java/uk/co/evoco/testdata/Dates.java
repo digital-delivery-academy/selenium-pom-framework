@@ -98,7 +98,11 @@ public class Dates extends MockUnitBase {
                 bankHolidayCount++;
             }
         }
-        futureDateTime = futureDateTime.plusDays(bankHolidayCount);
+        futureDateTime=DateTime.parse(
+                futureDateAvoidingWeekends(
+                        futureDateTime.toString(dateTimeFormatter),
+                        bankHolidayCount,
+                        dateFormat), dateTimeFormatter).toDateTime();
         return futureDateTime.toString(dateTimeFormatter);
     }
 
