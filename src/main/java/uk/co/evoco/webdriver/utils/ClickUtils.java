@@ -1,9 +1,13 @@
 package uk.co.evoco.webdriver.utils;
 
+import com.codahale.metrics.Timer;
 import org.openqa.selenium.WebElement;
+import uk.co.evoco.metrics.MetricRegistryHelper;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.util.Optional;
+
+import static com.codahale.metrics.MetricRegistry.name;
 
 /**
  * Only for us in the situations outlined for the provided methods.
@@ -11,6 +15,7 @@ import java.util.Optional;
  */
 public final class ClickUtils extends TolerantInteraction {
 
+    private static final Timer tolerantClickActions = MetricRegistryHelper.get().timer(name("tolerantClick"));
     /**
      *
      * @param webElement active WebElements, already located
@@ -18,11 +23,15 @@ public final class ClickUtils extends TolerantInteraction {
      * @throws Throwable any unhandled or un-tolerated exception
      */
     public static void tolerantClick(WebElement webElement, int timeout) throws Throwable {
-        new ClickUtils().tolerantInteraction(webElement, Optional.empty(), timeout);
+        try(final Timer.Context context = tolerantClickActions.time()) {
+            new ClickUtils().tolerantInteraction(webElement, Optional.empty(), timeout);
+        }
     }
 
     public static void tolerantClick(WebElement webElement) throws Throwable {
-        new ClickUtils().tolerantInteraction(webElement, Optional.empty(),
-                TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
+        try(final Timer.Context context = tolerantClickActions.time()) {
+            new ClickUtils().tolerantInteraction(webElement, Optional.empty(),
+                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
+        }
     }
 }

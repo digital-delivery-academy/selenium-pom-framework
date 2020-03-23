@@ -28,9 +28,11 @@ install:
 
 deploy:
   - provider: script
-    script: mvn deploy -DskipTests -Dregistry=https://maven.pkg.github.com/digital-delivery-academy -Dtoken=$GITHUB_PACKAGE_DEPLOY_TOKEN
+    script:
+      - mvn release:prepare
+      - mvn release:perform
     on:
-      tags: true
+      branch: instrumentation
   - provider: script
     script: mvn test com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
     on:

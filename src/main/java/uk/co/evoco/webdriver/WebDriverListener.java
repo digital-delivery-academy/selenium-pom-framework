@@ -1,5 +1,6 @@
 package uk.co.evoco.webdriver;
 
+import com.codahale.metrics.Timer;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,10 +12,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.co.evoco.metrics.MetricRegistryHelper;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.File;
 import java.util.UUID;
+
+import static com.codahale.metrics.MetricRegistry.name;
 
 /**
  * This class allows us hooks into before and afters of a lot of WebDriver internals
@@ -29,6 +33,8 @@ public class WebDriverListener implements WebDriverEventListener {
 
     private static final Logger logger = LoggerFactory.getLogger(WebDriverListener.class);
     private File screenshotDirectory;
+    private final Timer clickActions = MetricRegistryHelper.get().timer(name("click"));
+    private final Timer typeActions = MetricRegistryHelper.get().timer(name("sendKeys"));
 
     /**
      * Sets the screenshot target directory that will be used for screenshots generated inside onException()
