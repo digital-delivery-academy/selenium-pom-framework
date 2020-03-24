@@ -25,14 +25,10 @@ addons:
 
 install:
   - mvn clean install -Dmaven.javadoc.skip=true -B -V
+  - mvn -B release:prepare
+  - mvn release:perform
 
 deploy:
-  - provider: script
-    script:
-      - mvn release:prepare
-      - mvn release:perform
-    on:
-      all_branches: true
   - provider: script
     script: mvn test com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
     on:
