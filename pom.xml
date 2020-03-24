@@ -4,7 +4,7 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <contributors>
         <contributor>
@@ -26,10 +26,10 @@
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git://github.com/digital-delivery-academy/selenium-pom-frameworkr.git</connection>
-        <developerConnection>scm:git:git@github.com:/digital-delivery-academy/selenium-pom-frameworkr.git</developerConnection>
+        <connection>scm:git:git://github.com/digital-delivery-academy/selenium-pom-framework.git</connection>
+        <developerConnection>scm:git:git@github.com:/digital-delivery-academy/selenium-pom-framework.git</developerConnection>
         <url>https://github.com/digital-delivery-academy/selenium-pom-framework</url>
-        <tag>HEAD</tag>
+        <tag>selenium-pom-framework-1.0.2</tag>
     </scm>
 
     <distributionManagement>
@@ -252,7 +252,7 @@
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
-                    <arguments>-Dgpg.passphrase=${env.OSSRH_GPG_PASSPHRASE}</arguments>
+                    <arguments>-Dgpg.passphrase=${env.OSSRH_GPG_PASSPHRASE} -Dmaven.test.skip=true</arguments>
                     <checkModificationExcludes>
                         <checkModificationExclude>pom.xml</checkModificationExclude>
                     </checkModificationExcludes>
