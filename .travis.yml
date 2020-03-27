@@ -39,7 +39,7 @@ deploy:
     tags: true
 - provider: script
   script:
-    - mvn -B release:prepare
+    - mvn release:prepare
     - mvn release:perform
   on:
     tags: true

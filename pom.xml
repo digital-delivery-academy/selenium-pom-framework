@@ -252,10 +252,11 @@
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
-                    <arguments>-Dgpg.passphrase=${env.OSSRH_GPG_PASSPHRASE} -Dmaven.test.skip=true</arguments>
+                    <arguments>-Dgpg.passphrase=${env.GPG_PASSPHRASE} -Dmaven.test.skip=true</arguments>
                     <checkModificationExcludes>
                         <checkModificationExclude>pom.xml</checkModificationExclude>
                     </checkModificationExcludes>
+                    <pushChanges>true</pushChanges>
                 </configuration>
                 <dependencies>
                     <dependency>
