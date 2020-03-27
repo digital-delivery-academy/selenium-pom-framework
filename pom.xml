@@ -4,7 +4,30 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
+
+    <url>https://www.github.com/digital-delivery-academy/selenium-pom-framework</url>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/digital-delivery-academy/selenium-pom-framework/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <description>
+        A simple Selenium framework offering externalised configuration, good selection of libraries for supporting
+        test data, simple WebDriver browser binary resolution and an opinionated approach for WebDriver test design.
+    </description>
+
+    <developers>
+        <developer>
+            <name>Steve Walton</name>
+            <url>https://www.evoco.co.uk</url>
+            <organizationUrl>https://www.evoco.co.uk</organizationUrl>
+            <organization>Evoco Digtial Services</organization>
+        </developer>
+    </developers>
 
     <contributors>
         <contributor>
@@ -14,11 +37,6 @@
             <organizationUrl>https://www.evoco.co.uk</organizationUrl>
         </contributor>
     </contributors>
-
-    <description>
-        A simple Selenium framework offering externalised configuration, good selection of libraries for supporting
-        test data, simple WebDriver browser binary resolution and an opinionated approach for WebDriver test design.
-    </description>
 
     <issueManagement>
         <system>GitHub</system>
