@@ -27,7 +27,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/digital-delivery-academy/selenium-pom-framework.git</connection>
-        <developerConnection>scm:git:git@github.com:/digital-delivery-academy/selenium-pom-framework.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:digital-delivery-academy/selenium-pom-framework.git</developerConnection>
         <url>https://github.com/digital-delivery-academy/selenium-pom-framework</url>
         <tag>selenium-pom-framework-1.0.2</tag>
     </scm>
