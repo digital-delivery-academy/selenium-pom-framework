@@ -16,7 +16,9 @@ public class MetricRegistryHelper {
     private static MetricRegistry metricRegistry;
     private static JmxReporter jmxReporter;
     private static GraphiteReporter graphiteReporter;
-    private static final Graphite graphite = new Graphite(new InetSocketAddress("localhost", 2003));
+    private static final Graphite graphite = new Graphite(new InetSocketAddress(
+            TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().getHost(),
+            TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().getPort()));
 
     /**
      *

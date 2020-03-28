@@ -2,12 +2,10 @@ package uk.co.evoco.webdriver.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class GraphiteConfig {
     private boolean isEnabled;
-    private URL hostUrl;
+    private String host;
+    private int port;
 
     public boolean isEnabled() {
         return isEnabled;
@@ -18,12 +16,21 @@ public class GraphiteConfig {
         isEnabled = enabled;
     }
 
-    public URL getHostUrl() {
-        return hostUrl;
+    public String getHost() {
+        return host;
     }
 
     @JsonProperty("host")
-    public void setHostUrl(String hostUrl) throws MalformedURLException {
-        this.hostUrl = new URL(hostUrl);
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    @JsonProperty("port")
+    public void setPort(int port) {
+        this.port = port;
     }
 }

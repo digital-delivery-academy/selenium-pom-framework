@@ -143,7 +143,8 @@ If you're deploying this else where (i.e. not locally) you can configure connect
     },
     "graphite": {
         "enabled": true,
-        "host": "http://localhost:2003"
+        "host": "localhost",
+        "port": 2003
     }
 }
 ```

@@ -31,7 +31,8 @@
     },
     "graphite": {
       "enabled": true,
-      "host": "http://localhost:2003"
+      "host": "localhost",
+      "port": 2003
     }
   }
 }
