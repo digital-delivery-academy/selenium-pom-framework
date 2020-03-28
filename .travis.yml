@@ -17,6 +17,7 @@ before_install:
   --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 - google-chrome-stable --remote-debugging-port=9222 http://localhost &
 - chmod ugo+x scripts/publish-javadocs-to-github-pages.sh
+- chmod ugo+x scripts/get-bank-holiday-data-source-and-store-in-resources.sh
 addons:
   firefox: latest
 install:

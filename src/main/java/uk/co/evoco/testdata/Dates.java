@@ -1,12 +1,13 @@
 package uk.co.evoco.testdata;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import net.andreinc.mockneat.abstraction.MockUnitBase;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import uk.co.evoco.webdriver.utils.JsonUtils;
+
+import java.io.IOException;
 
 import static io.restassured.RestAssured.get;
 
@@ -78,13 +79,12 @@ public class Dates extends MockUnitBase {
      * @param numberOfBusinessDaysToAdd Days to add, avoiding weekends and UK bank holidays
      * @param dateFormat date format (e.g. "dd/MM/yyyy","dd/MM/yyyy HH:mm")
      * @return String representing resulting date
-     * @throws JsonProcessingException if the JSON source for bank holidays cannot be read
+     * @throws IOException if the JSON source for bank holidays cannot be read
      */
     public static String futureDataAvoidingWeekendsAndBankHolidays(
             Locale locale, String startDate,
-            int numberOfBusinessDaysToAdd, String dateFormat) throws JsonProcessingException {
-        BankHolidays bankHolidays = JsonUtils.fromString(
-                get("https://www.gov.uk/bank-holidays.json").body().asString(), BankHolidays.class);
+            int numberOfBusinessDaysToAdd, String dateFormat) throws IOException {
+        BankHolidays bankHolidays = getBankHolidays();
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateFormat);
         DateTime now = DateTime.parse(startDate, dateTimeFormatter).toDateTime();
         DateTime futureDateTime = DateTime.parse(
@@ -106,4 +106,14 @@ public class Dates extends MockUnitBase {
         return futureDateTime.toString(dateTimeFormatter);
     }
 
+    private static BankHolidays getBankHolidays() throws IOException {
+        BankHolidays bankHolidays;
+        try {
+            bankHolidays = JsonUtils.fromString(
+                    get("https://www.gov.uk/bank-holidays.json").body().asString(), BankHolidays.class);
+        } catch(Exception e) {
+            bankHolidays = JsonUtils.fromFile(ClassLoader.getSystemResourceAsStream("bank-holidays.json"), BankHolidays.class);
+        }
+        return bankHolidays;
+    }
 }
