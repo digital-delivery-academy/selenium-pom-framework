@@ -15,7 +15,7 @@ import static com.codahale.metrics.MetricRegistry.name;
  */
 public final class ClickUtils extends TolerantInteraction {
 
-    private static final Timer tolerantClickActions = MetricRegistryHelper.get().timer(name("tolerantClick"));
+    private static final Timer tolerantClickAction = MetricRegistryHelper.get().timer(name("ClickUtils.tolerantClick"));
     /**
      *
      * @param webElement active WebElements, already located
@@ -23,13 +23,13 @@ public final class ClickUtils extends TolerantInteraction {
      * @throws Throwable any unhandled or un-tolerated exception
      */
     public static void tolerantClick(WebElement webElement, int timeout) throws Throwable {
-        try(final Timer.Context ignored = tolerantClickActions.time()) {
+        try(final Timer.Context ignored = tolerantClickAction.time()) {
             new ClickUtils().tolerantInteraction(webElement, Optional.empty(), timeout);
         }
     }
 
     public static void tolerantClick(WebElement webElement) throws Throwable {
-        try(final Timer.Context ignored = tolerantClickActions.time()) {
+        try(final Timer.Context ignored = tolerantClickAction.time()) {
             new ClickUtils().tolerantInteraction(webElement, Optional.empty(),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }
