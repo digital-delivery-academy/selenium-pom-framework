@@ -6,7 +6,10 @@ import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.co.evoco.testdata.Dates.*;
+import static uk.co.evoco.testdata.Dates.futureDateAvoidingWeekends;
+import static uk.co.evoco.testdata.Dates.futureDate;
+import static uk.co.evoco.testdata.Dates.pastDate;
+import static uk.co.evoco.testdata.Dates.futureDataAvoidingWeekendsAndBankHolidays;
 
 public class DatesTests {
 
