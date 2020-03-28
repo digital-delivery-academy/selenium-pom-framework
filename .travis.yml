@@ -17,10 +17,12 @@ before_install:
   --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 - google-chrome-stable --remote-debugging-port=9222 http://localhost &
 - chmod ugo+x scripts/publish-javadocs-to-github-pages.sh
+- chmod ugo+x scripts/get-bank-holiday-data-source-and-store-in-resources.sh
 addons:
   firefox: latest
 install:
 - mvn clean install -Dmaven.javadoc.skip=true -B -V
+- bash scripts/get-bank-holiday-data-source-and-store-in-resources.sh
 after_success:
 - gpg2 --keyring=$TRAVIS_BUILD_DIR/pubring.gpg --no-default-keyring --import deployment/signingkey.asc
 - gpg2 --allow-secret-key-import --keyring=$TRAVIS_BUILD_DIR/secring.gpg --no-default-keyring
