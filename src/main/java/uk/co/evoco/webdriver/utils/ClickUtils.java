@@ -23,13 +23,13 @@ public final class ClickUtils extends TolerantInteraction {
      * @throws Throwable any unhandled or un-tolerated exception
      */
     public static void tolerantClick(WebElement webElement, int timeout) throws Throwable {
-        try(final Timer.Context context = tolerantClickActions.time()) {
+        try(final Timer.Context ignored = tolerantClickActions.time()) {
             new ClickUtils().tolerantInteraction(webElement, Optional.empty(), timeout);
         }
     }
 
     public static void tolerantClick(WebElement webElement) throws Throwable {
-        try(final Timer.Context context = tolerantClickActions.time()) {
+        try(final Timer.Context ignored = tolerantClickActions.time()) {
             new ClickUtils().tolerantInteraction(webElement, Optional.empty(),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }

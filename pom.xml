@@ -26,7 +26,7 @@
             <name>Steve Walton</name>
             <url>https://www.evoco.co.uk</url>
             <organizationUrl>https://www.evoco.co.uk</organizationUrl>
-            <organization>Evoco Digtial Services</organization>
+            <organization>Evoco Digital Services</organization>
         </developer>
     </developers>
 
@@ -34,8 +34,18 @@
         <contributor>
             <name>Steve Walton</name>
             <email>steve.walton@evoco.co.uk</email>
-            <organization>Evoco</organization>
+            <organization>Evoco Digital Services</organization>
             <organizationUrl>https://www.evoco.co.uk</organizationUrl>
+        </contributor>
+        <contributor>
+            <name>Bala Matam</name>
+            <organization>DWP Digital Group</organization>
+            <organizationUrl>https://dwpdigital.blog.gov.uk/</organizationUrl>
+        </contributor>
+        <contributor>
+            <name>Augustine Kwanashie</name>
+            <organization>BPDTS Ltd</organization>
+            <organizationUrl>https://www.gov.uk/government/organisations/bpdts-ltd/about</organizationUrl>
         </contributor>
     </contributors>
 
@@ -48,7 +58,6 @@
         <connection>scm:git:git://github.com/digital-delivery-academy/selenium-pom-framework.git</connection>
         <developerConnection>scm:git:git@github.com:digital-delivery-academy/selenium-pom-framework.git</developerConnection>
         <url>https://github.com/digital-delivery-academy/selenium-pom-framework</url>
-        <tag>selenium-pom-framework-1.0.2</tag>
     </scm>
 
     <distributionManagement>

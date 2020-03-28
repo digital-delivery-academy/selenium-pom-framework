@@ -24,6 +24,7 @@ public class WebDriverConfig {
     private RunType runType;
     private Map<String, ObjectNode> browserPreferences;
     private TolerantActionExceptions tolerantActionExceptions;
+    private MetricsConfig metricsConfig;
 
     /**
      *
@@ -209,5 +210,14 @@ public class WebDriverConfig {
         return Optional.ofNullable(tolerantActionExceptions.getWaitTimeoutInSeconds())
                 .map(Integer::parseInt)
                 .orElse((int) webDriverWaitTimeout);
+    }
+
+    @JsonProperty("metrics")
+    public void setMetricsConfig(MetricsConfig metricsConfig) {
+        this.metricsConfig = metricsConfig;
+    }
+
+    public MetricsConfig getMetricsConfig() {
+        return metricsConfig;
     }
 }

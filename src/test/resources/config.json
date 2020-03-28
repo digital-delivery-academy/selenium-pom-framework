@@ -24,5 +24,14 @@
       "ElementClickInterceptedException",
       "ElementNotInteractableException"
     ]
+  },
+  "metrics": {
+    "jmx": {
+      "enabled": false
+    },
+    "graphite": {
+      "enabled": true,
+      "host": "http://localhost:2003"
+    }
   }
 }

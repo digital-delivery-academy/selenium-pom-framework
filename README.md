@@ -8,7 +8,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-**We've released version 1.0.0! And we've moved to Maven Central hosting**
+**We've released version 1.0.0! And we've moved to Maven Central hosting and added instrumentation**
 
 This toolkit is really a culmination of 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure checks for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of your automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
 
@@ -20,12 +20,12 @@ You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - We provide random test data generators from Mockneat (https://github.com/nomemory/mockneat) and UK Gov (https://github.com/dwp/nino-format-validation) as well as some of our own (for dates and stuff)
 - There's an externalised (and overridable) configuration system, based on JSON
 - We handle providing JUnit (we use version 5), Selenium and Hamcrest (for writing good assertions)
+- The framework is instrumented to measure execution time of internals, and these metrics are available via JMX or Graphite.
 - Our framework is unit and integration checked as well as monitored for code quality; we treat this as a production code base, not a second class citizen.
-- We have a (developing) open roadmap in GitHub Issues (click the Issues tab to see what we have so far)
+- We have a (developing) open road map in GitHub Issues (click the Issues tab to see what we have so far)
 
 Coming soon:
 - SauceLabs and BrowserStack configuration (issues #2 and #3).
-- Instrumentation of the framework components to help visualise slow or under performing checks over time (issue #44).
 - Expand documentation and tutorials (issue #45)
 - And lots more marked in the issues list: https://github.com/digital-delivery-academy/selenium-pom-framework/issues
 
@@ -67,6 +67,86 @@ This project is published to Maven Central, so you just need to put this in your
 **Note:** we used to publish releases to GitHub packages (which you can see if you click Packages above).  This was restrictive because people HAD to have a GitHub account to use it, and had to mess around with their M2 settings.  Maven Central was the right answer to this problem.
 - You can see historic releases in the Packages tab above
 - You can see all new releases on Maven Central here: https://search.maven.org/artifact/uk.co.evoco/selenium-pom-framework (we'll keep the Releases tab updated on this page, and we'll keep the latest version details in the README)
+
+We skipped through a few minor versions setting up the Maven Central release, so there is no effective gap between 1.0.2 and 1.0.7.
+
+## Instrumentation and metrics
+The framework is instrumented with Dropwizard Metrics which has two reporters; JMX and Graphite.
+
+To view the JMX reports, the JVM still needs to be running.  You can access by running from a command line `jconsole` and then connecting to the JVM that is running the tests.
+From `jconsole` you will need to open `MBeans` and then `metrics` to see the metrics that are being produced.
+
+**Note:** We're probably going to remove JMX in coming releases because the nature of the framework is that it runs and then exits.  When the container closes, the metrics go with it (unless we add something like Graphite to back it).  We'll see.  It'll be fine during debugging though.  We'd recommend looking at the next bit about Graphite and Grafana.
+
+Graphite is a much more powerful way to see performance of the framework over time, and to see where your tests are spending the most time.  Here's some instructions about how to get started using Docker.
+
+**Note:** Obviously you have to have `docker` installed.  I'm sure you can Google that :)
+
+We're going to setup `docker` containers for `graphite` which is essentially a cool way to track metrics over time and `grafana` which is a sexy way to visualise things and create some dashboards.  We need to link these two containers so that they can access each other
+and we're going to use the official containers from Graphite and Grafana themselves to get the latest versions.  First up, we need a `docker` network:
+
+`docker network create graphite_grafana`
+
+Then we need to grab `graphite`:
+
+```
+docker run -d \
+ --name graphite \
+ --restart=always \
+ --net graphite_grafana \
+ -p 80:80 \
+ -p 2003-2004:2003-2004 \
+ -p 2023-2024:2023-2024 \
+ -p 8125:8125/udp \
+ -p 8126:8126 \
+ graphiteapp/graphite-statsd
+```
+
+And finally we need to grab `grafana`:
+
+`docker run -d --name=grafana -p 3000:3000 --net graphite_grafana grafana/grafana`
+
+Once all of these commands have finished if you run `docker ps` you should end up with something like the following:
+
+```
+CONTAINER ID        IMAGE                         COMMAND             CREATED             STATUS              PORTS                                                                                                                                                                       NAMES
+acbce542bd1f        graphiteapp/graphite-statsd   "/entrypoint"       4 seconds ago       Up 4 seconds        0.0.0.0:80->80/tcp, 0.0.0.0:2003-2004->2003-2004/tcp, 2013-2014/tcp, 8080/tcp, 0.0.0.0:2023-2024->2023-2024/tcp, 0.0.0.0:8126->8126/tcp, 8125/tcp, 0.0.0.0:8125->8125/udp   graphite
+ed8a7fcdbfc3        grafana/grafana               "/run.sh"           2 minutes ago       Up 2 minutes        0.0.0.0:3000->3000/tcp                                                                                                                                                      grafana
+```
+
+Now open up a browser window and get the two web interfaces loaded up:
+
+Graphite: http://localhost:80
+
+Grafana: http://localhost:3000
+
+Grafana is where we're going to do most of our work now.  Let's set up the data source first.  From the home page in Grafana click "Add data source".
+Then select "Graphite" from the list of sources.
+
+Give an appropriate name (selenium-pom-framework for example).  The following fields and values follow:
+
+```
+URL: http://graphite:80
+```
+
+Click `Save & Test`.  Everything should go green, and Graphite and Grafana should now be connected.  Now you can run tests and all of the metrics will be put out to Graphite and you can create dashboards to see
+where your tests are going slowly.
+
+There's a sample dashboard in this repo in `grafana-dashboard-examples/sample-dashboard.json` that you can import to get started.
+
+If you're deploying this else where (i.e. not locally) you can configure connection details in the configuration object (see below).
+
+```
+"metrics": {
+    "jmx": {
+        "enabled": false
+    },
+    "graphite": {
+        "enabled": true,
+        "host": "http://localhost:2003"
+    }
+}
+```
 
 ## References/thanks
 We're using repositories from the guys below to provide some of our features:
