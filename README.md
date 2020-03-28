@@ -8,7 +8,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-**We've released version 1.0.0!**
+**We've released version 1.0.0! And we've moved to Maven Central hosting**
 
 This toolkit is really a culmination of 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure checks for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of your automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
 
@@ -26,7 +26,6 @@ You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 Coming soon:
 - SauceLabs and BrowserStack configuration (issues #2 and #3).
 - Instrumentation of the framework components to help visualise slow or under performing checks over time (issue #44).
-- Published artefacts to Maven Central (so you can get the framework without a GitHub membership) (issue #27).
 - Expand documentation and tutorials (issue #45)
 - And lots more marked in the issues list: https://github.com/digital-delivery-academy/selenium-pom-framework/issues
 
@@ -47,7 +46,7 @@ submit an issue ticket.
 ## Documentation
 
 - A full reference guide is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
-- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-1.0.1
+- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-1.0.7
 
 ## Example checks/project
 
@@ -55,64 +54,19 @@ See https://github.com/digital-delivery-academy/selenium-pom-example repository 
 
 ## Usage
 
-Put this in your POM.xml.
+This project is published to Maven Central, so you just need to put this in your POM.xml.
 
 ```
 <dependency>
   <groupId>uk.co.evoco</groupId>
   <artifactId>selenium-pom-framework</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.7</version>
 </dependency>
 ```
 
-You need to tell Maven how to access GitHub packages.  So you need to edit your `settings.xml`.
-
-Typically you can do this by looking in `~/.m2/settings.xml`.  You will need a GitHub Personal Access Token, which
-you can do here (once you're logged in): https://github.com/settings/tokens
-
-An example configuration (`settings.xml`) would be:
-
-```
-<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
-
-    <activeProfiles>
-        <activeProfile>github</activeProfile>
-    </activeProfiles>
-
-    <profiles>
-        <profile>
-            <id>github</id>
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>https://repo1.maven.org/maven2</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/digital-delivery-academy/selenium-pom-framework</url>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
-    <servers>
-        <server>
-            <id>github</id>
-            <username>GITHUB_USERNAME</username>
-            <password>GITHUB_PERSONAL_ACCESS_TOKEN_FOR_PACKAGES</password>
-        </server>
-    </servers>
-</settings>
-```
+**Note:** we used to publish releases to GitHub packages (which you can see if you click Packages above).  This was restrictive because people HAD to have a GitHub account to use it, and had to mess around with their M2 settings.  Maven Central was the right answer to this problem.
+- You can see historic releases in the Packages tab above
+- You can see all new releases on Maven Central here: https://search.maven.org/artifact/uk.co.evoco/selenium-pom-framework (we'll keep the Releases tab updated on this page, and we'll keep the latest version details in the README)
 
 ## References/thanks
 We're using repositories from the guys below to provide some of our features:
