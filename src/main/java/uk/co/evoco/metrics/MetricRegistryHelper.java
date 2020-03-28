@@ -13,23 +13,23 @@ import java.util.concurrent.TimeUnit;
 public class MetricRegistryHelper {
 
     private static MetricRegistryHelper metricRegistryHelper;
-    private static MetricRegistry metricRegistry;
-    private static JmxReporter jmxReporter;
-    private static GraphiteReporter graphiteReporter;
-    private static final Graphite graphite = new Graphite(new InetSocketAddress(
-            TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().getHost(),
-            TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().getPort()));
+    private static MetricRegistry metricRegistry = new MetricRegistry();
+    private JmxReporter jmxReporter;
+    private GraphiteReporter graphiteReporter;
+    private Graphite graphite;
 
     /**
      *
      */
     private MetricRegistryHelper() {
-        this.metricRegistry = new MetricRegistry();
         if(TestConfigHelper.get().getMetricsConfig().getJmxConfig().isEnabled()) {
             jmxReporter = JmxReporter.forRegistry(metricRegistry).build();
             jmxReporter.start();
         }
         if(TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().isEnabled()) {
+            graphite = new Graphite(new InetSocketAddress(
+                    TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().getHost(),
+                    TestConfigHelper.get().getMetricsConfig().getGraphiteConfig().getPort()));
             graphiteReporter = GraphiteReporter.forRegistry(metricRegistry)
                     .prefixedWith("selenium-pom-framework")
                     .convertRatesTo(TimeUnit.SECONDS)
