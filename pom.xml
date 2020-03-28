@@ -17,7 +17,7 @@
     </licenses>
 
     <description>
-        A simple Selenium framework offering externalised configuration, good selection of libraries for supporting
+        A simple Selenium framework offering externalised configuration, a good selection of libraries for supporting
         test data, simple WebDriver browser binary resolution and an opinionated approach for WebDriver test design.
     </description>
 
