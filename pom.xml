@@ -1,37 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.8-SNAPSHOT</version>
 
-    <contributors>
-        <contributor>
-            <name>Steve Walton</name>
-            <email>steve.walton@evoco.co.uk</email>
-            <organization>Evoco</organization>
-            <organizationUrl>https://www.evoco.co.uk</organizationUrl>
-        </contributor>
-    </contributors>
+    <name>Selenium POM Framework</name>
+    <url>https://www.github.com/digital-delivery-academy/selenium-pom-framework</url>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/digital-delivery-academy/selenium-pom-framework/blob/master/LICENSE</url>
+        </license>
+    </licenses>
 
     <description>
         A simple Selenium framework offering externalised configuration, good selection of libraries for supporting
         test data, simple WebDriver browser binary resolution and an opinionated approach for WebDriver test design.
     </description>
 
+    <developers>
+        <developer>
+            <name>Steve Walton</name>
+            <url>https://www.evoco.co.uk</url>
+            <organizationUrl>https://www.evoco.co.uk</organizationUrl>
+            <organization>Evoco Digital Services</organization>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Steve Walton</name>
+            <email>steve.walton@evoco.co.uk</email>
+            <organization>Evoco Digital Services</organization>
+            <organizationUrl>https://www.evoco.co.uk</organizationUrl>
+        </contributor>
+        <contributor>
+            <name>Bala Matam</name>
+            <organization>DWP Digital Group</organization>
+            <organizationUrl>https://dwpdigital.blog.gov.uk/</organizationUrl>
+        </contributor>
+        <contributor>
+            <name>Augustine Kwanashie</name>
+            <organization>BPDTS Ltd</organization>
+            <organizationUrl>https://www.gov.uk/government/organisations/bpdts-ltd/about</organizationUrl>
+        </contributor>
+    </contributors>
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/digital-delivery-academy/selenium-pom-framework/issues</url>
     </issueManagement>
 
+    <scm>
+        <connection>scm:git:git://github.com/digital-delivery-academy/selenium-pom-framework.git</connection>
+        <developerConnection>scm:git:git@github.com:digital-delivery-academy/selenium-pom-framework.git</developerConnection>
+        <url>https://github.com/digital-delivery-academy/selenium-pom-framework</url>
+    </scm>
+
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>github</id>
-            <name>GitHub digital-delivery-academy Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/digital-delivery-academy/selenium-pom-framework</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/
+            </url>
         </repository>
     </distributionManagement>
 
@@ -66,6 +103,7 @@
         <javadoc.maven.plugin.version>3.1.1</javadoc.maven.plugin.version>
         <joda.time.version>2.7</joda.time.version>
         <restassured.version>4.2.0</restassured.version>
+        <dropwizard.metrics.version>4.1.2</dropwizard.metrics.version>
     </properties>
 
     <dependencies>
@@ -78,6 +116,21 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdriver.manager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>${dropwizard.metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-jmx</artifactId>
+            <version>${dropwizard.metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-graphite</artifactId>
+            <version>${dropwizard.metrics.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -206,6 +259,95 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${javadoc.maven.plugin.version}</version>
             </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <arguments>-Dgpg.passphrase=${env.GPG_PASSPHRASE} -Dmaven.test.skip=true</arguments>
+                    <checkModificationExcludes>
+                        <checkModificationExclude>pom.xml</checkModificationExclude>
+                    </checkModificationExcludes>
+                    <pushChanges>true</pushChanges>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

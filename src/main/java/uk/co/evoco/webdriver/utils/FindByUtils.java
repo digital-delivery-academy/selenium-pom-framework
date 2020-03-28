@@ -1,5 +1,6 @@
 package uk.co.evoco.webdriver.utils;
 
+import com.codahale.metrics.Timer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -7,8 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ByIdOrName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.co.evoco.metrics.MetricRegistryHelper;
 
 import java.util.List;
+
+import static com.codahale.metrics.MetricRegistry.name;
 
 /**
  * Utilities class providing support methods for locating elements in more dynamic ways than the standard
@@ -17,6 +21,8 @@ import java.util.List;
 public final class FindByUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(FindByUtils.class);
+    private static final Timer multipleLocatorMatchGetDisplayedAction = MetricRegistryHelper.get().timer(name("FindByUtils.multipleLocatorMatchGetDisplayedAction"));
+    private static final Timer byIdOrNameAction = MetricRegistryHelper.get().timer(name("FindByUtils.byIdOrName"));
 
     /**
      * Finds the first element that is displayed with given locator.
@@ -28,14 +34,16 @@ public final class FindByUtils {
      */
     public static WebElement multipleLocatorMatchGetDisplayed(WebDriver webDriver, By locator)
             throws WebDriverException {
-        List<WebElement> elements = webDriver.findElements(locator);
-        logger.info("Found {} elements with locator: {}", elements.size(), locator.toString());
-        for(WebElement element : elements) {
-            if(element.isDisplayed()) {
-                return element;
+        try(final Timer.Context ignored = multipleLocatorMatchGetDisplayedAction.time()) {
+            List<WebElement> elements = webDriver.findElements(locator);
+            logger.info("Found {} elements with locator: {}", elements.size(), locator.toString());
+            for (WebElement element : elements) {
+                if (element.isDisplayed()) {
+                    return element;
+                }
             }
+            throw new WebDriverException("No elements in the list were displayed");
         }
-        throw new WebDriverException("No elements in the list were displayed");
     }
 
     /**
@@ -45,7 +53,9 @@ public final class FindByUtils {
      * @return active WebElement, already located
      */
     public static WebElement byIdOrName(WebDriver webDriver, String idOrName) {
-        return webDriver.findElement(new ByIdOrName(idOrName));
+        try(final Timer.Context ignored = byIdOrNameAction.time()) {
+            return webDriver.findElement(new ByIdOrName(idOrName));
+        }
     }
 }
 
