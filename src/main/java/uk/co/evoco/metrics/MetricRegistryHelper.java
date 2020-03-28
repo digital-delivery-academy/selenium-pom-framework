@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 public class MetricRegistryHelper {
 
+    private static final MetricRegistry metricRegistry = new MetricRegistry();
     private static MetricRegistryHelper metricRegistryHelper;
-    private static MetricRegistry metricRegistry = new MetricRegistry();
     private JmxReporter jmxReporter;
     private GraphiteReporter graphiteReporter;
     private Graphite graphite;
