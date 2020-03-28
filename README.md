@@ -46,7 +46,7 @@ submit an issue ticket.
 ## Documentation
 
 - A full reference guide is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
-- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-1.0.7
+- Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-1.0.8
 
 ## Example checks/project
 
@@ -60,7 +60,7 @@ This project is published to Maven Central, so you just need to put this in your
 <dependency>
   <groupId>uk.co.evoco</groupId>
   <artifactId>selenium-pom-framework</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
 </dependency>
 ```
 
