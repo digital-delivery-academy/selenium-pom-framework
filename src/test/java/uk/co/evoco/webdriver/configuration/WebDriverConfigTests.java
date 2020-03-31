@@ -98,7 +98,6 @@ public class WebDriverConfigTests {
                 ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-tolerant-action-wait-time.json")
                 , WebDriverConfig.class);
         assertThat(webDriverConfig.getTolerantActionWaitTimeoutInSeconds(), is(5));
-
     }
 
     @Test
@@ -107,6 +106,5 @@ public class WebDriverConfigTests {
                 ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-out-tolerant-action-wait-time.json")
                 , WebDriverConfig.class);
         assertThat(webDriverConfig.getTolerantActionWaitTimeoutInSeconds(), is(30));
-
     }
 }

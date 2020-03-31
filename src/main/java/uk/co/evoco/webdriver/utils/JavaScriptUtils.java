@@ -1,13 +1,17 @@
 package uk.co.evoco.webdriver.utils;
 
+import com.codahale.metrics.Timer;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import uk.co.evoco.metrics.MetricRegistryHelper;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+
+import static com.codahale.metrics.MetricRegistry.name;
 
 /**
  * Utilities class providing support methods for executing JavaScript
@@ -16,14 +20,19 @@ import java.nio.charset.Charset;
  */
 public final class JavaScriptUtils {
 
+    private static final Timer executeStringAction = MetricRegistryHelper.get().timer(name("JavaScriptUtils.executeString"));
+    private static final Timer executeFileAction = MetricRegistryHelper.get().timer(name("JavaScriptUtils.executeFile"));
+
     /**
      * Executes a given JavaScript script
      * @param webDriver active WebDriver instance
      * @param javascript String representing javascript expression
      */
     public static void executeString(WebDriver webDriver, String javascript) {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
-        javascriptExecutor.executeScript(javascript);
+        try(final Timer.Context ignored = executeStringAction.time()) {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
+            javascriptExecutor.executeScript(javascript);
+        }
     }
 
     /**
@@ -33,8 +42,10 @@ public final class JavaScriptUtils {
      * @param javascript String representing javascript expression
      */
     public static void executeString(WebDriver webDriver, WebElement webElement, String javascript) {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
-        javascriptExecutor.executeScript(javascript, webElement);
+        try(final Timer.Context ignored = executeStringAction.time()) {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
+            javascriptExecutor.executeScript(javascript, webElement);
+        }
     }
 
     /**
@@ -47,10 +58,12 @@ public final class JavaScriptUtils {
      * @throws IOException if the file cannot be found
      */
     public static void executeFile(WebDriver webDriver, String filename) throws IOException {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
-        String javascript = FileUtils.readFileToString(
-                new File(ClassLoader.getSystemResource(filename).getFile()),
-                Charset.forName("UTF-8"));
-        javascriptExecutor.executeScript(javascript);
+        try(final Timer.Context ignored = executeFileAction.time()) {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
+            String javascript = FileUtils.readFileToString(
+                    new File(ClassLoader.getSystemResource(filename).getFile()),
+                    Charset.forName("UTF-8"));
+            javascriptExecutor.executeScript(javascript);
+        }
     }
 }

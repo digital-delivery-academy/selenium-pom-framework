@@ -49,3 +49,4 @@ bin
 
 script/dist
 logs/*
+src/main/resources/bank-holidays.json
