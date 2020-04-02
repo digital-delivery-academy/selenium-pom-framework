@@ -54,7 +54,7 @@ See https://github.com/digital-delivery-academy/selenium-pom-example repository 
 
 ## Usage
 
-This project is published to Maven Central, so you just need to put this in your POM.xml.
+This project is published to Maven Central, so you just need to put this in your `pom.xml`.
 
 ```
 <dependency>

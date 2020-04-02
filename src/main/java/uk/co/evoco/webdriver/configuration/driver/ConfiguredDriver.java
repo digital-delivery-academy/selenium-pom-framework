@@ -33,21 +33,17 @@ public interface ConfiguredDriver {
             default:
                 throw new WebDriverException("Must set runType to either LOCAL or GRID in configuration file");
         }
-        return configureEventFiringWebDriver(
-                webDriver,
-                TestConfigHelper.get().getWebDriverWaitTimeout(),
-                screenshotPath);
+        return configureEventFiringWebDriver(webDriver, screenshotPath);
     }
 
     /**
      *
      * @param webDriver active WebDriver instance
-     * @param timeout timeout for WebDriverWaits
      * @param screenshotDirectory path to store screenshots
      * @return configured options object for target browser driver
      */
     default EventFiringWebDriver configureEventFiringWebDriver(
-            WebDriver webDriver, long timeout, File screenshotDirectory) {
+            WebDriver webDriver, File screenshotDirectory) {
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(webDriver);
         WebDriverListener eventListener = new WebDriverListener();
         eventListener.setScreenshotDirectory(screenshotDirectory);
