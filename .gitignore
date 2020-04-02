@@ -43,9 +43,10 @@ bin
 # Other
 *.log
 *.swp
-*.bak
+*.ba
 
 *.csv
 
 script/dist
 logs/*
+src
