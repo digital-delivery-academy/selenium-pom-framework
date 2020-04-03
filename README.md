@@ -23,10 +23,10 @@ You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - The framework is instrumented to measure execution time of internals, and these metrics are available via JMX or Graphite.
 - Our framework is unit and integration checked as well as monitored for code quality; we treat this as a production code base, not a second class citizen.
 - We have a (developing) open road map in GitHub Issues (click the Issues tab to see what we have so far)
+- We have a fuller set of documentation here: https://digital-delivery-academy.github.io/selenium-pom-framework/index.html
 
 Coming soon:
 - SauceLabs and BrowserStack configuration (issues #2 and #3).
-- Expand documentation and tutorials (issue #45)
 - And lots more marked in the issues list: https://github.com/digital-delivery-academy/selenium-pom-framework/issues
 
 It really is a one stop shop for getting up and running with a robust toolkit for building Selenium checks, without the massive investment that many business make in hand rolling their own.
@@ -45,7 +45,7 @@ submit an issue ticket.
 
 ## Documentation
 
-- A full reference guide is here: https://github.com/digital-delivery-academy/selenium-pom-framework/wiki
+- A full reference guide is here: https://digital-delivery-academy.github.io/selenium-pom-framework/index.html
 - Technical reference documentation (javadocs) are here: https://digital-delivery-academy.github.io/selenium-pom-framework/javadoc-1.0.9
 
 ## Example checks/project
