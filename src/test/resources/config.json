@@ -1,9 +1,9 @@
 {
-  "browser": "chrome",
+  "browser": "firefox",
   "baseUrl": "https://www.google.com",
   "timeout": "30",
   "headless": true,
-  "runType": "LOCAL",
+  "runType": "GRID",
   "testConfig": {
     "sample": "sample text"
   },
@@ -30,7 +30,7 @@
       "enabled": false
     },
     "graphite": {
-      "enabled": true,
+      "enabled": false,
       "host": "localhost",
       "port": 2003
     }

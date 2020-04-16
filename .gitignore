@@ -50,3 +50,5 @@ bin
 script/dist
 logs/*
 src/main/resources/bank-holidays.json
+node_modules
+dist

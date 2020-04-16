@@ -3,7 +3,7 @@ package uk.co.evoco.webdriver.configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JmxConfig {
-    private boolean isEnabled;
+    private boolean isEnabled = false;
 
     public boolean isEnabled() {
         return isEnabled;
