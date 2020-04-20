@@ -4,6 +4,7 @@
   "timeout": "30",
   "headless": true,
   "runType": "LOCAL",
+  "takeScreenshotOnError": true,
   "testConfig": {
     "sample": "sample text"
   },

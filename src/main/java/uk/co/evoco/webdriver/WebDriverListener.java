@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.co.evoco.webdriver.configuration.RunType;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.File;
@@ -248,7 +247,7 @@ public class WebDriverListener implements WebDriverEventListener {
      */
     public void onException(Throwable throwable, WebDriver webDriver) {
         try {
-            if(TestConfigHelper.get().getRunType().equals(RunType.LOCAL) ) {
+            if(TestConfigHelper.get().isTakeScreenshotOnError()) {
                 File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
                 String filename = new StringBuilder(UUID.randomUUID().toString())
                         .append("-FAILED-")
