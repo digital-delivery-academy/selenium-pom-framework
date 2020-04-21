@@ -25,6 +25,7 @@ public class WebDriverConfig {
     private Map<String, ObjectNode> browserPreferences;
     private TolerantActionExceptions tolerantActionExceptions;
     private MetricsConfig metricsConfig;
+    private boolean takeScreenshotOnError;
 
     /**
      *
@@ -219,5 +220,18 @@ public class WebDriverConfig {
 
     public MetricsConfig getMetricsConfig() {
         return metricsConfig;
+    }
+
+    /**
+     *
+     * @return takeScreenshotOnErrors boolean configuring for taking screenshots on Errors
+     */
+    public boolean isTakeScreenshotOnError() {
+        return takeScreenshotOnError;
+    }
+
+    @JsonProperty("takeScreenshotOnError")
+    public void setTakeScreenshotOnError(boolean takeScreenshotOnError) {
+        this.takeScreenshotOnError = takeScreenshotOnError;
     }
 }

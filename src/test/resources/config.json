@@ -3,7 +3,8 @@
   "baseUrl": "https://www.google.com",
   "timeout": "30",
   "headless": true,
-  "runType": "GRID",
+  "runType": "LOCAL",
+  "takeScreenshotOnError": true,
   "testConfig": {
     "sample": "sample text"
   },

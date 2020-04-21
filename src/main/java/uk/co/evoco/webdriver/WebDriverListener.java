@@ -246,15 +246,17 @@ public class WebDriverListener implements WebDriverEventListener {
      * @param webDriver active WebDriver instance
      */
     public void onException(Throwable throwable, WebDriver webDriver) {
-        File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
         try {
-            String filename = new StringBuilder(UUID.randomUUID().toString())
-                    .append("-FAILED-")
-                    .append(throwable.getClass().getName())
-                    .append(".jpeg")
-                    .toString();
+            if(TestConfigHelper.get().isTakeScreenshotOnError()) {
+                File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+                String filename = new StringBuilder(UUID.randomUUID().toString())
+                        .append("-FAILED-")
+                        .append(throwable.getClass().getName())
+                        .append(".jpeg")
+                        .toString();
 
-            FileUtils.copyFile(scrFile, new File(screenshotDirectory.getPath() + "/" + filename));
+                FileUtils.copyFile(scrFile, new File(screenshotDirectory.getPath() + "/" + filename));
+            }
         } catch (Exception e) {
             logger.error("Unable to Save to directory: {}", screenshotDirectory.getPath());
         }
