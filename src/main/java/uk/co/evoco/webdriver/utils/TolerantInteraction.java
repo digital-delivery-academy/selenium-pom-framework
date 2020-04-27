@@ -170,7 +170,7 @@ public class TolerantInteraction {
     }
 
     private void interact(WebElement webElement) {
-        webElement.click();
+        webElement.isDisplayed();
     }
 
     private void interact(Select selectBox, String value, SelectBoxInteractionType selectBoxInteractionType) {

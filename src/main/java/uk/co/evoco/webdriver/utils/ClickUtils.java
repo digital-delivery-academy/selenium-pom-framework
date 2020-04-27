@@ -24,14 +24,14 @@ public final class ClickUtils extends TolerantInteraction {
      */
     public static void tolerantClick(WebElement webElement, int timeout) throws Throwable {
         try(final Timer.Context ignored = tolerantClickAction.time()) {
-            new ClickUtils().tolerantInteraction(webElement, Optional.empty(), timeout);
+            new ClickUtils().tolerantInteraction(webElement, Optional.empty(), timeout).click();
         }
     }
 
     public static void tolerantClick(WebElement webElement) throws Throwable {
         try(final Timer.Context ignored = tolerantClickAction.time()) {
             new ClickUtils().tolerantInteraction(webElement, Optional.empty(),
-                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
+                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds()).click();
         }
     }
 }
