@@ -22,8 +22,7 @@ public class GetAttributeUtils extends TolerantInteraction {
      */
     public static String tolerantGetAttribute(WebElement webElement, String attribute, int timeout) throws Throwable {
         try (final Timer.Context ignored = tolerantGetAttributeAction.time()) {
-            return new GetAttributeUtils().tolerantInteraction(webElement, Optional.empty(), timeout)
-                    .getAttribute(attribute);
+            return new GetAttributeUtils().tolerantInteractionToGetAttribute(webElement,attribute,timeout);
         }
     }
 
@@ -36,8 +35,8 @@ public class GetAttributeUtils extends TolerantInteraction {
      */
     public static String tolerantGetAttribute(WebElement webElement, String attribute) throws Throwable {
         try (final Timer.Context ignored = tolerantGetAttributeAction.time()) {
-            return new GetAttributeUtils().tolerantInteraction(webElement, Optional.empty(),
-                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds()).getAttribute(attribute);
+            return new GetAttributeUtils().tolerantInteractionToGetAttribute(webElement,attribute,
+                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }
     }
 }

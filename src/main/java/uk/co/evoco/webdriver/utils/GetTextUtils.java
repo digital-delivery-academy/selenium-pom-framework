@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import uk.co.evoco.metrics.MetricRegistryHelper;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
-import java.util.Optional;
-
 import static com.codahale.metrics.MetricRegistry.name;
 
 public class GetTextUtils extends TolerantInteraction {
@@ -21,7 +19,7 @@ public class GetTextUtils extends TolerantInteraction {
      */
     public static String tolerantGetText(WebElement webElement, int timeout) throws Throwable {
         try (final Timer.Context ignored = tolerantGetTextAction.time()) {
-            return new GetTextUtils().tolerantInteraction(webElement, Optional.empty(), timeout).getText();
+            return new GetTextUtils().tolerantInteractionToGetText(webElement,timeout);
         }
     }
 
@@ -34,8 +32,8 @@ public class GetTextUtils extends TolerantInteraction {
 
     public static String tolerantGetText(WebElement webElement) throws Throwable {
         try (final Timer.Context ignored = tolerantGetTextAction.time()) {
-            return new GetTextUtils().tolerantInteraction(webElement, Optional.empty(),
-                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds()).getText();
+            return new GetTextUtils().tolerantInteractionToGetText(webElement,
+                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }
     }
 }
