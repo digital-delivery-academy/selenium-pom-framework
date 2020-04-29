@@ -165,12 +165,149 @@ public class TolerantInteraction {
         }
     }
 
+    /**
+     *
+     * @param webElement locator we will use to re-lookup the element on retry
+     * @param attribute WebElement attribute
+     * @param timeoutInSeconds time to continue trying for
+     * @return attribute property value
+     * @throws Throwable the last exception to be thrown
+     */
+    public String tolerantInteractionToGetAttribute(
+            WebElement webElement, String attribute, int timeoutInSeconds)
+            throws Throwable {
+        end = clock.instant().plusSeconds(timeoutInSeconds);
+        while (true) {
+            try {
+                if (Boolean.TRUE.equals(webElement.isEnabled())) {
+                    return interactToGetAttribute(webElement, attribute);
+                }
+            } catch (Throwable e) {
+                lastException = propagateIfNotIgnored(e);
+            }
+            if (end.isBefore(clock.instant())) {
+                if (null == lastException) {
+                    logger.error(
+                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
+                            timeoutInSeconds);
+                    lastException = new TimeoutException();
+                } else {
+                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
+                            lastException.getCause(), timeoutInSeconds);
+                }
+                throw lastException;
+            }
+
+            try {
+                sleeper.sleep(intervalDuration);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new WebDriverException(e);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param webElement locator we will use to re-lookup the element on retry
+     * @param timeoutInSeconds time to continue trying for
+     * @return text value of the WebElement
+     * @throws Throwable the last exception to be thrown
+     */
+    public String tolerantInteractionToGetText(
+            WebElement webElement, int timeoutInSeconds)
+            throws Throwable {
+        end = clock.instant().plusSeconds(timeoutInSeconds);
+        while (true) {
+            try {
+                if (Boolean.TRUE.equals(webElement.isEnabled())) {
+                    return interactToGetText(webElement);
+                }
+            } catch (Throwable e) {
+                lastException = propagateIfNotIgnored(e);
+            }
+            if (end.isBefore(clock.instant())) {
+                if (null == lastException) {
+                    logger.error(
+                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
+                            timeoutInSeconds);
+                    lastException = new TimeoutException();
+                } else {
+                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
+                            lastException.getCause(), timeoutInSeconds);
+                }
+                throw lastException;
+            }
+
+            try {
+                sleeper.sleep(intervalDuration);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new WebDriverException(e);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param webElement locator we will use to re-lookup the element on retry
+     * @param timeoutInSeconds time to continue trying for
+     * @return WebElement to allow fluent method stringed calls
+     * @throws Throwable the last exception to be thrown
+     */
+    public WebElement tolerantInteractionToClear(
+            WebElement webElement, int timeoutInSeconds)
+            throws Throwable {
+        end = clock.instant().plusSeconds(timeoutInSeconds);
+        while (true) {
+            try {
+                if (Boolean.TRUE.equals(webElement.isEnabled())) {
+                    interactToClearField(webElement);
+                    return webElement;
+                }
+            } catch (Throwable e) {
+                lastException = propagateIfNotIgnored(e);
+            }
+            if (end.isBefore(clock.instant())) {
+                if (null == lastException) {
+                    logger.error(
+                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
+                            timeoutInSeconds);
+                    lastException = new TimeoutException();
+                } else {
+                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
+                            lastException.getCause(), timeoutInSeconds);
+                }
+                throw lastException;
+            }
+
+            try {
+                sleeper.sleep(intervalDuration);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new WebDriverException(e);
+            }
+        }
+    }
+
     private void interact(WebElement webElement, String textToType) {
         webElement.sendKeys(textToType);
     }
 
     private void interact(WebElement webElement) {
         webElement.click();
+    }
+
+    private String interactToGetText(WebElement webElement) {
+        return webElement.getText();
+    }
+
+    private String interactToGetAttribute(WebElement webElement, String attribute) {
+        return webElement.getAttribute(attribute);
+    }
+
+    private void interactToClearField(WebElement webElement) {
+        webElement.clear();
     }
 
     private void interact(Select selectBox, String value, SelectBoxInteractionType selectBoxInteractionType) {
