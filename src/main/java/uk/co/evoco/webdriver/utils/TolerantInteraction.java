@@ -55,7 +55,7 @@ public class TolerantInteraction {
                     return webElement;
                 }
             } catch (Throwable e) {
-                lastException = tolerantExceptionHandler.handle(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
             if (end.isBefore(clock.instant())) {
@@ -99,7 +99,7 @@ public class TolerantInteraction {
                     }
                 }
             } catch (Throwable e) {
-                lastException = tolerantExceptionHandler.handle(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
             if (end.isBefore(clock.instant())) {
@@ -144,7 +144,7 @@ public class TolerantInteraction {
                     return webElement;
                 }
             } catch(Throwable e) {
-                lastException = tolerantExceptionHandler.handle(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if(end.isBefore(clock.instant())) {
                 if(null == lastException) {
@@ -186,7 +186,7 @@ public class TolerantInteraction {
                     return interactToGetAttribute(webElement, attribute);
                 }
             } catch (Throwable e) {
-                lastException = tolerantExceptionHandler.handle(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if (end.isBefore(clock.instant())) {
                 if (null == lastException) {
@@ -227,7 +227,7 @@ public class TolerantInteraction {
                     return interactToGetText(webElement);
                 }
             } catch (Throwable e) {
-                lastException = tolerantExceptionHandler.handle(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if (end.isBefore(clock.instant())) {
                 if (null == lastException) {
@@ -269,7 +269,7 @@ public class TolerantInteraction {
                     return webElement;
                 }
             } catch (Throwable e) {
-                lastException = tolerantExceptionHandler.handle(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if (end.isBefore(clock.instant())) {
                 if (null == lastException) {

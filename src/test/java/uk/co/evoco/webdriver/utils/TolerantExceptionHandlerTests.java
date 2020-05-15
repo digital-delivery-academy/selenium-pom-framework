@@ -16,7 +16,7 @@ public class TolerantExceptionHandlerTests {
     void testThrowsInputExceptionIfNoTolerantExceptionsAreListed() {
         TolerantExceptionHandler handler = new TolerantExceptionHandler(new ArrayList<>());
         NumberFormatException inputException = new NumberFormatException();
-        assertThrows(NumberFormatException.class, () -> handler.handle(inputException));
+        assertThrows(NumberFormatException.class, () -> handler.propagateIfNotIgnored(inputException));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class TolerantExceptionHandlerTests {
         TolerantExceptionHandler handler = new TolerantExceptionHandler(tolerantExceptions);
 
         NumberFormatException inputException = new NumberFormatException();
-        assertThrows(NumberFormatException.class, () -> handler.handle(inputException));
+        assertThrows(NumberFormatException.class, () -> handler.propagateIfNotIgnored(inputException));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class TolerantExceptionHandlerTests {
         TolerantExceptionHandler handler = new TolerantExceptionHandler(tolerantExceptions);
 
         ArithmeticException inputException = new ArithmeticException();
-        assertEquals(inputException, handler.handle(inputException));
+        assertEquals(inputException, handler.propagateIfNotIgnored(inputException));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class TolerantExceptionHandlerTests {
         TolerantExceptionHandler handler = new TolerantExceptionHandler(tolerantExceptions);
 
         ArithmeticException inputException = new ArithmeticException();
-        assertEquals(inputException, handler.handle(inputException));
+        assertEquals(inputException, handler.propagateIfNotIgnored(inputException));
     }
 
     @Test
@@ -64,6 +64,6 @@ public class TolerantExceptionHandlerTests {
         TolerantExceptionHandler handler = new TolerantExceptionHandler(tolerantExceptions);
 
         ArithmeticException inputException = new ArithmeticException();
-        assertEquals(inputException, handler.handle(inputException));
+        assertEquals(inputException, handler.propagateIfNotIgnored(inputException));
     }
 }

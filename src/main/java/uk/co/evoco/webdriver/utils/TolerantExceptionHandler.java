@@ -28,7 +28,7 @@ public class TolerantExceptionHandler {
      * @return the input exception if is on the tolerant exceptions list
      * @throws Throwable the input exception if it's not on the tolerant exceptions list
      */
-    public Throwable handle(Throwable throwable) throws Throwable {
+    public Throwable propagateIfNotIgnored(Throwable throwable) throws Throwable {
         for (String tolerantExceptionClassName : tolerantExceptions) {
             if (isInstanceOf(tolerantExceptionClassName, throwable)) {
                 logger.info("Exception {} will be ignored", tolerantExceptionClassName);
