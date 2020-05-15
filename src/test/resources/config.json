@@ -21,9 +21,9 @@
   "tolerantActionExceptions": {
     "waitTimeoutInSeconds": 5,
     "exceptionsToHandle": [
-      "StaleElementReferenceException",
-      "ElementClickInterceptedException",
-      "ElementNotInteractableException"
+      "org.openqa.selenium.ElementClickInterceptedException",
+      "org.openqa.selenium.ElementNotInteractableException",
+      "org.openqa.selenium.StaleElementReferenceException"
     ]
   },
   "metrics": {
