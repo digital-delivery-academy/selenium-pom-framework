@@ -14,9 +14,6 @@ import org.slf4j.LoggerFactory;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -28,7 +25,6 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
 
     private static final Logger logger = LoggerFactory.getLogger(WebDriverListener.class);
     private File screenshotDirectory;
-    private Collection<Class<? extends Throwable>> exceptionsToIgnore = getExceptionsToIgnore();
 
     /**
      * Sets the screenshot target directory that will be used for screenshots generated inside onException()
@@ -48,9 +44,8 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
      */
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver,
-                TestConfigHelper.get().getWebDriverWaitTimeout())
-                .ignoreAll(exceptionsToIgnore)
-                .until(ExpectedConditions.presenceOfElementLocated(by));
+                TestConfigHelper.get().getWebDriverWaitTimeout()).until(
+                        ExpectedConditions.presenceOfElementLocated(by));
     }
 
     /**
@@ -64,9 +59,8 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
      */
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver,
-                TestConfigHelper.get().getWebDriverWaitTimeout())
-                .ignoreAll(exceptionsToIgnore)
-                .until(ExpectedConditions.elementToBeClickable(webElement));
+                TestConfigHelper.get().getWebDriverWaitTimeout()).until(
+                        ExpectedConditions.elementToBeClickable(webElement));
     }
 
     /**
@@ -89,16 +83,5 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
         } catch (Exception e) {
             logger.error("Unable to Save to directory: {}", screenshotDirectory.getPath());
         }
-    }
-
-    private Collection<Class<? extends Throwable>> getExceptionsToIgnore() {
-        List<Class<? extends Throwable>> exceptionsToHandle = new ArrayList<>();
-        for(String exceptionName: TestConfigHelper.get().getTolerantActionExceptions().getExceptionsToHandle()) {
-            try {
-                exceptionsToHandle.add((Class<? extends Throwable>) Class.forName(exceptionName));
-            }
-            catch (ClassNotFoundException | ClassCastException ex) {}
-        }
-        return exceptionsToHandle;
     }
 }
