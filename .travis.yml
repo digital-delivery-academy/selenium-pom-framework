@@ -21,6 +21,8 @@ before_install:
 addons:
   firefox: latest
 install:
+- echo $JAVA_HOME
+- ls -la /usr/lib/jvm/
 - mvn clean install -Dmaven.javadoc.skip=true -B -V
 - bash scripts/get-bank-holiday-data-source-and-store-in-resources.sh
 after_success:
