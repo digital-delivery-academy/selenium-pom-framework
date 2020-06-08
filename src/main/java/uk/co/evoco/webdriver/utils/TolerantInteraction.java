@@ -24,6 +24,9 @@ public class TolerantInteraction {
     private final Sleeper sleeper = Sleeper.SYSTEM_SLEEPER;
     private final Duration intervalDuration = Duration.ofMillis(500);
     private Throwable lastException = null;
+    private TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(
+            TestConfigHelper.get().getTolerantActionExceptions().getExceptionsToHandle(),
+            logger);
 
     /**
      *
@@ -52,7 +55,7 @@ public class TolerantInteraction {
                     return webElement;
                 }
             } catch (Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
             if (end.isBefore(clock.instant())) {
@@ -96,7 +99,7 @@ public class TolerantInteraction {
                     }
                 }
             } catch (Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
             if (end.isBefore(clock.instant())) {
@@ -141,7 +144,7 @@ public class TolerantInteraction {
                     return webElement;
                 }
             } catch(Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if(end.isBefore(clock.instant())) {
                 if(null == lastException) {
@@ -183,7 +186,7 @@ public class TolerantInteraction {
                     return interactToGetAttribute(webElement, attribute);
                 }
             } catch (Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if (end.isBefore(clock.instant())) {
                 if (null == lastException) {
@@ -224,7 +227,7 @@ public class TolerantInteraction {
                     return interactToGetText(webElement);
                 }
             } catch (Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if (end.isBefore(clock.instant())) {
                 if (null == lastException) {
@@ -266,7 +269,7 @@ public class TolerantInteraction {
                     return webElement;
                 }
             } catch (Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
             if (end.isBefore(clock.instant())) {
                 if (null == lastException) {
@@ -326,17 +329,5 @@ public class TolerantInteraction {
     private void interact(Select selectBox, int index) {
         int normalisedIndex = index - 1;
         selectBox.selectByIndex(normalisedIndex);
-    }
-
-    private Throwable propagateIfNotIgnored(Throwable e) throws Throwable {
-        for (String ignoredException : TestConfigHelper.get()
-                .getTolerantActionExceptions().getExceptionsToHandle()) {
-            if (Class.forName(ignoredException).isInstance(e)) {
-                logger.info("Exception {} will be ignored", ignoredException);
-            } else {
-                return e;
-            }
-        }
-        return e;
     }
 }
