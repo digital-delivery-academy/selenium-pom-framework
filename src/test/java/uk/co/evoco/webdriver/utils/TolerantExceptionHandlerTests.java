@@ -13,14 +13,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TolerantExceptionHandlerTests {
 
     @Test
-    void testThrowsInputExceptionIfNoTolerantExceptionsAreListed() {
+    public void testThrowsInputExceptionIfNoTolerantExceptionsAreListed() {
         TolerantExceptionHandler handler = new TolerantExceptionHandler(new ArrayList<>());
         NumberFormatException inputException = new NumberFormatException();
         assertThrows(NumberFormatException.class, () -> handler.propagateIfNotIgnored(inputException));
     }
 
     @Test
-    void testThrowsInputExceptionIfNotOnListOfTolerantExceptions() {
+    public void testThrowsInputExceptionIfNotOnListOfTolerantExceptions() {
         List<String> tolerantExceptions = new ArrayList<>();
         tolerantExceptions.add(NullPointerException.class.getName());
         tolerantExceptions.add(InvalidArgumentException.class.getName());
@@ -32,7 +32,7 @@ public class TolerantExceptionHandlerTests {
     }
 
     @Test
-    void testReturnsInputExceptionIfOnListOfTolerantExceptions() throws Throwable {
+    public void testReturnsInputExceptionIfOnListOfTolerantExceptions() throws Throwable {
         List<String> tolerantExceptions = new ArrayList<>();
         tolerantExceptions.add(NullPointerException.class.getName());
         tolerantExceptions.add(ArithmeticException.class.getName());
@@ -44,7 +44,7 @@ public class TolerantExceptionHandlerTests {
     }
 
     @Test
-    void testIgnoresInvalidValuesInTolerantExceptionList () throws Throwable {
+    public void testIgnoresInvalidValuesInTolerantExceptionList () throws Throwable {
         List<String> tolerantExceptions = new ArrayList<>();
         tolerantExceptions.add("NonExistentClass");
         tolerantExceptions.add(InvalidArgumentException.class.getName());
@@ -56,7 +56,7 @@ public class TolerantExceptionHandlerTests {
     }
 
     @Test
-    void testIgnoresClassesInTolerantExceptionListThatAreNotThrowable () throws Throwable {
+    public void testIgnoresClassesInTolerantExceptionListThatAreNotThrowable () throws Throwable {
         List<String> tolerantExceptions = new ArrayList<>();
         tolerantExceptions.add("java.lang.String");
         tolerantExceptions.add(InvalidArgumentException.class.getName());
