@@ -14,7 +14,6 @@ This toolkit is really a culmination of 10 years of working with teams building 
 
 You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - There's no mass "wrapper" on Selenium - that's dumb
-- There's no Cucumber - Acceptance Test Driven Development is overkill, and we won't help you do it, it's not solving the problem you think it is ;)
 - We suggest using the Page Object Model, it's generally a good idea and we provide a starting point for this
 - We resolve Driver binaries from WebDriverManager (https://github.com/bonigarcia/webdrivermanager)
 - We provide random test data generators from Mockneat (https://github.com/nomemory/mockneat) and UK Gov (https://github.com/dwp/nino-format-validation) as well as some of our own (for dates and stuff)
