@@ -16,6 +16,10 @@
       "browser.download.defaultFolder": "downloads/reports",
       "pdfjs.disabled": true,
       "browser.download.folderList": 2
+    },
+    "chrome": {
+      "profile.default_content_settings.popups": 0,
+      "download.default_directory": "downloads/reports"
     }
   },
   "tolerantActionExceptions": {
