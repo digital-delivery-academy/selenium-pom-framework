@@ -4,7 +4,7 @@ import com.saucelabs.saucebindings.Browser;
 import com.saucelabs.saucebindings.PageLoadStrategy;
 import com.saucelabs.saucebindings.SaucePlatform;
 import com.saucelabs.saucebindings.UnhandledPromptBehavior;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import uk.co.evoco.exceptions.SauceLabsCredentialsException;
 
 import java.net.MalformedURLException;

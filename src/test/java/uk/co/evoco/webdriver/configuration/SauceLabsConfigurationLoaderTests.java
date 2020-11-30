@@ -1,7 +1,7 @@
 package uk.co.evoco.webdriver.configuration;
 
 import com.saucelabs.saucebindings.Browser;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
