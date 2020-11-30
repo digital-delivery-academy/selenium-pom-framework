@@ -1,7 +1,7 @@
 package uk.co.evoco.webdriver.configuration.driver;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import uk.co.evoco.exceptions.SauceLabsCredentialsException;
 
