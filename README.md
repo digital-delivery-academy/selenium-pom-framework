@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&utm_medium=referral&utm_content=digital-delivery-academy/selenium-pom-framework&utm_campaign=Badge_Coverage)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://app.saucelabs.com/u/stevewalton)
 [![GitHub Issues badge](https://img.shields.io/github/issues-raw/digital-delivery-academy/selenium-pom-framework?color=green)](https://github.com/digital-delivery-academy/selenium-pom-framework/issues)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)](https://github.com/digital-delivery-academy/selenium-pom-framework/releases)
@@ -149,6 +150,8 @@ If you're deploying this else where (i.e. not locally) you can configure connect
 ```
 
 ## References/thanks
+[![Testing Powered By SauceLabs](https://opensource.saucelabs.com/images/opensauce/powered-by-saucelabs-badge-gray.png?sanitize=true "Testing Powered By SauceLabs")](https://saucelabs.com)
+
 We're using repositories from the guys below to provide some of our features:
 - https://github.com/bonigarcia/webdrivermanager from Boni Garcia (for getting WebDriver binaries in a lovely way)
 - https://github.com/nomemory/mockneat from nomemory (for generating random test data easily)
