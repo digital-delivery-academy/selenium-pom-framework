@@ -8,6 +8,7 @@ import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 import static com.codahale.metrics.MetricRegistry.name;
 
 public class GetTextUtils extends TolerantInteraction {
+
     private static final Timer tolerantGetTextAction = MetricRegistryHelper.get().timer(name("GetTextUtils.tolerantGetText"));
 
     /**

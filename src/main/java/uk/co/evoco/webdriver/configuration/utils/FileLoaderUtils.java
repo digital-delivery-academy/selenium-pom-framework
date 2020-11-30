@@ -5,6 +5,10 @@ import java.io.IOException;
 
 public final class FileLoaderUtils {
 
+    private FileLoaderUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Look for a file to load on a fully qualified path, or the classpath
      * @param path location to look for file (either relative or classpath)

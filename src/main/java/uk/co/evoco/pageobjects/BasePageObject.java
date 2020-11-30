@@ -22,11 +22,9 @@ public abstract class BasePageObject {
      * instance available to child classes.
      * @param webDriver active WebDriver instance
      */
-    public BasePageObject(WebDriver webDriver) {
+    protected BasePageObject(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
         this.wait = new WebDriverWait(this.webDriver, TestConfigHelper.get().getWebDriverWaitTimeout());
      }
-
-     // TODO: fill() submit()
 }

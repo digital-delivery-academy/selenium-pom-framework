@@ -12,14 +12,14 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredInternetExplorerDriverIT {
+public class ConfiguredInternetExplorerDriverTests {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfiguredInternetExplorerDriverIT.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfiguredInternetExplorerDriverTests.class);
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
         if(System.getProperty("os.name").contains("win")) {
-            ConfiguredInternetExplorerDriver configuredIeDriver = new ConfiguredInternetExplorerDriver();
+            ConfiguredDriver configuredIeDriver = new ConfiguredInternetExplorerDriver();
             WebDriver webDriver = configuredIeDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();

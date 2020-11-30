@@ -24,6 +24,10 @@ public final class FindByUtils {
     private static final Timer multipleLocatorMatchGetDisplayedAction = MetricRegistryHelper.get().timer(name("FindByUtils.multipleLocatorMatchGetDisplayedAction"));
     private static final Timer byIdOrNameAction = MetricRegistryHelper.get().timer(name("FindByUtils.byIdOrName"));
 
+    private FindByUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Finds the first element that is displayed with given locator.
      * Useful for instances where there are multiple elements on the DOM with the same locator and one (or more)

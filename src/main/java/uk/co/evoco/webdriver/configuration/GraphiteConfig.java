@@ -3,6 +3,7 @@ package uk.co.evoco.webdriver.configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GraphiteConfig {
+
     private boolean isEnabled = false;
     private String host;
     private int port;

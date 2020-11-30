@@ -8,6 +8,7 @@ import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 import static com.codahale.metrics.MetricRegistry.name;
 
 public class ClearUtils extends TolerantInteraction {
+
     private static final Timer tolerantClearAction = MetricRegistryHelper.get().timer(name("ClearUtils.tolerantClear"));
 
     /**
