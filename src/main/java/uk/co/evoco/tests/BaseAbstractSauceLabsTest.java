@@ -27,7 +27,7 @@ public abstract class BaseAbstractSauceLabsTest {
      */
     @BeforeAll
     public static void beforeAll() {
-
+        // Do nothing
     }
 
     /**

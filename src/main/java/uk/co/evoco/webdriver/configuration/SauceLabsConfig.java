@@ -1,7 +1,10 @@
 package uk.co.evoco.webdriver.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.saucelabs.saucebindings.*;
+import com.saucelabs.saucebindings.SaucePlatform;
+import com.saucelabs.saucebindings.Browser;
+import com.saucelabs.saucebindings.PageLoadStrategy;
+import com.saucelabs.saucebindings.UnhandledPromptBehavior;
 import uk.co.evoco.exceptions.SauceLabsCredentialsException;
 
 import java.net.MalformedURLException;
@@ -23,7 +26,6 @@ public class SauceLabsConfig {
     private String browserVersion;
     private PageLoadStrategy pageLoadStrategy;
     private UnhandledPromptBehavior unhandledPromptBehavior;
-    private SauceLabsCredentials sauceLabsCredentials;
 
     public String getSeleniumVersion() {
         return seleniumVersion;
@@ -35,8 +37,7 @@ public class SauceLabsConfig {
     }
 
     public SauceLabsCredentials getCredentials() throws SauceLabsCredentialsException {
-        this.sauceLabsCredentials = new SauceLabsCredentials(this);
-        return this.sauceLabsCredentials;
+        return new SauceLabsCredentials();
     }
 
     public URL getSauceRemoteUrl() {

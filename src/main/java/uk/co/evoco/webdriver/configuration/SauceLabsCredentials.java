@@ -7,9 +7,10 @@ import uk.co.evoco.exceptions.SauceLabsCredentialsException;
 public class SauceLabsCredentials {
 
     private static final Logger logger = LoggerFactory.getLogger(SauceLabsCredentials.class);
-    private String username, accessKey;
+    private String username;
+    private String accessKey;
 
-    public SauceLabsCredentials(SauceLabsConfig sauceLabsConfig) throws SauceLabsCredentialsException {
+    public SauceLabsCredentials() throws SauceLabsCredentialsException {
         this.username = System.getenv("SAUCE_USERNAME");
         this.accessKey = System.getenv("SAUCE_ACCESS_KEY");
 
