@@ -23,18 +23,8 @@ addons:
 install:
 - mvn clean install -Dmaven.javadoc.skip=true -B -V
 - bash scripts/get-bank-holiday-data-source-and-store-in-resources.sh
-after_success:
-- gpg2 --keyring=$TRAVIS_BUILD_DIR/pubring.gpg --no-default-keyring --import deployment/signingkey.asc
-- gpg2 --allow-secret-key-import --keyring=$TRAVIS_BUILD_DIR/secring.gpg --no-default-keyring
-  --import deployment/signingkey.asc
-- mvn clean deploy -Dgpg.executable=gpg2 -Dgpg.keyname=5F84CD1775351968CABF0B0D779D2423E1D24D89
-  -Dgpg.passphrase=$GPG_PASSPHRASE -Dgpg.publicKeyring=$TRAVIS_BUILD_DIR/pubring.gpg -Dgpg.secretKeyring=$TRAVIS_BUILD_DIR/secring.gpg
+- mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 deploy:
-- provider: script
-  script: mvn test com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml
-    -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
-  on:
-    branch: master
 - provider: script
   script: bash scripts/publish-javadocs-to-github-pages.sh
   on:
