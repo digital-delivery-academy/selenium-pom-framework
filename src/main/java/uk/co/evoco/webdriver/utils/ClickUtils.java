@@ -17,10 +17,6 @@ public final class ClickUtils extends TolerantInteraction {
 
     private static final Timer tolerantClickAction = MetricRegistryHelper.get().timer(name("ClickUtils.tolerantClick"));
 
-    private ClickUtils() {
-        throw new IllegalStateException("Utility class");
-    }
-
     /**
      *
      * @param webElement active WebElements, already located
