@@ -1,0 +1,16 @@
+{
+  "acceptInsecureCerts": true,
+  "strictFileInteractability": true,
+  "capturePerformance": true,
+  "extendedDebugging": false,
+  "recordLogs": true,
+  "recordScreenshots": true,
+  "recordVideo": true,
+  "saucePlatform": "WINDOWS_10",
+  "browserName": "CHROME",
+  "browserVersion": "LATEST",
+  "pageLoadStrategy": "NORMAL",
+  "seleniumVersion": "3.7.1",
+  "sauceLabsRemoteGridUrl": "https://ondemand.saucelabs.com/wd/hub",
+  "unhandledPromptBehaviour": "DISMISS"
+}

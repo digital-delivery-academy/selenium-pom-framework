@@ -6,7 +6,7 @@
           <b-navbar-brand href="#" style="color: #0fa0ce; font-weight:300;">evoco</b-navbar-brand>
           <b-navbar-nav class="ml-auto">
             <b-nav-item>
-              Selenium POM Framework Docs v1.0.9
+              Selenium POM Framework Docs v1.0.13
             </b-nav-item>
           </b-navbar-nav>
         </b-navbar>

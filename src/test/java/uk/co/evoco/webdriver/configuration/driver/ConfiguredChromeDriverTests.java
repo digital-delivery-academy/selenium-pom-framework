@@ -10,11 +10,11 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredChromeDriverIT {
+public class ConfiguredChromeDriverTests {
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
-        ConfiguredChromeDriver configuredChromeDriver = new ConfiguredChromeDriver();
+        ConfiguredDriver configuredChromeDriver = new ConfiguredChromeDriver();
         WebDriver webDriver = configuredChromeDriver.getDriver(FileUtils.getTempDirectory());
         assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
     }

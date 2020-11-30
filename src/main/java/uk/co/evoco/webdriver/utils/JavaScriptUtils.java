@@ -23,6 +23,10 @@ public final class JavaScriptUtils {
     private static final Timer executeStringAction = MetricRegistryHelper.get().timer(name("JavaScriptUtils.executeString"));
     private static final Timer executeFileAction = MetricRegistryHelper.get().timer(name("JavaScriptUtils.executeFile"));
 
+    private JavaScriptUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Executes a given JavaScript script
      * @param webDriver active WebDriver instance

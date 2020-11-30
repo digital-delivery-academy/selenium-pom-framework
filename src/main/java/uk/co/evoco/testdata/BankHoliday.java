@@ -32,6 +32,6 @@ public class BankHoliday {
 
     @JsonProperty("date")
     public void setLocalDate(String localDate) {
-        this.localDate = new LocalDate().parse(localDate);
+        this.localDate = LocalDate.parse(localDate);
     }
 }

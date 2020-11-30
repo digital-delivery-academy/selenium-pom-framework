@@ -14,6 +14,7 @@ public interface ConfiguredDriver {
 
      WebDriver getLocalDriver() throws IOException;
      WebDriver getRemoteDriver();
+     <T> T getOptions();
 
     /**
      *ß
@@ -28,6 +29,7 @@ public interface ConfiguredDriver {
                 webDriver = getLocalDriver();
                 break;
             case GRID:
+            case SAUCELABS:
                 webDriver = getRemoteDriver();
                 break;
             default:

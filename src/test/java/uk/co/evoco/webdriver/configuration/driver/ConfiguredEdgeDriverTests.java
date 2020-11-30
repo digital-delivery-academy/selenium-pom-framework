@@ -12,20 +12,20 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredSafariDriverIT {
+public class ConfiguredEdgeDriverTests {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfiguredSafariDriverIT.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfiguredEdgeDriverTests.class);
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
-        if(System.getProperty("os.name").contains("mac")) {
-            ConfiguredSafariDriver configuredSafariDriver = new ConfiguredSafariDriver();
-            WebDriver webDriver = configuredSafariDriver.getDriver(FileUtils.getTempDirectory());
+        if(System.getProperty("os.name").contains("win")) {
+            ConfiguredDriver configuredEdgeDriver = new ConfiguredEdgeDriver();
+            WebDriver webDriver = configuredEdgeDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();
         } else {
-            logger.warn("ConfiguredSafariDriverTests.testReturnsLocalWebDriver is " +
-                    "dependant on being on Mac, you're not on Mac so it didn't run.");
+            logger.warn("ConfiguredEdgeDriverTests.testReturnsLocalWebDriver is dependant on " +
+                    "being on Windows, you're not on Windows so it didn't run.");
         }
     }
 }

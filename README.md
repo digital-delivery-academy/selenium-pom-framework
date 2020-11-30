@@ -1,21 +1,24 @@
 # selenium-pom-framework
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&utm_medium=referral&utm_content=digital-delivery-academy/selenium-pom-framework&utm_campaign=Badge_Coverage)
-[![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://app.saucelabs.com/u/stevewalton)
 [![GitHub Issues badge](https://img.shields.io/github/issues-raw/digital-delivery-academy/selenium-pom-framework?color=green)](https://github.com/digital-delivery-academy/selenium-pom-framework/issues)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=coverage)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=security_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/stevewalton)](https://app.saucelabs.com/u/stevewalton)
+
 [![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)](https://github.com/digital-delivery-academy/selenium-pom-framework/releases)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **We've released version 1.0.0! And we've moved to Maven Central hosting and added instrumentation**
 
-This toolkit is really a culmination of 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirity of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure checks for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of your automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
+This toolkit is really a culmination of 10 years of working with teams building automated UI checks with Selenium.  We've found time and again that we refactor or rewrite "frameworks" that wrap the entirety of the Selenium API (to little benefit).  On top of this, we see so much brittle code that we wanted to put something out there that people could use and benefit from our experience.  As a result, this toolkit provides an simple, lightweight (and well structured) way to launch, control and configure checks for Selenium/WebDriver in Java.  It's a curation of all of the little libraries and fixes we've used over the years.  So if you're at the start of your automation journey or you're just bored of writing the same "framework" over and over again, you're in the right place.
 
 You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - There's no mass "wrapper" on Selenium - that's dumb
-- We suggest using the Page Object Model, it's generally a good idea and we provide a starting point for this
+- We suggest using the Page Object Model, it's generally a good idea, and we provide a starting point for this
 - We resolve Driver binaries from WebDriverManager (https://github.com/bonigarcia/webdrivermanager)
 - We provide random test data generators from Mockneat (https://github.com/nomemory/mockneat) and UK Gov (https://github.com/dwp/nino-format-validation) as well as some of our own (for dates and stuff)
 - There's an externalised (and overridable) configuration system, based on JSON

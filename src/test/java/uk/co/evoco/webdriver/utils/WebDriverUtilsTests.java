@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class WebDriverUtilsIT extends BaseAbstractTest {
+public class WebDriverUtilsTests extends BaseAbstractTest {
 
     private static String baseUrl;
     private static EmbeddedJetty embeddedJetty;
@@ -107,5 +107,63 @@ public class WebDriverUtilsIT extends BaseAbstractTest {
             WebElement element = webDriver.findElement(By.id("clickutils-href-always-disabled"));
             ClickUtils.tolerantClick(element);
         });
+    }
+
+    @Test
+    public void testCanClearField() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
+        element.sendKeys("Hello world");
+        assertThat(element.getAttribute("value"), is("Hello world"));
+        ClearUtils.tolerantClear(element);
+        assertThat(element.getText(), is(""));
+    }
+
+    @Test
+    public void testCanClearFieldWithTimeout() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
+        element.sendKeys("Hello world");
+        assertThat(element.getAttribute("value"), is("Hello world"));
+        ClearUtils.tolerantClear(element, 10);
+        assertThat(element.getText(), is(""));
+    }
+
+    @Test
+    public void testCanGetAttributes() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
+        element.sendKeys("Hello world");
+        assertThat(GetAttributeUtils.tolerantGetAttribute(element, "value"), is("Hello world"));
+    }
+
+    @Test
+    public void testCanGetAttributesWithTimeout() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
+        element.sendKeys("Hello world");
+        assertThat(GetAttributeUtils.tolerantGetAttribute(element, "value", 10), is("Hello world"));
+    }
+
+    @Test
+    public void testCanGetText() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("get-text-element"));
+        assertThat(GetTextUtils.tolerantGetText(element), is("Hello there!"));
+    }
+
+    @Test
+    public void testCanGetTextWithTimeout() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("get-text-element"));
+        assertThat(GetTextUtils.tolerantGetText(element, 10), is("Hello there!"));
+    }
+
+    @Test
+    public void testCanSendKeys() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
+        SendKeysUtils.tolerantType(element, "Hello world");
+        assertThat(element.getAttribute("value"), is("Hello world"));
+    }
+
+    @Test
+    public void testCanSendKeysWithTimeout() throws Throwable {
+        WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
+        SendKeysUtils.tolerantType(element, "Hello world", 10);
+        assertThat(element.getAttribute("value"), is("Hello world"));
     }
 }

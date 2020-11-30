@@ -13,6 +13,10 @@ import java.io.InputStream;
  */
 public final class JsonUtils {
 
+    private JsonUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Deserialize a JSON from a String to a given class type
      * @param jsonString json string

@@ -16,6 +16,7 @@ import static com.codahale.metrics.MetricRegistry.name;
 public final class ClickUtils extends TolerantInteraction {
 
     private static final Timer tolerantClickAction = MetricRegistryHelper.get().timer(name("ClickUtils.tolerantClick"));
+
     /**
      *
      * @param webElement active WebElements, already located
