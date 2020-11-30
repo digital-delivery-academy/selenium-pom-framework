@@ -12,20 +12,20 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredInternetExplorerDriverIT {
+public class ConfiguredEdgeDriverTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfiguredInternetExplorerDriverIT.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfiguredEdgeDriverTest.class);
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
         if(System.getProperty("os.name").contains("win")) {
-            ConfiguredDriver configuredIeDriver = new ConfiguredInternetExplorerDriver();
-            WebDriver webDriver = configuredIeDriver.getDriver(FileUtils.getTempDirectory());
+            ConfiguredDriver configuredEdgeDriver = new ConfiguredEdgeDriver();
+            WebDriver webDriver = configuredEdgeDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();
         } else {
-            logger.warn("ConfiguredInternetExplorerTests.testReturnsLocalWebDriver is " +
-                    "dependant on being on Windows, you're not on Windows so it didn't run.");
+            logger.warn("ConfiguredEdgeDriverTests.testReturnsLocalWebDriver is dependant on " +
+                    "being on Windows, you're not on Windows so it didn't run.");
         }
     }
 }

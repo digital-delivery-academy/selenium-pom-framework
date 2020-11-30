@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredChromeDriverIT {
+public class ConfiguredChromeDriverTest {
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {

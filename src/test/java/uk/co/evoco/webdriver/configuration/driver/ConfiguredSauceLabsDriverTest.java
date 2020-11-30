@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-public class ConfiguredSauceLabsDriverIT {
+public class ConfiguredSauceLabsDriverTest {
 
     @Test
     public void testCanRunTestOnSauceLabsUsingConfigiration() throws SauceLabsCredentialsException, IOException {

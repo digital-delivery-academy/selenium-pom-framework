@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredFirefoxDriverIT {
+public class ConfiguredFirefoxDriverTest {
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
