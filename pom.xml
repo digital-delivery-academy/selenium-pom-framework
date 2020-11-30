@@ -104,6 +104,7 @@
         <javadoc.maven.plugin.version>3.1.1</javadoc.maven.plugin.version>
         <joda.time.version>2.7</joda.time.version>
         <restassured.version>4.2.0</restassured.version>
+        <saucelabs.bindings>1.0.0</saucelabs.bindings>
         <dropwizard.metrics.version>4.1.2</dropwizard.metrics.version>
     </properties>
 
@@ -192,6 +193,11 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <version>${hamcrest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>sauce_bindings</artifactId>
+            <version>${saucelabs.bindings}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>

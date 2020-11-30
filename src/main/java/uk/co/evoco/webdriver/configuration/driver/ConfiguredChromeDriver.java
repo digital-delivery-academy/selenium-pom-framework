@@ -36,7 +36,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
      *
      * @return configured options object for target browser driver
      */
-    private ChromeOptions getOptions() {
+    public ChromeOptions getOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(TestConfigHelper.get().isHeadless());
         return chromeOptions;

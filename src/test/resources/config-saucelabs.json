@@ -1,0 +1,36 @@
+{
+  "browser": "firefox",
+  "baseUrl": "https://www.google.com",
+  "timeout": "30",
+  "headless": true,
+  "runType": "SAUCELABS",
+  "takeScreenshotOnError": true,
+  "testConfig": {
+    "sample": "sample text"
+  },
+  "browserPreferences": {
+    "firefox": {
+      "browser.download.defaultFolder": "downloads/reports",
+      "pdfjs.disabled": true,
+      "browser.download.folderList": 2
+    }
+  },
+  "tolerantActionExceptions": {
+    "waitTimeoutInSeconds": 5,
+    "exceptionsToHandle": [
+      "StaleElementReferenceException",
+      "ElementClickInterceptedException",
+      "ElementNotInteractableException"
+    ]
+  },
+  "metrics": {
+    "jmx": {
+      "enabled": false
+    },
+    "graphite": {
+      "enabled": false,
+      "host": "localhost",
+      "port": 2003
+    }
+  }
+}

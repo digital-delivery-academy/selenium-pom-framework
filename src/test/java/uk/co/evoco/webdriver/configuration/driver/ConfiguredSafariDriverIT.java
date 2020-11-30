@@ -19,7 +19,7 @@ public class ConfiguredSafariDriverIT {
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
         if(System.getProperty("os.name").contains("mac")) {
-            ConfiguredSafariDriver configuredSafariDriver = new ConfiguredSafariDriver();
+            ConfiguredDriver configuredSafariDriver = new ConfiguredSafariDriver();
             WebDriver webDriver = configuredSafariDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();

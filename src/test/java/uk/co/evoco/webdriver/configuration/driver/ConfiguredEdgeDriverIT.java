@@ -19,7 +19,7 @@ public class ConfiguredEdgeDriverIT {
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
         if(System.getProperty("os.name").contains("win")) {
-            ConfiguredEdgeDriver configuredEdgeDriver = new ConfiguredEdgeDriver();
+            ConfiguredDriver configuredEdgeDriver = new ConfiguredEdgeDriver();
             WebDriver webDriver = configuredEdgeDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();

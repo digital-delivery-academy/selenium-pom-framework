@@ -14,7 +14,7 @@ public class ConfiguredChromeDriverIT {
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
-        ConfiguredChromeDriver configuredChromeDriver = new ConfiguredChromeDriver();
+        ConfiguredDriver configuredChromeDriver = new ConfiguredChromeDriver();
         WebDriver webDriver = configuredChromeDriver.getDriver(FileUtils.getTempDirectory());
         assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
     }

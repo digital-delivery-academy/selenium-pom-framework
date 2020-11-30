@@ -10,6 +10,7 @@ import java.util.Optional;
 import static com.codahale.metrics.MetricRegistry.name;
 
 public class GetAttributeUtils extends TolerantInteraction {
+
     private static final Timer tolerantGetAttributeAction = MetricRegistryHelper.get().timer(name("GetAttributeUtils.tolerantGetAttribute"));
 
     /**

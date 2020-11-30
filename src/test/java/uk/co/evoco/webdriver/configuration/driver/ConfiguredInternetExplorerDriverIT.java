@@ -19,7 +19,7 @@ public class ConfiguredInternetExplorerDriverIT {
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
         if(System.getProperty("os.name").contains("win")) {
-            ConfiguredInternetExplorerDriver configuredIeDriver = new ConfiguredInternetExplorerDriver();
+            ConfiguredDriver configuredIeDriver = new ConfiguredInternetExplorerDriver();
             WebDriver webDriver = configuredIeDriver.getDriver(FileUtils.getTempDirectory());
             assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
             webDriver.quit();
