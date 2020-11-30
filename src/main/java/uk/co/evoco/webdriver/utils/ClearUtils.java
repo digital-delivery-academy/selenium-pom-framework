@@ -11,10 +11,6 @@ public class ClearUtils extends TolerantInteraction {
 
     private static final Timer tolerantClearAction = MetricRegistryHelper.get().timer(name("ClearUtils.tolerantClear"));
 
-    private ClearUtils() {
-        throw new IllegalStateException("Utility class");
-    }
-
     /**
      *
      * @param webElement active WebElement, already located

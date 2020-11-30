@@ -12,9 +12,9 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredInternetExplorerDriverTest {
+public class ConfiguredInternetExplorerDriverTests {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfiguredInternetExplorerDriverTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfiguredInternetExplorerDriverTests.class);
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
