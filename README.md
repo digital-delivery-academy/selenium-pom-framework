@@ -1,10 +1,13 @@
 # selenium-pom-framework
 [![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digital-delivery-academy/selenium-pom-framework&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/98cb1cb4ac7a4061b8677ffb246cc963)](https://www.codacy.com/gh/digital-delivery-academy/selenium-pom-framework?utm_source=github.com&utm_medium=referral&utm_content=digital-delivery-academy/selenium-pom-framework&utm_campaign=Badge_Coverage)
-[![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://app.saucelabs.com/u/stevewalton)
 [![GitHub Issues badge](https://img.shields.io/github/issues-raw/digital-delivery-academy/selenium-pom-framework?color=green)](https://github.com/digital-delivery-academy/selenium-pom-framework/issues)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=coverage)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=security_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://app.saucelabs.com/u/stevewalton)
+
 [![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)](https://github.com/digital-delivery-academy/selenium-pom-framework/releases)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->

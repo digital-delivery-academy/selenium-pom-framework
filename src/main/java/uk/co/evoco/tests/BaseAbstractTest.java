@@ -39,7 +39,7 @@ public abstract class BaseAbstractTest {
     @BeforeEach
     public void setUp() throws IOException {
         this.webDriver = new WebDriverBuilder()
-                .setResultsDirectory(this.resultsManager.getScreenshotDirectory())
+                .setResultsDirectory(resultsManager.getScreenshotDirectory())
                 .build();
         this.webDriver.get(TestConfigHelper.get().getBaseUrl());
         this.webDriver.manage().window().maximize();

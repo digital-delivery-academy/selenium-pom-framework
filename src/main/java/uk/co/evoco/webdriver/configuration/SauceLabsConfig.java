@@ -47,7 +47,6 @@ public class SauceLabsConfig {
     @JsonProperty("sauceLabsRemoteGridUrl")
     public void setSauceRemoteUrl(String sauceRemoteUrl) throws MalformedURLException, SauceLabsCredentialsException {
         this.sauceRemoteUrl = new URL("https://" + getCredentials().getUsername() + ":" + getCredentials().getAccessKey() + "@" + sauceRemoteUrl);
-        System.out.println(this.sauceRemoteUrl);
     }
 
     public boolean isAcceptInsecureCerts() {

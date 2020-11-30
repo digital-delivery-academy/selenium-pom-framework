@@ -2,6 +2,8 @@ dist: trusty
 language: java
 jdk:
 - openjdk13
+git:
+  depth: false
 cache:
   directories:
   - "$HOME/.m2"
@@ -19,9 +21,8 @@ before_install:
 addons:
   firefox: latest
 install:
-- mvn clean install -Dmaven.javadoc.skip=true -B -V
-- bash scripts/get-bank-holiday-data-source-and-store-in-resources.sh
 - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+- bash scripts/get-bank-holiday-data-source-and-store-in-resources.sh
 deploy:
 - provider: script
   script: bash scripts/publish-javadocs-to-github-pages.sh

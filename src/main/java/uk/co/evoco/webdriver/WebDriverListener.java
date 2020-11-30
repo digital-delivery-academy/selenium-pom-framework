@@ -42,6 +42,7 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
      * @param webElement active WebElement, already located
      * @param webDriver active WebDriver instance
      */
+    @Override
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver,
                 TestConfigHelper.get().getWebDriverWaitTimeout()).until(
@@ -57,6 +58,7 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
      * @param webElement active WebElement, already located
      * @param webDriver active WebDriver instance
      */
+    @Override
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
         new WebDriverWait(webDriver,
                 TestConfigHelper.get().getWebDriverWaitTimeout()).until(
@@ -68,6 +70,7 @@ public class WebDriverListener extends AbstractWebDriverEventListener {
      * @param throwable the thrown exception that we are holding here
      * @param webDriver active WebDriver instance
      */
+    @Override
     public void onException(Throwable throwable, WebDriver webDriver) {
         try {
             if(TestConfigHelper.get().isTakeScreenshotOnError()) {

@@ -11,6 +11,10 @@ public class GetTextUtils extends TolerantInteraction {
 
     private static final Timer tolerantGetTextAction = MetricRegistryHelper.get().timer(name("GetTextUtils.tolerantGetText"));
 
+    private GetTextUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      *
      * @param webElement active WebElement, already located
