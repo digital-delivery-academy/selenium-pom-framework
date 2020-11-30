@@ -6,7 +6,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=coverage)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=security_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
-[![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://app.saucelabs.com/u/stevewalton)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/stevewalton)](https://app.saucelabs.com/u/stevewalton)
 
 [![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)](https://github.com/digital-delivery-academy/selenium-pom-framework/releases)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
