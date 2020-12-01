@@ -4,9 +4,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import uk.co.evoco.webdriver.WebDriverBuilder;
+import uk.co.evoco.exceptions.SauceLabsCredentialsException;
+import uk.co.evoco.webdriver.WebDriverListener;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
-import uk.co.evoco.webdriver.results.ResultsManager;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredDriver;
+import uk.co.evoco.webdriver.configuration.driver.ConfiguredSauceLabsGridDriver;
 
 import java.io.IOException;
 
@@ -14,10 +16,9 @@ import java.io.IOException;
  * BaseAbstractTest to handle things that testers shouldn't need to worry about (like starting up a WebDriver instance
  * and getting everything in the right space for consumers to run tests that are correctly configured etc).
  */
-public abstract class BaseAbstractTest {
+public abstract class BaseAbstractSauceLabsTest {
 
     protected EventFiringWebDriver webDriver;
-    protected static ResultsManager resultsManager;
 
     /**
      * This will run before every test class.
@@ -26,8 +27,7 @@ public abstract class BaseAbstractTest {
      */
     @BeforeAll
     public static void beforeAll() {
-        resultsManager = new ResultsManager();
-        resultsManager.createScreenshotDirectory();
+        // Do nothing
     }
 
     /**
@@ -37,10 +37,10 @@ public abstract class BaseAbstractTest {
      * @throws IOException if results directory isn't created or config file cannot be found
      */
     @BeforeEach
-    public void setUp() throws IOException {
-        this.webDriver = new WebDriverBuilder()
-                .setResultsDirectory(resultsManager.getScreenshotDirectory())
-                .build();
+    public void setUp() throws SauceLabsCredentialsException {
+        ConfiguredDriver sauceLabsDriver = new ConfiguredSauceLabsGridDriver();
+        this.webDriver = new EventFiringWebDriver(sauceLabsDriver.getRemoteDriver());
+        this.webDriver.register(new WebDriverListener());
         this.webDriver.get(TestConfigHelper.get().getBaseUrl());
         this.webDriver.manage().window().maximize();
     }
@@ -54,5 +54,4 @@ public abstract class BaseAbstractTest {
     public void tearDown() {
         this.webDriver.quit();
     }
-
 }

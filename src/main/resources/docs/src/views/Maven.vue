@@ -10,7 +10,7 @@
         <pre><code>&lt;dependency>
   &lt;groupId&gt;uk.co.evoco&lt;/groupId&gt;
   &lt;artifactId&gt;selenium-pom-framework&lt;/artifactId&gt;
-  &lt;version&gt;1.0.9&lt;/version&gt;
+  &lt;version&gt;1.0.13&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
         <p>By pulling in this dependency you will get:</p>
         <ul>

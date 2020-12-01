@@ -5,11 +5,10 @@ import org.openqa.selenium.WebElement;
 import uk.co.evoco.metrics.MetricRegistryHelper;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
-import java.util.Optional;
-
 import static com.codahale.metrics.MetricRegistry.name;
 
 public class GetAttributeUtils extends TolerantInteraction {
+
     private static final Timer tolerantGetAttributeAction = MetricRegistryHelper.get().timer(name("GetAttributeUtils.tolerantGetAttribute"));
 
     /**

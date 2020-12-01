@@ -14,6 +14,9 @@ public final class WindowUtils {
 
     private static final Timer scrollIntoViewAction = MetricRegistryHelper.get().timer(name("WindowUtils.scrollIntoView"));
 
+    private WindowUtils() {
+        throw new IllegalStateException("Utility class");
+    }
 
     /**
      * Scrolls a given element into the Viewport view
