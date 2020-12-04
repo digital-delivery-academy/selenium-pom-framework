@@ -20,6 +20,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
 
     /**
      *
+     *
      * @return WebDriver representing RemoteWebDriver grid
      */
     public WebDriver getRemoteDriver() {
@@ -40,6 +41,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
     }
 
     /**
+     *
      * @return configured options object for target browser driver
      */
     public ChromeOptions getOptions() {
