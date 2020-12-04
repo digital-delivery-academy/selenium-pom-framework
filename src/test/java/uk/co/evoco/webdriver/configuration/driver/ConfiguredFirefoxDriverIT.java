@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -26,9 +27,10 @@ public class ConfiguredFirefoxDriverIT {
     public void testGetOptionsReturnsOptionsIncludedInFireFoxConfig() {
         ConfiguredFirefoxDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
         Map<String, Object> firefoxPreferences = getPreferences(configuredFirefoxDriver.getOptions());
+        String expectedFileDownLoadPath = Paths.get("target").toAbsolutePath().toString() + "/" + "downloads/reports";
         assertThat(firefoxPreferences.get("pdfjs.disabled"), is(true));
         assertThat(firefoxPreferences.get("browser.download.folderList"), is(2));
-        assertThat(firefoxPreferences.get("browser.download.defaultFolder"), is("downloads/reports"));
+        assertThat(firefoxPreferences.get("browser.download.dir"), is(expectedFileDownLoadPath));
     }
 
     private Map<String, Object> getPreferences (FirefoxOptions options) {

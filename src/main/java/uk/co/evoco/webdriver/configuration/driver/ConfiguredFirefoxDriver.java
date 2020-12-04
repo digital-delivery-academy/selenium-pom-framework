@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
+import static uk.co.evoco.webdriver.configuration.utils.FileUtils.createAndGetRequiredFolderInTargetFolder;
+
 public class ConfiguredFirefoxDriver implements ConfiguredDriver {
 
     /**
@@ -58,7 +60,12 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
                     firefoxOptions.addPreference(key, value.asInt());
                     break;
                 default:
-                    firefoxOptions.addPreference(key, value.asText());
+                    if (key.equals("browser.download.dir")) {
+                        firefoxOptions.addPreference(key,
+                                createAndGetRequiredFolderInTargetFolder(value.asText()).toString());
+                    } else {
+                        firefoxOptions.addPreference(key, value.asText());
+                    }
                     break;
             }
         }

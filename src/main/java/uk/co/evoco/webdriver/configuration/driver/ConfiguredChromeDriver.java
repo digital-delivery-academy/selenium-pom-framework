@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static uk.co.evoco.webdriver.configuration.utils.FileUtils.createAndGetRequiredFolderInTargetFolder;
+
 public class ConfiguredChromeDriver implements ConfiguredDriver {
 
     /**
@@ -38,10 +40,9 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
     }
 
     /**
-     *
      * @return configured options object for target browser driver
      */
-    private ChromeOptions getOptions() {
+    public ChromeOptions getOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         Map<String, Object> chromePrefs = new HashMap<>();
         Iterator<Map.Entry<String, JsonNode>> browserPreferences = TestConfigHelper.get()
@@ -60,12 +61,11 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
                     break;
                 default:
                     if (key.equals("download.default_directory")) {
-                        chromePrefs.put(key, System.getProperty("user.home")
-                                .concat("/").concat(value.asText()));
+                        chromePrefs.put(key, createAndGetRequiredFolderInTargetFolder(
+                                value.asText()).toString());
                     } else {
                         chromePrefs.put(key, value.asText());
                     }
-                    break;
             }
         }
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
