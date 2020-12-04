@@ -14,18 +14,20 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ConfiguredFirefoxDriverIT {
+public class ConfiguredFirefoxDriverTests {
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
-        ConfiguredFirefoxDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
+        System.setProperty("config", "DEFAULT");
+        ConfiguredDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
         WebDriver webDriver = configuredFirefoxDriver.getDriver(FileUtils.getTempDirectory());
         assertThat(webDriver, instanceOf(EventFiringWebDriver.class));
+        webDriver.quit();
     }
 
     @Test
     public void testGetOptionsReturnsOptionsIncludedInFireFoxConfig() {
-        ConfiguredFirefoxDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
+        ConfiguredDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
         Map<String, Object> firefoxPreferences = getPreferences(configuredFirefoxDriver.getOptions());
         String expectedFileDownLoadPath = Paths.get("target").toAbsolutePath().toString() + "/" + "downloads/reports";
         assertThat(firefoxPreferences.get("pdfjs.disabled"), is(true));

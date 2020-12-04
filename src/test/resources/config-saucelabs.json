@@ -1,26 +1,18 @@
 {
-  "browser": "chrome",
+  "browser": "firefox",
   "baseUrl": "https://www.google.com",
   "timeout": "30",
   "headless": true,
-  "runType": "LOCAL",
+  "runType": "SAUCELABS",
   "takeScreenshotOnError": true,
   "testConfig": {
     "sample": "sample text"
   },
-  "gridConfig": {
-    "url": "http://localhost:4444/wd/hub"
-  },
   "browserPreferences": {
     "firefox": {
-      "browser.download.dir": "downloads/reports",
+      "browser.download.defaultFolder": "downloads/reports",
       "pdfjs.disabled": true,
       "browser.download.folderList": 2
-    },
-    "chrome": {
-      "profile.default_content_settings.popups": 0,
-      "download.default_directory": "downloads/reports",
-      "safebrowsing.enabled": true
     }
   },
   "tolerantActionExceptions": {

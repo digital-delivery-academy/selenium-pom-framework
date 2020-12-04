@@ -104,7 +104,11 @@
         <javadoc.maven.plugin.version>3.1.1</javadoc.maven.plugin.version>
         <joda.time.version>2.7</joda.time.version>
         <restassured.version>4.2.0</restassured.version>
+        <saucelabs.bindings>1.0.0</saucelabs.bindings>
         <dropwizard.metrics.version>4.1.2</dropwizard.metrics.version>
+        <sonar.projectKey>digital-delivery-academy_selenium-pom-example</sonar.projectKey>
+        <sonar.organization>digital-delivery-academy</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
@@ -194,6 +198,11 @@
             <version>${hamcrest.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>sauce_bindings</artifactId>
+            <version>${saucelabs.bindings}</version>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
@@ -213,20 +222,6 @@
                 <configuration>
                     <skip>false</skip>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.failsafe.version}</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
