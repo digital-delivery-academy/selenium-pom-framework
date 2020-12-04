@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 public class FileUtils {
 
     /**
+     * Create require folder in target folder to download required files during test execution
      * @param filePath file path from config
      * @return absolute file download path
      */
