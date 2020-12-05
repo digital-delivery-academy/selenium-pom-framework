@@ -33,8 +33,8 @@ public class ConfiguredChromeDriverTests {
         assertThat(chromeOptions.get("safebrowsing.enabled"), is(true));
     }
 
-    private Map<String, Object> getPreferences(ChromeOptions chromeOptions) {
-        Map<String, Object> chromeOptions1 = (Map<String, Object>) chromeOptions.asMap().get("goog:chromeOptions");
-        return (Map<String, Object>) chromeOptions1.get("prefs");
+    private Map<String, Object> getPreferences(ChromeOptions options) {
+        Map<String, Object> googleChromeOptions = (Map<String, Object>) options.asMap().get("goog:chromeOptions");
+        return (Map<String, Object>) googleChromeOptions.get("prefs");
     }
 }
