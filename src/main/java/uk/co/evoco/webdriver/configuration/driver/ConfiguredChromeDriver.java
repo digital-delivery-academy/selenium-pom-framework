@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import uk.co.evoco.webdriver.configuration.BrowserType;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;

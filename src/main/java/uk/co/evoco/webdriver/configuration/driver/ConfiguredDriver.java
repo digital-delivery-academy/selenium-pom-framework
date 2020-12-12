@@ -68,13 +68,9 @@ public interface ConfiguredDriver {
      * @throws IOException if the required directory cannot be created
      */
     default String createFileDownloadDirectory(String path) throws IOException {
-            String canonicalPath = new File(path).getCanonicalPath();
-            if (canonicalPath.equals(path)) {
-                FileUtils.forceMkdir(new File(path));
-            } else {
-                FileUtils.forceMkdir(new File("./" + path));
-            }
-            return canonicalPath;
+        String canonicalPath = new File(path).getCanonicalPath();
+        FileUtils.forceMkdir(new File(canonicalPath));
+        return canonicalPath;
     }
 
 }
