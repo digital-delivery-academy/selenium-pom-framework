@@ -27,7 +27,7 @@ public class ConfiguredChromeDriverTests {
     public void testGetOptionsReturnsOptionsIncludedInChromeConfig() throws IOException {
         ConfiguredChromeDriver configuredChromeDriver = new ConfiguredChromeDriver();
         Map<String, Object> chromeOptions = getOptions(configuredChromeDriver.getOptions());
-        String expectedFileDownLoadPath = new File("run-generated-files/downloads").getCanonicalPath();
+        String expectedFileDownLoadPath = new File("run-generated-files/chrome/downloads").getCanonicalPath();
         assertThat(chromeOptions.get("profile.default_content_settings.popups"), is(0));
         assertThat(chromeOptions.get("download.default_directory"), is(expectedFileDownLoadPath));
         assertThat(chromeOptions.get("safebrowsing.enabled"), is(true));

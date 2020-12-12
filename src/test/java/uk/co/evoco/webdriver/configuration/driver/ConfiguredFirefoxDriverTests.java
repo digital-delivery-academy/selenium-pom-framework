@@ -29,7 +29,7 @@ public class ConfiguredFirefoxDriverTests {
     public void testGetOptionsReturnsOptionsIncludedInFireFoxConfig() throws IOException {
         ConfiguredDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
         Map<String, Object> firefoxPreferences = getPreferences(configuredFirefoxDriver.getOptions());
-        String expectedFileDownLoadPath = new File("run-generated-files/downloads").getCanonicalPath();
+        String expectedFileDownLoadPath = new File("run-generated-files/firefox/downloads").getCanonicalPath();
         assertThat(firefoxPreferences.get("browser.download.folderList"), is(2));
         assertThat(firefoxPreferences.get("browser.helperApps.alwaysAsk.force"), is(false));
         assertThat(firefoxPreferences.get("browser.download.manager.showWhenStarting"), is(false));

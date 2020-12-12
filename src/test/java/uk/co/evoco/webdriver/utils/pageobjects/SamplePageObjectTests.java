@@ -1,6 +1,7 @@
 package uk.co.evoco.webdriver.utils.pageobjects;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -32,5 +33,10 @@ public class SamplePageObjectTests extends BaseAbstractTest {
         webDriver.get(baseUrl);
         samplePageObject.fillTextBox();
         assertThat("Text incorrect", samplePageObject.getTextBoxContents(), is("Hello from sample page object"));
+    }
+
+    @AfterAll
+    public static void webDriverTearDown() throws Exception {
+        embeddedJetty.stop();
     }
 }
