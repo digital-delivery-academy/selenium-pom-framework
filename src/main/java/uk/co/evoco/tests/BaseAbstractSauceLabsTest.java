@@ -37,7 +37,7 @@ public abstract class BaseAbstractSauceLabsTest {
      * @throws IOException if results directory isn't created or config file cannot be found
      */
     @BeforeEach
-    public void setUp() throws SauceLabsCredentialsException {
+    public void setUp() throws SauceLabsCredentialsException, IOException {
         ConfiguredDriver sauceLabsDriver = new ConfiguredSauceLabsGridDriver();
         this.webDriver = new EventFiringWebDriver(sauceLabsDriver.getRemoteDriver());
         this.webDriver.register(new WebDriverListener());

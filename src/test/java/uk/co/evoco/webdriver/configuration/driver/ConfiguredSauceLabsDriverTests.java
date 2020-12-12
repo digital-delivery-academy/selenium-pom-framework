@@ -4,13 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import uk.co.evoco.exceptions.SauceLabsCredentialsException;
 
+import java.io.IOException;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class ConfiguredSauceLabsDriverTests {
 
     @Test
-    public void testCanRunTestOnSauceLabsUsingConfigiration() throws SauceLabsCredentialsException{
+    public void testCanRunTestOnSauceLabsUsingConfigiration() throws SauceLabsCredentialsException, IOException {
         System.setProperty("config", "config-saucelabs.json");
         ConfiguredDriver configuredSauceLabsGridDriver = new ConfiguredSauceLabsGridDriver();
         WebDriver webDriver = configuredSauceLabsGridDriver.getRemoteDriver();

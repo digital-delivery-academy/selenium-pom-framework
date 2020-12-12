@@ -9,6 +9,8 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import uk.co.evoco.tests.BaseAbstractTest;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -165,5 +167,14 @@ public class WebDriverUtilsTests extends BaseAbstractTest {
         WebElement element = webDriver.findElement(By.id("clear-utils-text-box"));
         SendKeysUtils.tolerantType(element, "Hello world", 10);
         assertThat(element.getAttribute("value"), is("Hello world"));
+    }
+
+    @Test
+    public void testBrowserPreferencesApplied() throws Exception {
+        String expectedFile = new File("run-generated-files/downloads").getCanonicalPath() + "/sampleFile.pdf";
+        webDriver.findElement(By.xpath("//a[text()='clickHereToDownLoadAFile']")).click();
+        Thread.sleep(2000);//need to wait until file download
+        assertThat(new File(expectedFile).exists(), is(true));
+        webDriver.quit();
     }
 }

@@ -13,15 +13,12 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
-import static uk.co.evoco.webdriver.configuration.utils.FileUtils.createAndGetRequiredFolderInTargetFolder;
-
 public class ConfiguredFirefoxDriver implements ConfiguredDriver {
 
     /**
-     *
      * @return WebDriver representing RemoteWebDriver grid
      */
-    public WebDriver getRemoteDriver() {
+    public WebDriver getRemoteDriver() throws IOException {
         return new RemoteWebDriver(
                 TestConfigHelper.get().getGridConfig().getGridUrl(), this.getOptions());
     }
@@ -42,7 +39,7 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
      *
      * @return configured options object for target browser driver
      */
-    public FirefoxOptions getOptions() {
+    public FirefoxOptions getOptions() throws IOException {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         Iterator<Map.Entry<String, JsonNode>> firefoxPreferences = TestConfigHelper.get()
                 .getBrowserPreferences(BrowserType.FIREFOX)
@@ -61,8 +58,7 @@ public class ConfiguredFirefoxDriver implements ConfiguredDriver {
                     break;
                 default:
                     if (key.equals("browser.download.dir")) {
-                        firefoxOptions.addPreference(key,
-                                createAndGetRequiredFolderInTargetFolder(value.asText()).toString());
+                        firefoxOptions.addPreference(key, createFileDownloadDirectory(value.asText()));
                     } else {
                         firefoxOptions.addPreference(key, value.asText());
                     }

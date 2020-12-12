@@ -13,25 +13,29 @@
   },
   "browserPreferences": {
     "firefox": {
-      "browser.download.dir": "downloads/reports",
+      "browser.download.folderList": 2,
+      "browser.helperApps.alwaysAsk.force": false,
+      "browser.download.manager.showWhenStarting": false,
+      "browser.download.dir": "run-generated-files/downloads",
+      "browser.helperApps.neverAsk.saveToDisk": "application/pdf, application/octet-stream",
       "pdfjs.disabled": true,
-      "browser.download.folderList": 2
+      "unhandled_prompt_behaviour": false
     },
-    "chrome": {
-      "profile.default_content_settings.popups": 0,
-      "download.default_directory": "downloads/reports",
-      "safebrowsing.enabled": true
-    }
-  },
-  "tolerantActionExceptions": {
-    "waitTimeoutInSeconds": 5,
-    "exceptionsToHandle": [
-      "StaleElementReferenceException",
-      "ElementClickInterceptedException",
-      "ElementNotInteractableException"
-    ]
-  },
-  "metrics": {
+      "chrome": {
+        "profile.default_content_settings.popups": 0,
+        "download.default_directory": "run-generated-files/downloads",
+        "safebrowsing.enabled": true
+      }
+    },
+    "tolerantActionExceptions": {
+      "waitTimeoutInSeconds": 5,
+      "exceptionsToHandle": [
+        "StaleElementReferenceException",
+        "ElementClickInterceptedException",
+        "ElementNotInteractableException"
+      ]
+    },
+    "metrics": {
     "jmx": {
       "enabled": false
     },

@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static uk.co.evoco.webdriver.configuration.utils.FileUtils.createAndGetRequiredFolderInTargetFolder;
-
 public class ConfiguredChromeDriver implements ConfiguredDriver {
 
     /**
@@ -23,7 +21,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
      *
      * @return WebDriver representing RemoteWebDriver grid
      */
-    public WebDriver getRemoteDriver() {
+    public WebDriver getRemoteDriver() throws IOException {
         return new RemoteWebDriver(
                 TestConfigHelper.get().getGridConfig().getGridUrl(), this.getOptions());
     }
@@ -44,7 +42,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
      *
      * @return configured options object for target browser driver
      */
-    public ChromeOptions getOptions() {
+    public ChromeOptions getOptions() throws IOException {
         ChromeOptions chromeOptions = new ChromeOptions();
         Map<String, Object> chromePrefs = new HashMap<>();
         Iterator<Map.Entry<String, JsonNode>> browserPreferences = TestConfigHelper.get()
@@ -63,8 +61,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
                     break;
                 default:
                     if (key.equals("download.default_directory")) {
-                        chromePrefs.put(key, createAndGetRequiredFolderInTargetFolder(
-                                value.asText()).toString());
+                        chromePrefs.put(key, createFileDownloadDirectory(value.asText()));
                     } else {
                         chromePrefs.put(key, value.asText());
                     }
