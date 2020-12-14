@@ -1,5 +1,6 @@
 package uk.co.evoco.webdriver.configuration.driver;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import uk.co.evoco.exceptions.SauceLabsCredentialsException;
@@ -19,5 +20,10 @@ public class ConfiguredSauceLabsDriverTests {
         webDriver.get("https://www.evoco.co.uk");
         assertThat("Didn't make it to evoco.co.uk", webDriver.getCurrentUrl(), containsString("evoco.co.uk"));
         webDriver.quit();
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        System.setProperty("config", "DEFAULT");
     }
 }

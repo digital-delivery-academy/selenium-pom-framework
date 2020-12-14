@@ -1,10 +1,7 @@
 package uk.co.evoco.webdriver.utils;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import uk.co.evoco.webdriver.configuration.driver.ConfiguredFirefoxDriver;
@@ -45,6 +42,7 @@ public class FirefoxDriverPreferenceTests {
 
     @AfterAll
     public static void webDriverTearDown() throws Exception {
+        System.setProperty("config", "DEFAULT");
         embeddedJetty.stop();
     }
 
