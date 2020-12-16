@@ -1,5 +1,5 @@
 {
-  "browser": "chrome",
+  "browser": "firefox",
   "baseUrl": "https://www.google.com",
   "timeout": "30",
   "headless": true,
@@ -20,22 +20,17 @@
       "browser.helperApps.neverAsk.saveToDisk": "application/pdf, application/octet-stream",
       "pdfjs.disabled": true,
       "unhandled_prompt_behaviour": false
-    },
-      "chrome": {
-        "profile.default_content_settings.popups": 0,
-        "download.default_directory": "run-generated-files/chrome/downloads",
-        "safebrowsing.enabled": true
-      }
-    },
-    "tolerantActionExceptions": {
-      "waitTimeoutInSeconds": 5,
-      "exceptionsToHandle": [
-        "StaleElementReferenceException",
-        "ElementClickInterceptedException",
-        "ElementNotInteractableException"
-      ]
-    },
-    "metrics": {
+    }
+  },
+  "tolerantActionExceptions": {
+    "waitTimeoutInSeconds": 5,
+    "exceptionsToHandle": [
+      "StaleElementReferenceException",
+      "ElementClickInterceptedException",
+      "ElementNotInteractableException"
+    ]
+  },
+  "metrics": {
     "jmx": {
       "enabled": false
     },

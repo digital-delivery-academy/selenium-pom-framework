@@ -13,8 +13,8 @@ import java.io.IOException;
 public interface ConfiguredDriver {
 
      WebDriver getLocalDriver() throws IOException;
-     WebDriver getRemoteDriver();
-     <T> T getOptions();
+     WebDriver getRemoteDriver() throws IOException;
+     <T> T getOptions() throws IOException;
 
     /**
      *ß
@@ -24,7 +24,7 @@ public interface ConfiguredDriver {
      */
     default EventFiringWebDriver getDriver(File screenshotPath) throws IOException {
         WebDriver webDriver;
-        switch(TestConfigHelper.get().getRunType()) {
+        switch (TestConfigHelper.get().getRunType()) {
             case LOCAL:
                 webDriver = getLocalDriver();
                 break;
@@ -55,10 +55,22 @@ public interface ConfiguredDriver {
     }
 
     /**
-     *
      * @throws IOException if the log directory cannot be created
      */
     default void createLogDirectory() throws IOException {
         FileUtils.forceMkdir(new File("./logs"));
     }
+
+    /**
+     *
+     * @param path runtime browser files download directory path
+     * @return Absolute file download path
+     * @throws IOException if the required directory cannot be created
+     */
+    default String createFileDownloadDirectory(String path) throws IOException {
+        String canonicalPath = new File(path).getCanonicalPath();
+        FileUtils.forceMkdir(new File(canonicalPath));
+        return canonicalPath;
+    }
+
 }

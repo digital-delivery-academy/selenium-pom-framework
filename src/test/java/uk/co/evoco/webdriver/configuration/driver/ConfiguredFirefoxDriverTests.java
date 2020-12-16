@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -25,16 +26,21 @@ public class ConfiguredFirefoxDriverTests {
     }
 
     @Test
-    public void testGetOptionsReturnsOptionsIncludedInFireFoxConfig() {
+    public void testGetOptionsReturnsOptionsIncludedInFireFoxConfig() throws IOException {
         ConfiguredDriver configuredFirefoxDriver = new ConfiguredFirefoxDriver();
         Map<String, Object> firefoxPreferences = getPreferences(configuredFirefoxDriver.getOptions());
-        assertThat(firefoxPreferences.get("pdfjs.disabled"), is(true));
+        String expectedFileDownLoadPath = new File("run-generated-files/firefox/downloads").getCanonicalPath();
         assertThat(firefoxPreferences.get("browser.download.folderList"), is(2));
-        assertThat(firefoxPreferences.get("browser.download.defaultFolder"), is("downloads/reports"));
+        assertThat(firefoxPreferences.get("browser.helperApps.alwaysAsk.force"), is(false));
+        assertThat(firefoxPreferences.get("browser.download.manager.showWhenStarting"), is(false));
+        assertThat(firefoxPreferences.get("browser.helperApps.neverAsk.saveToDisk"), is("application/pdf, application/octet-stream"));
+        assertThat(firefoxPreferences.get("pdfjs.disabled"), is(true));
+        assertThat(firefoxPreferences.get("unhandled_prompt_behaviour"), is(false));
+        assertThat(firefoxPreferences.get("browser.download.dir"), is(expectedFileDownLoadPath));
     }
 
-    private Map<String, Object> getPreferences (FirefoxOptions options) {
-        Map<String, Object> moxOptions = (Map<String, Object>)options.asMap().get("moz:firefoxOptions");
-        return (Map<String, Object>)moxOptions.get("prefs");
+    private Map<String, Object> getPreferences(FirefoxOptions options) {
+        Map<String, Object> moxOptions = (Map<String, Object>) options.asMap().get("moz:firefoxOptions");
+        return (Map<String, Object>) moxOptions.get("prefs");
     }
 }
