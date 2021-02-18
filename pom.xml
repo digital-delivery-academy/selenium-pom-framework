@@ -96,7 +96,7 @@
         <logback.version>1.0.1</logback.version>
         <apache.commons.io.version>2.6</apache.commons.io.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <jackson.version>2.10.1</jackson.version>
+        <jackson.version>2.12.1</jackson.version>
         <mockneat.version>0.3.8</mockneat.version>
         <dwp.formatvalidation.nino>1.3.0</dwp.formatvalidation.nino>
         <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
