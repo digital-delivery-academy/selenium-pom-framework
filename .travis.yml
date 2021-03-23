@@ -12,7 +12,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - sleep 3
 before_install:
-- cp .travis.settings.xml $HOME/.m2/settings.xml
+- cp .sample-mvn-.settings.xml $HOME/.m2/settings.xml
 - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
   --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 - google-chrome-stable --remote-debugging-port=9222 http://localhost &
