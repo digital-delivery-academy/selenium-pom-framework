@@ -1,0 +1,18 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Deploy to GitHub Pages
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy GitHub Pages
+      run: |
+        chmod ugo+x scripts/publish-javadocs-to-github-pages.sh
+        bash scripts/publish-javadocs-to-github-pages.sh

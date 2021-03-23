@@ -1,5 +1,5 @@
 # selenium-pom-framework
-[![Build Status](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework.svg?branch=master)](https://travis-ci.com/digital-delivery-academy/selenium-pom-framework)
+[![GitHub Actions Build](https://github.com/digital-delivery-academy/selenium-pom-framework/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/digital-delivery-academy/selenium-pom-framework/actions/workflows/maven.yml)
 [![GitHub Issues badge](https://img.shields.io/github/issues-raw/digital-delivery-academy/selenium-pom-framework?color=green)](https://github.com/digital-delivery-academy/selenium-pom-framework/issues)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
