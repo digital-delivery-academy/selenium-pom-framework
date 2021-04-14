@@ -20,7 +20,7 @@ public class SamplePageObjectTests extends BaseAbstractTest {
     private static EmbeddedJetty embeddedJetty;
 
     @BeforeAll
-    public static void webDriverSetup() throws Exception {
+    public static void jettSetup() throws Exception {
         embeddedJetty = new EmbeddedJetty();
         embeddedJetty.start();
         baseUrl = "http://localhost:" + embeddedJetty.getPort() + "/index.html";
@@ -28,7 +28,6 @@ public class SamplePageObjectTests extends BaseAbstractTest {
 
     @Test
     public void testCanUseBasePageObject() throws IOException {
-        WebDriver webDriver = new ConfiguredChromeDriver().getDriver(FileUtils.getTempDirectory());
         SamplePageObject samplePageObject = new SamplePageObject(webDriver);
         webDriver.get(baseUrl);
         samplePageObject.fillTextBox();

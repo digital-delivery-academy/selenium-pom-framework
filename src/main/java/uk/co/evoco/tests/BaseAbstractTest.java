@@ -4,11 +4,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.co.evoco.webdriver.WebDriverBuilder;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 import uk.co.evoco.webdriver.results.ResultsManager;
 
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * BaseAbstractTest to handle things that testers shouldn't need to worry about (like starting up a WebDriver instance
@@ -16,6 +19,8 @@ import java.io.IOException;
  */
 public abstract class BaseAbstractTest {
 
+    private static final Logger logger = LoggerFactory.getLogger(BaseAbstractTest.class);
+    protected String testId;
     protected EventFiringWebDriver webDriver;
     protected static ResultsManager resultsManager;
 
@@ -38,6 +43,7 @@ public abstract class BaseAbstractTest {
      */
     @BeforeEach
     public void setUp() throws IOException {
+        this.testId = UUID.randomUUID().toString();
         this.webDriver = new WebDriverBuilder()
                 .setResultsDirectory(resultsManager.getScreenshotDirectory())
                 .build();
@@ -52,6 +58,7 @@ public abstract class BaseAbstractTest {
      */
     @AfterEach
     public void tearDown() {
+        logger.debug("Test correlation ID: {}", testId);
         this.webDriver.quit();
     }
 
