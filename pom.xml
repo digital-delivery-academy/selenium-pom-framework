@@ -109,8 +109,8 @@
         <sonar.projectKey>digital-delivery-academy_selenium-pom-example</sonar.projectKey>
         <sonar.organization>digital-delivery-academy</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <axe.core.version>4.1.2</axe.core.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -207,6 +207,18 @@
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.deque.html.axe-core</groupId>
+            <artifactId>selenium</artifactId>
+            <version>${axe.core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.deque.html.axe-core</groupId>
+            <artifactId>selenium</artifactId>
+            <version>4.1.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
