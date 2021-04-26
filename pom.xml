@@ -94,7 +94,7 @@
         <webdriver.manager.version>3.7.1</webdriver.manager.version>
         <slf4j.version>1.6.4</slf4j.version>
         <logback.version>1.0.1</logback.version>
-        <apache.commons.io.version>2.6</apache.commons.io.version>
+        <apache.commons.io.version>2.7</apache.commons.io.version>
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.12.1</jackson.version>
         <mockneat.version>0.3.8</mockneat.version>
