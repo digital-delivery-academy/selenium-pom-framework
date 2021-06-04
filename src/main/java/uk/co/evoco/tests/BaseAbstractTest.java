@@ -20,7 +20,7 @@ import java.util.UUID;
 public abstract class BaseAbstractTest {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseAbstractTest.class);
-    protected String testId;
+    private String testId;
     protected EventFiringWebDriver webDriver;
     protected static ResultsManager resultsManager;
 
@@ -60,6 +60,14 @@ public abstract class BaseAbstractTest {
     public void tearDown() {
         logger.debug("Test correlation ID: {}", testId);
         this.webDriver.quit();
+    }
+
+    /**
+     * Provides a test ID that can be used to identify the test
+     * @return
+     */
+    public String getTestId() {
+        return this.testId;
     }
 
 }
