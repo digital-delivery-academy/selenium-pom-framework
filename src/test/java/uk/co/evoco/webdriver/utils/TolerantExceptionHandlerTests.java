@@ -1,14 +1,15 @@
 package uk.co.evoco.webdriver.utils;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.InvalidArgumentException;
+import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class TolerantExceptionHandlerTests {
 
@@ -65,5 +66,54 @@ public class TolerantExceptionHandlerTests {
 
         ArithmeticException inputException = new ArithmeticException();
         assertEquals(inputException, handler.propagateIfNotIgnored(inputException));
+    }
+
+    @Test
+    public void testShouldNotPropagateExceptionOnElementClickInterceptedException() throws Throwable {
+        List<String> exceptions = new ArrayList<>();
+        exceptions.add("ElementClickInterceptedException");
+        TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(exceptions);
+        try {
+            tolerantExceptionHandler.propagateIfNotIgnored(new ElementClickInterceptedException("Hello"));
+            assertTrue(true);
+        } catch(Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testShouldNotPropagateExceptionOnStaleElementException() throws Throwable {
+        List<String> exceptions = new ArrayList<>();
+        exceptions.add("StaleElementReferenceException");
+        TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(exceptions);
+        try {
+            tolerantExceptionHandler.propagateIfNotIgnored(new StaleElementReferenceException("Hello"));
+            assertTrue(true);
+        } catch(Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testShouldNotPropagateExceptionOnStaleElementExceptionWithPacakgeName() throws Throwable {
+        List<String> exceptions = new ArrayList<>();
+        exceptions.add("org.openqa.selenium.StaleElementReferenceException");
+        TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(exceptions);
+        try {
+            tolerantExceptionHandler.propagateIfNotIgnored(new StaleElementReferenceException("Hello"));
+            assertTrue(true);
+        } catch(Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testShouldPropagateExceptionWhenUnToleratedExceptionDetected() throws Throwable {
+        List<String> exceptions = new ArrayList<>();
+        exceptions.add("StaleElementReferenceException");
+        TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(exceptions);
+        assertThrows(Throwable.class, () -> {
+            tolerantExceptionHandler.propagateIfNotIgnored(new Exception("Hello"));
+        });
     }
 }
