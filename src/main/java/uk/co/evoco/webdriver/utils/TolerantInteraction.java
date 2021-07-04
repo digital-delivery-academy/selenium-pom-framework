@@ -1,8 +1,6 @@
 package uk.co.evoco.webdriver.utils;
 
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Sleeper;
 import org.slf4j.Logger;
@@ -27,6 +25,11 @@ public class TolerantInteraction {
     private TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(
             TestConfigHelper.get().getTolerantActionExceptions().getExceptionsToHandle(),
             logger);
+    private WebDriver webDriver;
+
+    public TolerantInteraction(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
 
     /**
      *
@@ -47,36 +50,43 @@ public class TolerantInteraction {
         end = clock.instant().plusSeconds(timeoutInSeconds);
         while (true) {
             try {
-                if(Boolean.TRUE.equals(webElement.isEnabled())) {
-                    visibleTextOrHtmlValueString.ifPresent(
-                            text -> {
-                                interact(new Select(webElement), text, selectBoxInteractionType); });
-                    itemIndex.ifPresent(index -> { interact(new Select(webElement), index); });
+                if (interactWithSelectBox(visibleTextOrHtmlValueString, itemIndex, webElement, selectBoxInteractionType, selectBoxInteractionType))
                     return webElement;
-                }
             } catch (Throwable e) {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
-            if (end.isBefore(clock.instant())) {
-                if (null == lastException) {
-                    logger.error(
-                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
-                            timeoutInSeconds);
-                    lastException = new TimeoutException();
-                } else {
-                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
-                            lastException.getCause(), timeoutInSeconds);
-                }
-                throw lastException;
+            checkTimeout(timeoutInSeconds);
+        }
+    }
+
+    /**
+     *
+     * @param locator
+     * @param selectBoxInteractionType
+     * @param visibleTextOrHtmlValueString
+     * @param itemIndex
+     * @param timeoutInSeconds
+     * @return
+     * @throws Throwable
+     */
+    public WebElement tolerantInteraction(
+            By locator,
+            SelectBoxInteractionType selectBoxInteractionType,
+            Optional<String> visibleTextOrHtmlValueString,
+            Optional<Integer> itemIndex,
+            int timeoutInSeconds) throws Throwable {
+        end = clock.instant().plusSeconds(timeoutInSeconds);
+        while (true) {
+            try {
+                WebElement webElement = webDriver.findElement(locator);
+                if (interactWithSelectBox(visibleTextOrHtmlValueString, itemIndex, webElement, selectBoxInteractionType, selectBoxInteractionType))
+                    return webElement;
+            } catch (Throwable e) {
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
-            try {
-                sleeper.sleep(intervalDuration);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new WebDriverException(e);
-            }
+            checkTimeout(timeoutInSeconds);
         }
     }
 
@@ -102,25 +112,7 @@ public class TolerantInteraction {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
 
-            if (end.isBefore(clock.instant())) {
-                if (null == lastException) {
-                    logger.error(
-                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
-                            timeoutInSeconds);
-                    lastException = new TimeoutException();
-                } else {
-                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
-                            lastException.getCause(), timeoutInSeconds);
-                }
-                throw lastException;
-            }
-
-            try {
-                sleeper.sleep(intervalDuration);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new WebDriverException(e);
-            }
+            checkTimeout(timeoutInSeconds);
         }
     }
 
@@ -146,25 +138,7 @@ public class TolerantInteraction {
             } catch(Throwable e) {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
-            if(end.isBefore(clock.instant())) {
-                if(null == lastException) {
-                    logger.error(
-                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
-                            timeoutInSeconds);
-                    lastException = new TimeoutException();
-                } else {
-                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
-                            lastException.getCause(), timeoutInSeconds);
-                }
-                throw lastException;
-            }
-
-            try {
-                sleeper.sleep(intervalDuration);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new WebDriverException(e);
-            }
+            checkTimeout(timeoutInSeconds);
         }
     }
 
@@ -188,25 +162,7 @@ public class TolerantInteraction {
             } catch (Throwable e) {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
-            if (end.isBefore(clock.instant())) {
-                if (null == lastException) {
-                    logger.error(
-                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
-                            timeoutInSeconds);
-                    lastException = new TimeoutException();
-                } else {
-                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
-                            lastException.getCause(), timeoutInSeconds);
-                }
-                throw lastException;
-            }
-
-            try {
-                sleeper.sleep(intervalDuration);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new WebDriverException(e);
-            }
+            checkTimeout(timeoutInSeconds);
         }
     }
 
@@ -229,25 +185,7 @@ public class TolerantInteraction {
             } catch (Throwable e) {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
-            if (end.isBefore(clock.instant())) {
-                if (null == lastException) {
-                    logger.error(
-                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
-                            timeoutInSeconds);
-                    lastException = new TimeoutException();
-                } else {
-                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
-                            lastException.getCause(), timeoutInSeconds);
-                }
-                throw lastException;
-            }
-
-            try {
-                sleeper.sleep(intervalDuration);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new WebDriverException(e);
-            }
+            checkTimeout(timeoutInSeconds);
         }
     }
 
@@ -271,25 +209,29 @@ public class TolerantInteraction {
             } catch (Throwable e) {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
-            if (end.isBefore(clock.instant())) {
-                if (null == lastException) {
-                    logger.error(
-                            "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
-                            timeoutInSeconds);
-                    lastException = new TimeoutException();
-                } else {
-                    logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
-                            lastException.getCause(), timeoutInSeconds);
-                }
-                throw lastException;
-            }
+            checkTimeout(timeoutInSeconds);
+        }
+    }
 
-            try {
-                sleeper.sleep(intervalDuration);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new WebDriverException(e);
+    private void checkTimeout(int timeoutInSeconds) throws Throwable {
+        if (end.isBefore(clock.instant())) {
+            if (null == lastException) {
+                logger.error(
+                        "Exception condition failed: Timeout (tried for {} seconds with 500ms interval",
+                        timeoutInSeconds);
+                lastException = new TimeoutException();
+            } else {
+                logger.error("Exception condition failed: {} (tried for {} seconds with 500ms interval",
+                        lastException.getCause(), timeoutInSeconds);
             }
+            throw lastException;
+        }
+
+        try {
+            sleeper.sleep(intervalDuration);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new WebDriverException(e);
         }
     }
 
@@ -324,6 +266,17 @@ public class TolerantInteraction {
             default:
                 throw new WebDriverException("Must be one of BY_VALUE or BY_VISIBLE_TEXT");
         }
+    }
+
+    private boolean interactWithSelectBox(Optional<String> visibleTextOrHtmlValueString, Optional<Integer> itemIndex, WebElement webElement, SelectBoxInteractionType selectBoxInteractionType2, SelectBoxInteractionType selectBoxInteractionType) {
+        if(Boolean.TRUE.equals(webElement.isEnabled())) {
+            visibleTextOrHtmlValueString.ifPresent(
+                    text -> {
+                        interact(new Select(webElement), text, selectBoxInteractionType2); });
+            itemIndex.ifPresent(index -> { interact(new Select(webElement), index); });
+            return true;
+        }
+        return false;
     }
 
     private void interact(Select selectBox, int index) {
