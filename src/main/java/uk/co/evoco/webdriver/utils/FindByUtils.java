@@ -32,13 +32,14 @@ public final class FindByUtils {
      * Finds the first element that is displayed with given locator.
      * Useful for instances where there are multiple elements on the DOM with the same locator and one (or more)
      * of them are hidden (e.g. used in mobile layouts or hold a different z-index given some other element is present)
+     *
      * @param webDriver active WebDriver instance
-     * @param locator selector for target WebElement
+     * @param locator   selector for target WebElement
      * @return active WebElement, already located
      */
     public static WebElement multipleLocatorMatchGetDisplayed(WebDriver webDriver, By locator)
             throws WebDriverException {
-        try(final Timer.Context ignored = multipleLocatorMatchGetDisplayedAction.time()) {
+        try (final Timer.Context ignored = multipleLocatorMatchGetDisplayedAction.time()) {
             List<WebElement> elements = webDriver.findElements(locator);
             logger.info("Found {} elements with locator: {}", elements.size(), locator.toString());
             for (WebElement element : elements) {
@@ -52,14 +53,14 @@ public final class FindByUtils {
 
     /**
      * Finds elements by either the HTML name or id attribute using the given selector text
+     *
      * @param webDriver active WebDriver instance
-     * @param idOrName the variable locator
+     * @param idOrName  the variable locator
      * @return active WebElement, already located
      */
     public static WebElement byIdOrName(WebDriver webDriver, String idOrName) {
-        try(final Timer.Context ignored = byIdOrNameAction.time()) {
+        try (final Timer.Context ignored = byIdOrNameAction.time()) {
             return webDriver.findElement(new ByIdOrName(idOrName));
         }
     }
 }
-

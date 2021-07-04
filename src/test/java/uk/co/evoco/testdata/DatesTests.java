@@ -6,10 +6,7 @@ import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.co.evoco.testdata.Dates.futureDateAvoidingWeekends;
-import static uk.co.evoco.testdata.Dates.futureDate;
-import static uk.co.evoco.testdata.Dates.pastDate;
-import static uk.co.evoco.testdata.Dates.futureDataAvoidingWeekendsAndBankHolidays;
+import static uk.co.evoco.testdata.Dates.*;
 
 public class DatesTests {
 
@@ -64,4 +61,28 @@ public class DatesTests {
                 is("13/06/2019 13:54"));
     }
 
+    @Test
+    public void testCanCheckDateWithinGivenToleranceOnUpperBoundary() {
+        assertThat(isDateWithinTolerance("dd/MM/yyyy HH:mm","27/06/2021 19:55", "27/06/2021 20:00", 5), is(true));
+    }
+
+    @Test
+    public void testCanCheckDateWithinGivenToleranceOverUpperBoundary() {
+        assertThat(isDateWithinTolerance("dd/MM/yyyy HH:mm","27/06/2021 19:55", "27/06/2021 20:01", 5), is(false));
+    }
+
+    @Test
+    public void testCanCheckDateWithinGivenToleranceWithinUpperBoundary() {
+        assertThat(isDateWithinTolerance("dd/MM/yyyy HH:mm","27/06/2021 19:55", "27/06/2021 19:59", 5), is(true));
+    }
+
+    @Test
+    public void testCanCheckDateWithinGivenToleranceOneDayOverOnUpper() {
+        assertThat(isDateWithinTolerance("dd/MM/yyyy HH:mm","27/06/2021 19:55", "28/06/2021 19:59", 5), is(false));
+    }
+
+    @Test
+    public void testCanCheckDateWithinGivenToleranceOneDayUnderOnLower() {
+        assertThat(isDateWithinTolerance("dd/MM/yyyy HH:mm","26/06/2021 19:55", "27/06/2021 19:59", 5), is(false));
+    }
 }

@@ -2,6 +2,7 @@ package uk.co.evoco.testdata;
 
 import net.andreinc.mockneat.abstraction.MockUnitBase;
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -50,6 +51,21 @@ public class Dates extends MockUnitBase {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateFormat);
         DateTime dateTime = DateTime.now().toDateTime();
         return dateTime.toString(dateTimeFormatter);
+    }
+
+    /**
+     * Returns boolean result on if the two given dates are within the given tolerance
+     * @param dateFormat
+     * @param baseDate
+     * @param comparisonDate
+     * @param toleranceInMinutes
+     * @return
+     */
+    public static boolean isDateWithinTolerance(String dateFormat, String baseDate, String comparisonDate, long toleranceInMinutes) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateFormat);
+        long differenceInMillis = DateTime.parse(comparisonDate, dateTimeFormatter).getMillis() - DateTime.parse(baseDate, dateTimeFormatter).getMillis();
+        long differenceInMinutes = (differenceInMillis/1000)/60;
+        return differenceInMinutes <= toleranceInMinutes;
     }
 
     /**
