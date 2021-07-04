@@ -1,6 +1,7 @@
 package uk.co.evoco.webdriver.utils;
 
 import com.codahale.metrics.Timer;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import uk.co.evoco.metrics.MetricRegistryHelper;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;

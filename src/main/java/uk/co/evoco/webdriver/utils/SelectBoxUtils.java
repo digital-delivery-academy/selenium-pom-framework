@@ -26,10 +26,6 @@ public final class SelectBoxUtils extends TolerantInteraction {
     private static final Timer tolerantItemByVisibleTextAction = MetricRegistryHelper.get().timer(name("SelectBoxUtils.tolerantItemByVisibleText"));
     private static final Timer tolerantItemByIndexAction = MetricRegistryHelper.get().timer(name("SelectBoxUtils.tolerantItemByIndex"));
 
-    public SelectBoxUtils(WebDriver webDriver) {
-        super(webDriver);
-    }
-
     /**
      * Selects an option that has a matching value attribute in the Options tag markup
      * @param selectBox active WebElement, already located
@@ -71,61 +67,58 @@ public final class SelectBoxUtils extends TolerantInteraction {
     }
 
     /**
-     * @param webDriver
      * @param webElement active WebElement, already located
      * @param htmlValue  HTML value attribute
      * @param timeout    time in seconds to keep trying
      * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantItemByHtmlValueAttribute(WebDriver webDriver, WebElement webElement, String htmlValue, int timeout)
+    public static void tolerantItemByHtmlValueAttribute(WebElement webElement, String htmlValue, int timeout)
             throws Throwable {
         try(final Timer.Context ignored = tolerantItemByHtmlValueAttributeAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
                     webElement, SelectBoxInteractionType.BY_VALUE, Optional.of(htmlValue), Optional.empty(), timeout);
         }
     }
 
     /**
-     * @param webDriver
      * @param webElement active WebElement, already located
      * @param htmlValue  HTML value attribute
      * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantItemByHtmlValueAttribute(WebDriver webDriver, WebElement webElement, String htmlValue)
+    public static void tolerantItemByHtmlValueAttribute(WebElement webElement, String htmlValue)
             throws Throwable {
         try(final Timer.Context ignored = tolerantItemByHtmlValueAttributeAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
                     webElement, SelectBoxInteractionType.BY_VALUE, Optional.of(htmlValue), Optional.empty(),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }
     }
 
     /**
-     * @param webDriver
      * @param webElement  active WebElement, already located
      * @param visibleText visible text in the select box (NOT the HTML value attribute)
      * @param timeout     time in seconds to keep trying
      * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantItemByVisibleText(WebDriver webDriver, WebElement webElement, String visibleText, int timeout)
+    public static void tolerantItemByVisibleText(WebElement webElement, String visibleText, int timeout)
             throws Throwable {
         try(final Timer.Context ignored = tolerantItemByVisibleTextAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
                     webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                     Optional.of(visibleText), Optional.empty(), timeout);
         }
     }
 
     /**
-     * @param webDriver
+
      * @param webElement active WebElement, already located
      * @param visibleText visible text in the select box (NOT the HTML value attribute)
      * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantItemByVisibleText(WebDriver webDriver, WebElement webElement, String visibleText)
+    public static void tolerantItemByVisibleText(WebElement webElement, String visibleText)
             throws Throwable {
         try(final Timer.Context ignored = tolerantItemByVisibleTextAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
                     webElement, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                     Optional.of(visibleText), Optional.empty(),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
@@ -141,7 +134,8 @@ public final class SelectBoxUtils extends TolerantInteraction {
     public static void tolerantItemByVisibleText(WebDriver webDriver, By locator, String visibleText)
             throws Throwable {
         try(final Timer.Context ignored = tolerantItemByVisibleTextAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
+                    webDriver,
                     locator, SelectBoxInteractionType.BY_VISIBLE_TEXT,
                     Optional.of(visibleText), Optional.empty(),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
@@ -149,28 +143,26 @@ public final class SelectBoxUtils extends TolerantInteraction {
     }
 
     /**
-     * @param webDriver
      * @param webElement active WebElement, already located
      * @param index      index in order of display
      * @param timeout    time in seconds to keep trying
      * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantItemByIndex(WebDriver webDriver, WebElement webElement, int index, int timeout) throws Throwable {
+    public static void tolerantItemByIndex(WebElement webElement, int index, int timeout) throws Throwable {
         try(final Timer.Context ignored = tolerantItemByIndexAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
                     webElement, SelectBoxInteractionType.BY_INDEX, Optional.empty(), Optional.of(index), timeout);
         }
     }
 
     /**
-     * @param webDriver
      * @param webElement active WebElement, already located
      * @param index      index in order of display
      * @throws Throwable any unhandled or un-tolerated exception
      */
-    public static void tolerantItemByIndex(WebDriver webDriver, WebElement webElement, int index) throws Throwable {
+    public static void tolerantItemByIndex(WebElement webElement, int index) throws Throwable {
         try(final Timer.Context ignored = tolerantItemByIndexAction.time()) {
-            new SelectBoxUtils(webDriver).tolerantInteraction(
+            new SelectBoxUtils().tolerantInteraction(
                     webElement, SelectBoxInteractionType.BY_INDEX, Optional.empty(), Optional.of(index),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }

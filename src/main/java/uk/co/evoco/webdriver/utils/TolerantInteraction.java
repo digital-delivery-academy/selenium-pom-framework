@@ -25,11 +25,6 @@ public class TolerantInteraction {
     private TolerantExceptionHandler tolerantExceptionHandler = new TolerantExceptionHandler(
             TestConfigHelper.get().getTolerantActionExceptions().getExceptionsToHandle(),
             logger);
-    private WebDriver webDriver;
-
-    public TolerantInteraction(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
 
     /**
      *
@@ -71,6 +66,7 @@ public class TolerantInteraction {
      * @throws Throwable
      */
     public WebElement tolerantInteraction(
+            WebDriver webDriver,
             By locator,
             SelectBoxInteractionType selectBoxInteractionType,
             Optional<String> visibleTextOrHtmlValueString,
