@@ -31,7 +31,7 @@ public class ChromeDriverPreferenceTests {
         webDriver.get(baseUrl);
         String expectedFile = new File("run-generated-files/chrome/downloads").getCanonicalPath() + "/sampleFile.pdf";
         webDriver.findElement(By.xpath("//a[text()='clickHereToDownLoadAFile']")).click();
-        Thread.sleep(2000);//need to wait until file download
+        Thread.sleep(5000);//need to wait until file download
         assertThat(new File(expectedFile).exists(), is(true));
     }
 
