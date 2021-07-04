@@ -1,11 +1,8 @@
 package uk.co.evoco.webdriver.configuration.utils;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.StaleElementReferenceException;
-import uk.co.evoco.webdriver.configuration.WebDriverConfig;
-import uk.co.evoco.webdriver.utils.JsonUtils;
 import uk.co.evoco.webdriver.utils.TolerantExceptionHandler;
 
 import java.util.ArrayList;

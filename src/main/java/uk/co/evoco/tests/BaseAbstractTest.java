@@ -1,5 +1,7 @@
 package uk.co.evoco.tests;
 
+import com.google.common.io.BaseEncoding;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +13,7 @@ import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 import uk.co.evoco.webdriver.results.ResultsManager;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.UUID;
 
 /**
@@ -44,7 +47,7 @@ public abstract class BaseAbstractTest {
      */
     @BeforeEach
     public void setUp() throws IOException {
-        this.testId = UUID.randomUUID().toString();
+        this.testId = generateTestId();
         this.webDriver = new WebDriverBuilder()
                 .setResultsDirectory(resultsManager.getScreenshotDirectory())
                 .build();
@@ -71,4 +74,13 @@ public abstract class BaseAbstractTest {
         return this.testId;
     }
 
+    private String generateTestId() {
+        UUID uuid = UUID.randomUUID();
+        ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
+        bb.putLong(uuid.getMostSignificantBits());
+        bb.putLong(uuid.getLeastSignificantBits());
+        String testId = StringUtils.replace(BaseEncoding.base64Url().encode(bb.array()), "=", "").toUpperCase();
+        logger.debug("Test Correlation ID is: {}", testId);
+        return testId;
+    }
 }

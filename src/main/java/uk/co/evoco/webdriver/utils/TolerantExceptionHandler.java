@@ -1,6 +1,5 @@
 package uk.co.evoco.webdriver.utils;
 
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
