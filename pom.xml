@@ -4,7 +4,7 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>1.0.15-SNAPSHOT</version>
+    <version>1.0.17-SNAPSHOT</version>
 
     <name>Selenium POM Framework</name>
     <url>https://www.github.com/digital-delivery-academy/selenium-pom-framework</url>
@@ -88,11 +88,11 @@
         <maven.surefire.version>2.22.2</maven.surefire.version>
         <maven.failsafe.version>2.22.2</maven.failsafe.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
-        <jetty.version>9.4.38.v20210224</jetty.version>
+        <jetty.version>9.4.41.v20210516</jetty.version>
         <selenium.version>3.141.59</selenium.version>
-        <webdriver.manager.version>3.7.1</webdriver.manager.version>
+        <webdriver.manager.version>4.4.3</webdriver.manager.version>
         <slf4j.version>1.6.4</slf4j.version>
-        <logback.version>1.0.1</logback.version>
+        <logback.version>1.2.3</logback.version>
         <apache.commons.io.version>2.9.0</apache.commons.io.version>
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.12.1</jackson.version>
@@ -108,8 +108,8 @@
         <sonar.projectKey>digital-delivery-academy_selenium-pom-example</sonar.projectKey>
         <sonar.organization>digital-delivery-academy</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <axe.core.version>4.1.2</axe.core.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -206,6 +206,18 @@
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.deque.html.axe-core</groupId>
+            <artifactId>selenium</artifactId>
+            <version>${axe.core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.deque.html.axe-core</groupId>
+            <artifactId>selenium</artifactId>
+            <version>4.1.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
