@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,6 +28,8 @@ public class WebDriverConfig {
     private TolerantActionExceptions tolerantActionExceptions;
     private MetricsConfig metricsConfig;
     private boolean takeScreenshotOnError;
+
+    private final Logger logger = LoggerFactory.getLogger(WebDriverConfig.class);
 
     /**
      *
@@ -188,9 +192,21 @@ public class WebDriverConfig {
      *
      * @return the tolerant action exceptions config
      */
-
     public TolerantActionExceptions getTolerantActionExceptions() {
         return tolerantActionExceptions;
+    }
+
+    /**
+     *
+     */
+    public void printToleratedExceptions() {
+        StringBuilder stringBuilder = new StringBuilder("Exceptions that will be tolerated within Evoco framework when using tolerant actions:\n");
+        for(String exception : tolerantActionExceptions.getExceptionsToHandle()) {
+            stringBuilder
+                    .append(exception)
+                    .append("\n");
+        }
+        logger.debug(stringBuilder.toString());
     }
 
     /**

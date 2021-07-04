@@ -81,7 +81,6 @@ public class TolerantInteraction {
             } catch (Throwable e) {
                 lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
             }
-
             checkTimeout(timeoutInSeconds);
         }
     }

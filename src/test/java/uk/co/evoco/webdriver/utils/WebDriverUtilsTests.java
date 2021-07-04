@@ -22,7 +22,7 @@ public class WebDriverUtilsTests extends BaseAbstractTest {
     public static void webDriverSetup() throws Exception {
         embeddedJetty = new EmbeddedJetty();
         embeddedJetty.start();
-        baseUrl = "http://localhost:" + embeddedJetty.getPort() + "/index.html";
+        baseUrl = "http://localhost:" + embeddedJetty.getPort();
     }
 
     @AfterAll
@@ -32,7 +32,7 @@ public class WebDriverUtilsTests extends BaseAbstractTest {
 
     @BeforeEach
     public void setUpWebApp() {
-        webDriver.get(baseUrl);
+        webDriver.get(baseUrl + "/index.html");
     }
 
     @Test
@@ -107,6 +107,14 @@ public class WebDriverUtilsTests extends BaseAbstractTest {
             WebElement element = webDriver.findElement(By.id("clickutils-href-always-disabled"));
             ClickUtils.tolerantClick(element);
         });
+    }
+
+    @Test
+    public void testCanSelectValueByVisibleTextUsingTolerantMethodsAfterStaleElementException() throws Throwable {
+        webDriver.get(baseUrl + "/stale-element.html");
+        Thread.sleep(7000);
+        SelectBoxUtils.tolerantItemByVisibleText(webDriver, By.id("select-box"), "Option 2");
+        Thread.sleep(5000);
     }
 
     @Test

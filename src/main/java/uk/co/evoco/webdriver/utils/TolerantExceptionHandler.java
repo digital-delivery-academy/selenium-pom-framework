@@ -1,5 +1,6 @@
 package uk.co.evoco.webdriver.utils;
 
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,16 +34,15 @@ public class TolerantExceptionHandler {
             if (isInstanceOf(tolerantExceptionClassName, throwable)) {
                 logger.info("Exception {} will be ignored", tolerantExceptionClassName);
                 return throwable;
+            } else {
+                logger.error("Un-tolerated Exception {} encountered during tolerant action attempt", throwable.getClass().getName());
             }
         }
+
         throw throwable;
     }
 
     private boolean isInstanceOf (String source, Throwable target) {
-        try {
-            return Class.forName(source).isInstance(target);
-        } catch (ClassNotFoundException e) {
-            return false;
-        }
+        return target.getClass().getName().contains(source);
     }
 }

@@ -33,6 +33,7 @@ public abstract class BaseAbstractTest {
     public static void beforeAll() {
         resultsManager = new ResultsManager();
         resultsManager.createScreenshotDirectory();
+        TestConfigHelper.get().printToleratedExceptions();
     }
 
     /**

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stale Element Exception</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            setTimeout(function() {
+                var element = document.getElementById("select-box");
+                element.parentNode.removeChild(element);
+            }, 3000);
+            setTimeout(function() {
+                document.getElementById("SelectBoxUtils-elements").innerHTML = "<select id=\"select-box\">\n" +
+                    "        <option id=\"select-box-option1\" value=\"option1\">Option 1</option>\n" +
+                    "        <option id=\"select-box-option2\" value=\"option2\">Option 2</option>\n" +
+                    "        <option id=\"select-box-option3\" value=\"option3\">Option 3</option>\n" +
+                    "    </select>";
+            }, 6000);
+        });
+    </script>
+</head>
+<body>
+<div id="SelectBoxUtils-elements">
+    <select id="select-box">
+        <option id="select-box-option1" value="option1">Option 1</option>
+        <option id="select-box-option2" value="option2">Option 2</option>
+        <option id="select-box-option3" value="option3">Option 3</option>
+    </select>
+</div>
+</body>
+</html>
