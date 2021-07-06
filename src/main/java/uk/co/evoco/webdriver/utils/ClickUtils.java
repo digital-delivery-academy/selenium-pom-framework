@@ -1,6 +1,8 @@
 package uk.co.evoco.webdriver.utils;
 
 import com.codahale.metrics.Timer;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import uk.co.evoco.metrics.MetricRegistryHelper;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
@@ -32,6 +34,13 @@ public final class ClickUtils extends TolerantInteraction {
     public static void tolerantClick(WebElement webElement) throws Throwable {
         try(final Timer.Context ignored = tolerantClickAction.time()) {
             new ClickUtils().tolerantInteraction(webElement, Optional.empty(),
+                    TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
+        }
+    }
+
+    public static void tolerantClick(WebDriver webDriver, By locator) throws Throwable {
+        try(final Timer.Context ignored = tolerantClickAction.time()) {
+            new ClickUtils().tolerantInteraction(webDriver, locator, Optional.empty(),
                     TestConfigHelper.get().getTolerantActionWaitTimeoutInSeconds());
         }
     }

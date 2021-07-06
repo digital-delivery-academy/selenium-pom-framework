@@ -139,6 +139,35 @@ public class TolerantInteraction {
 
     /**
      *
+     * @param webDriver
+     * @param locator
+     * @param textToType
+     * @param timeoutInSeconds
+     * @return
+     * @throws Throwable
+     */
+    public WebElement tolerantInteraction(
+            WebDriver webDriver, By locator, Optional<String> textToType, int timeoutInSeconds)
+            throws Throwable {
+        end = clock.instant().plusSeconds(timeoutInSeconds);
+        while(true) {
+            try {
+                WebElement webElement = webDriver.findElement(locator);
+                if(Boolean.TRUE.equals(webElement.isEnabled())) {
+                    textToType.ifPresentOrElse(
+                            text -> { interact(webElement, text); },
+                            () -> { interact(webElement); });
+                    return webElement;
+                }
+            } catch(Throwable e) {
+                lastException = tolerantExceptionHandler.propagateIfNotIgnored(e);
+            }
+            checkTimeout(timeoutInSeconds);
+        }
+    }
+
+    /**
+     *
      * @param webElement locator we will use to re-lookup the element on retry
      * @param attribute WebElement attribute
      * @param timeoutInSeconds time to continue trying for
