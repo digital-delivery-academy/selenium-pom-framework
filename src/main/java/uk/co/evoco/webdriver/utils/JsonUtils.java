@@ -66,6 +66,18 @@ public final class JsonUtils {
     }
 
     /**
+     *
+     * @param jsonStream
+     * @param type
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
+    public static <T> T fromFile(InputStream jsonStream, TypeReference<T> type) throws IOException {
+        return new ObjectMapper().readValue(jsonStream, type);
+    }
+
+    /**
      * Deserialize a JSON from a File to a given class type
      * @param jsonStream json stream
      * @param type target class type or collection
