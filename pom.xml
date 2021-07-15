@@ -4,7 +4,7 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>1.0.20-SNAPSHOT</version>
+    <version>1.0.21-SNAPSHOT</version>
 
     <name>Selenium POM Framework</name>
     <url>https://www.github.com/digital-delivery-academy/selenium-pom-framework</url>
