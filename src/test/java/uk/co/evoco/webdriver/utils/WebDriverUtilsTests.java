@@ -37,7 +37,7 @@ public class WebDriverUtilsTests extends BaseAbstractTest {
 
     @Test
     public void testServerIsAvailable() {
-        assertThat(webDriver.getCurrentUrl(), is(baseUrl));
+        assertThat(webDriver.getCurrentUrl(), is(baseUrl + "/index.html"));
     }
 
     @Test
