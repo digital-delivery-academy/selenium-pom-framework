@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.openqa.selenium.json.Json;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +26,7 @@ public class WebDriverConfig {
     private GridConfig gridConfig;
     private RunType runType;
     private Map<String, ObjectNode> browserPreferences;
+    private ObjectNode chromeLoggingPreferences;
     private TolerantActionExceptions tolerantActionExceptions;
     private MetricsConfig metricsConfig;
     private boolean takeScreenshotOnError;
@@ -164,11 +166,33 @@ public class WebDriverConfig {
 
     /**
      *
+     * @return the ChromeLoggingPreferences configuration
+     */
+    public Optional<String> getChromeLoggingPreferences() {
+        return Optional.ofNullable(chromeLoggingPreferences)
+                .map(configObject -> configObject.retain("logLevel"))
+                .filter(s -> !s.isEmpty())
+                .map(logLevelNode -> logLevelNode.get("logLevel").asText())
+                .stream()
+                .findFirst();
+    }
+
+    /**
+     *
      * @param browserPreferences the configuration properties for the various browsers supported by the webdriver
      */
     @JsonProperty("browserPreferences")
     public void setBrowserPreferences(Map<String, ObjectNode> browserPreferences) {
         this.browserPreferences = browserPreferences;
+    }
+
+    /**
+     *
+     * @param chromeLoggingPreferences the configuration logging level for the various browsers supported by the webdriver
+     */
+    @JsonProperty("chromeLoggingPreferences")
+    public void setChromeLoggingPreferences(ObjectNode chromeLoggingPreferences) {
+        this.chromeLoggingPreferences = chromeLoggingPreferences;
     }
 
     /**
