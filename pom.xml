@@ -4,7 +4,7 @@
 
     <groupId>uk.co.evoco</groupId>
     <artifactId>selenium-pom-framework</artifactId>
-    <version>1.0.23</version>
+    <version>1.0.24-SNAPSHOT</version>
 
     <name>Selenium POM Framework</name>
     <url>https://www.github.com/digital-delivery-academy/selenium-pom-framework</url>
@@ -58,7 +58,7 @@
         <connection>scm:git:git://github.com/digital-delivery-academy/selenium-pom-framework.git</connection>
         <developerConnection>scm:git:git@github.com:digital-delivery-academy/selenium-pom-framework.git</developerConnection>
         <url>https://github.com/digital-delivery-academy/selenium-pom-framework</url>
-      <tag>selenium-pom-framework-1.0.23</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <distributionManagement>
