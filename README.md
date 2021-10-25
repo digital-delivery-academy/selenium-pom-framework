@@ -1,7 +1,6 @@
 # selenium-pom-framework
 [![GitHub Actions Build](https://github.com/digital-delivery-academy/selenium-pom-framework/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/digital-delivery-academy/selenium-pom-framework/actions/workflows/maven.yml)
 [![GitHub Issues badge](https://img.shields.io/github/issues-raw/digital-delivery-academy/selenium-pom-framework?color=green)](https://github.com/digital-delivery-academy/selenium-pom-framework/issues)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=coverage)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=digital-delivery-academy_selenium-pom-example&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=digital-delivery-academy_selenium-pom-example)
@@ -10,6 +9,7 @@
 
 [![Latest version badge](https://img.shields.io/github/v/release/digital-delivery-academy/selenium-pom-framework)](https://github.com/digital-delivery-academy/selenium-pom-framework/releases)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **We've released version 1.0.0! And we've moved to Maven Central hosting and added instrumentation**
@@ -169,6 +169,7 @@ We're using repositories from the guys below to provide some of our features:
     <td align="center"><a href="https://www.evoco.co.uk"><img src="https://avatars2.githubusercontent.com/u/8415117?v=4" width="100px;" alt=""/><br /><sub><b>Steve Walton</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=stevewalton28" title="Code">💻</a></td>
 <td align="center"><a href="https://github.com/akwanashie"><img src="https://avatars2.githubusercontent.com/u/4432756?v=4" width="100px;" alt=""/><br /><sub><b>Augustine K</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=akwanashie" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/balu836"><img src="https://avatars2.githubusercontent.com/u/33576087?v=4" width="100px;" alt=""/><br /><sub><b>balu836</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=balu836" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/damien-cooke"><img src="https://avatars.githubusercontent.com/u/47777417?v=4" width="100px;" alt=""/><br /><sub><b>damien-cooke</b></sub></a><br /><a href="https://github.com/digital-delivery-academy/selenium-pom-framework/commits?author=damien-cooke" title="Code">💻</a></td>
   </tr>
 </table>
 <!-- markdownlint-enable -->
