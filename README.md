@@ -29,7 +29,7 @@ You'll find no junk (hopefully) here, but it's a fairly opinionated approach:
 - We have a fuller set of documentation here: https://digital-delivery-academy.github.io/selenium-pom-framework/index.html
 
 Coming soon:
-- SauceLabs and BrowserStack configuration (issues #2 and #3).
+- BrowserStack configuration (issue #3).
 - And lots more marked in the issues list: https://github.com/digital-delivery-academy/selenium-pom-framework/issues
 
 It really is a one stop shop for getting up and running with a robust toolkit for building Selenium checks, without the massive investment that many business make in hand rolling their own.
