@@ -1,7 +1,7 @@
 package uk.co.evoco.webdriver.configuration;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import uk.co.evoco.webdriver.configuration.utils.FileLoaderUtils;
 import uk.co.evoco.webdriver.utils.JsonUtils;
 

@@ -1,13 +1,13 @@
 package uk.co.evoco.webdriver.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 
 public class TolerantExceptionHandler {
     private List<String> tolerantExceptions;
-    private Logger logger = LoggerFactory.getLogger(TolerantInteraction.class);
+    private Logger logger = LogManager.getLogger(TolerantInteraction.class);
 
     public TolerantExceptionHandler(List<String> tolerantExceptions) {
         this.tolerantExceptions = tolerantExceptions;

@@ -3,8 +3,8 @@ package uk.co.evoco.webdriver.utils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Sleeper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.time.Clock;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class TolerantInteraction {
 
-    private final Logger logger = LoggerFactory.getLogger(TolerantInteraction.class);
+    private final Logger logger = LogManager.getLogger(TolerantInteraction.class);
 
     private final Clock clock = Clock.systemDefaultZone();
     private Instant end;

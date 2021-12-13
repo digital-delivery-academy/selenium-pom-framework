@@ -3,12 +3,12 @@ package uk.co.evoco.webdriver.utils;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.util.resource.Resource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class EmbeddedJetty {
 
-    private static final Logger logger = LoggerFactory.getLogger(EmbeddedJetty.class);
+    private static final Logger logger = LogManager.getLogger(EmbeddedJetty.class);
 
     private Server jettyServer;
 
