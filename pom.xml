@@ -90,7 +90,7 @@
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
         <jetty.version>9.4.41.v20210516</jetty.version>
         <selenium.version>3.141.59</selenium.version>
-        <webdriver.manager.version>4.4.3</webdriver.manager.version>
+        <webdriver.manager.version>5.0.3</webdriver.manager.version>
         <log4j.version>2.15.0</log4j.version>
         <apache.commons.io.version>2.9.0</apache.commons.io.version>
         <hamcrest.version>2.2</hamcrest.version>
