@@ -9,8 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import uk.co.evoco.webdriver.configuration.TestConfigHelper;
 
 import java.io.File;
@@ -23,7 +23,7 @@ import java.util.UUID;
  */
 public class WebDriverListener extends AbstractWebDriverEventListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebDriverListener.class);
+    private static final Logger logger = LogManager.getLogger(WebDriverListener.class);
     private File screenshotDirectory;
 
     /**

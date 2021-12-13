@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ByIdOrName;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import uk.co.evoco.metrics.MetricRegistryHelper;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import static com.codahale.metrics.MetricRegistry.name;
  */
 public final class FindByUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(FindByUtils.class);
+    private static final Logger logger = LogManager.getLogger(FindByUtils.class);
     private static final Timer multipleLocatorMatchGetDisplayedAction = MetricRegistryHelper.get().timer(name("FindByUtils.multipleLocatorMatchGetDisplayedAction"));
     private static final Timer byIdOrNameAction = MetricRegistryHelper.get().timer(name("FindByUtils.byIdOrName"));
 

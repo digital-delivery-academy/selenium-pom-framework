@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,7 +29,7 @@ public class WebDriverConfig {
     private MetricsConfig metricsConfig;
     private boolean takeScreenshotOnError;
 
-    private final Logger logger = LoggerFactory.getLogger(WebDriverConfig.class);
+    private final Logger logger = LogManager.getLogger(WebDriverConfig.class);
 
     /**
      *

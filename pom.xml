@@ -90,9 +90,8 @@
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
         <jetty.version>9.4.41.v20210516</jetty.version>
         <selenium.version>3.141.59</selenium.version>
-        <webdriver.manager.version>4.4.3</webdriver.manager.version>
-        <slf4j.version>1.6.4</slf4j.version>
-        <logback.version>1.2.3</logback.version>
+        <webdriver.manager.version>5.0.3</webdriver.manager.version>
+        <log4j.version>2.15.0</log4j.version>
         <apache.commons.io.version>2.9.0</apache.commons.io.version>
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.12.1</jackson.version>
@@ -137,19 +136,19 @@
             <version>${dropwizard.metrics.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -331,6 +330,17 @@
                         <id>attach-sources</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>

@@ -4,8 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ConfiguredEdgeDriverTests {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfiguredEdgeDriverTests.class);
+    private static final Logger logger = LogManager.getLogger(ConfiguredEdgeDriverTests.class);
 
     @Test
     public void testReturnsLocalWebDriver() throws IOException {
