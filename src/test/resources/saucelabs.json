@@ -11,6 +11,6 @@
   "browserVersion": "LATEST",
   "pageLoadStrategy": "NORMAL",
   "seleniumVersion": "3.7.1",
-  "sauceLabsRemoteGridUrl": "ondemand.us-west-1.saucelabs.com/wd/hub",
+  "sauceLabsRemoteGridUrl": "ondemand.us-west-1.saucelabs.com:443/wd/hub",
   "unhandledPromptBehaviour": "DISMISS"
 }

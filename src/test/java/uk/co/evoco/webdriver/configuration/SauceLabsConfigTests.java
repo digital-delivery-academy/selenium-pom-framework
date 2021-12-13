@@ -30,7 +30,7 @@ public class SauceLabsConfigTests {
         assertThat(sauceLabsConfig.getBrowserVersion(), is("latest"));
         assertThat(sauceLabsConfig.getPageLoadStrategy(), is(PageLoadStrategy.NORMAL));
         assertThat(sauceLabsConfig.getSeleniumVersion(), is("3.7.1"));
-        assertThat(sauceLabsConfig.getSauceRemoteUrl().toString(), containsString("ondemand.us-west-1.saucelabs.com/wd/hub"));
+        assertThat(sauceLabsConfig.getSauceRemoteUrl().toString(), containsString("ondemand.us-west-1.saucelabs.com:443/wd/hub"));
         assertThat(sauceLabsConfig.getUnhandledPromptBehavior(), is(UnhandledPromptBehavior.DISMISS));
     }
 
@@ -47,7 +47,7 @@ public class SauceLabsConfigTests {
         sauceLabsConfig.setRecordScreenshots(true);
         sauceLabsConfig.setRecordVideo(true);
         sauceLabsConfig.setSaucePlatform("WINDOWS_10");
-        sauceLabsConfig.setSauceRemoteUrl("ondemand.us-west-1.saucelabs.com/wd/hub");
+        sauceLabsConfig.setSauceRemoteUrl("ondemand.us-west-1.saucelabs.com:443/wd/hub");
         sauceLabsConfig.setSeleniumVersion("3.7.1");
         sauceLabsConfig.setStrictFileInteractability(true);
         sauceLabsConfig.setUnhandledPromptBehavior("DISMISS");
@@ -64,7 +64,7 @@ public class SauceLabsConfigTests {
         assertThat(sauceLabsConfig.getBrowserVersion(), is("latest"));
         assertThat(sauceLabsConfig.getPageLoadStrategy(), is(PageLoadStrategy.NORMAL));
         assertThat(sauceLabsConfig.getSeleniumVersion(), is("3.7.1"));
-        assertThat(sauceLabsConfig.getSauceRemoteUrl().toString(), containsString("ondemand.us-west-1.saucelabs.com/wd/hub"));
+        assertThat(sauceLabsConfig.getSauceRemoteUrl().toString(), containsString("ondemand.us-west-1.saucelabs.com:443/wd/hub"));
         assertThat(sauceLabsConfig.getUnhandledPromptBehavior(), is(UnhandledPromptBehavior.DISMISS));
     }
 }
