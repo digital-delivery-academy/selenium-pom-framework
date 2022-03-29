@@ -5,6 +5,7 @@ import com.deque.html.axecore.results.Rule;
 import com.deque.html.axecore.selenium.AxeBuilder;
 import com.deque.html.axecore.selenium.AxeReporter;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +13,10 @@ import java.util.List;
 public class AccessibilityBase {
     private static final String reportPath = System.getProperty("user.dir") + "\\src\\test\\java\\reports\\";
 
-    public static void checkAccessibilityViolations(WebDriver webDriver) throws IOException {
+    public static void checkAccessibilityViolations(WebDriver webDriver) {
         String reportFile = reportPath + "accessibilityReport";
         AxeBuilder builder = new AxeBuilder();
-        Results results = builder.analyze(webDriver);
+        Results results = builder.disableIframeTesting().analyze(webDriver, webDriver.findElement(By.xpath("//html")));
         saveReport(results, reportFile);
     }
 

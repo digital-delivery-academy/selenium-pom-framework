@@ -70,6 +70,7 @@ public class ConfiguredChromeDriver implements ConfiguredDriver {
         }
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.setHeadless(TestConfigHelper.get().isHeadless());
+        chromeOptions.addArguments("--disable-gpu", "--no-sandbox", "--window-size=1920,1200", "--ignore-certificate-errors");
         return chromeOptions;
     }
 }

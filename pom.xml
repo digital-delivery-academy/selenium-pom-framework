@@ -108,7 +108,7 @@
         <sonar.projectKey>digital-delivery-academy_selenium-pom-example</sonar.projectKey>
         <sonar.organization>digital-delivery-academy</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <axe.core.version>4.1.2</axe.core.version>
+        <axe.core.version>4.3.1</axe.core.version>
     </properties>
     <dependencies>
         <dependency>

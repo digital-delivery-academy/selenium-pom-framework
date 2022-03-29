@@ -2,7 +2,7 @@
   "browser": "chrome",
   "baseUrl": "https://www.google.com",
   "timeout": "30",
-  "headless": true,
+  "headless": false,
   "runType": "LOCAL",
   "takeScreenshotOnError": true,
   "testConfig": {
@@ -24,7 +24,8 @@
       "chrome": {
         "profile.default_content_settings.popups": 0,
         "download.default_directory": "run-generated-files/chrome/downloads",
-        "safebrowsing.enabled": true
+        "safebrowsing.enabled": false,
+        "no-sandbox": true
       }
     },
     "tolerantActionExceptions": {

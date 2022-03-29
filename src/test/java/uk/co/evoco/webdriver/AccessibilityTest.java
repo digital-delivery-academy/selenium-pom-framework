@@ -40,18 +40,16 @@ public class AccessibilityTest extends BaseAbstractTest{
         accessibilityReport.delete();
     }
 
-    @Ignore
-    public void testPageWithNoAccessibilityViolations() throws IOException {
-        // TODO: Fix Ignore
+    @Test
+    public void testPageWithNoAccessibilityViolations() {
         AccessibilityBase.checkAccessibilityViolations(webDriver);
         assertThat(accessibilityReport.exists(), is(false));
     }
 
     //Add assertion to read the json file output to check it has found the violations
     //Add html page that has accessibility violations
-    @Ignore
+    @Test
     public void testPageWithAccessibilityViolations() throws IOException {
-        // TODO: Fix Ignore
         webDriver.navigate().to(baseUrl + "/accessibilityViolations.html");
         AccessibilityBase.checkAccessibilityViolations(webDriver);
         assertThat(accessibilityReport.exists(), is(true));
