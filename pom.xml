@@ -89,7 +89,7 @@
         <maven.failsafe.version>2.22.2</maven.failsafe.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
         <jetty.version>9.4.41.v20210516</jetty.version>
-        <selenium.version>3.141.59</selenium.version>
+        <selenium.version>4.0.0</selenium.version>
         <webdriver.manager.version>4.4.3</webdriver.manager.version>
         <slf4j.version>1.6.4</slf4j.version>
         <logback.version>1.2.3</logback.version>
