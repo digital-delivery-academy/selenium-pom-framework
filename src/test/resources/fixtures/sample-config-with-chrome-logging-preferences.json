@@ -1,0 +1,42 @@
+{
+  "browser": "chrome",
+  "baseUrl": "https://www.google.com",
+  "timeout": "30",
+  "headless": true,
+  "runType": "LOCAL",
+  "takeScreenshotOnError": true,
+  "testConfig": {
+    "sample": "sample text"
+  },
+  "gridConfig": {
+    "url": "http://localhost:4444/wd/hub"
+  },
+  "browserPreferences": {
+    "chrome": {
+      "profile.default_content_settings.popups": 0,
+      "download.default_directory": "run-generated-files/chrome/downloads",
+      "safebrowsing.enabled": true
+    }
+  },
+  "chromeLoggingPreferences": {
+    "logLevel": "ALL"
+  },
+  "tolerantActionExceptions": {
+    "waitTimeoutInSeconds": 5,
+    "exceptionsToHandle": [
+      "StaleElementReferenceException",
+      "ElementClickInterceptedException",
+      "ElementNotInteractableException"
+    ]
+  },
+  "metrics": {
+    "jmx": {
+      "enabled": false
+    },
+    "graphite": {
+      "enabled": false,
+      "host": "localhost",
+      "port": 2003
+    }
+  }
+}

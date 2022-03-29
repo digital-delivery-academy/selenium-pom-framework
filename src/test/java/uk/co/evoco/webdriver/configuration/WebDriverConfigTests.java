@@ -10,6 +10,7 @@ import uk.co.evoco.webdriver.utils.JsonUtils;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -51,7 +52,7 @@ public class WebDriverConfigTests {
     public void testGetBrowserPreferencesReturnsTheCorrectBrowserOptions() throws JsonProcessingException {
         String preferenceKey = "browser.download.dir";
         String preferenceValue = "docs/chrome/";
-        String inputConfigJson = String.format("{ \"browserPreferences\": { \"chrome\": {\"%s\": \"%s\"}}}", preferenceKey, preferenceValue);
+        String inputConfigJson = String.format("{ \"browserPreferences\": { \"chrome\": {\"%s\": \"%s\"} }}", preferenceKey, preferenceValue);
 
         WebDriverConfig webDriverConfig = JsonUtils.fromString(inputConfigJson, WebDriverConfig.class);
         JsonNode actualPreferences = webDriverConfig.getBrowserPreferences(BrowserType.CHROME);
@@ -73,6 +74,50 @@ public class WebDriverConfigTests {
         ObjectNode expectedPreferences = JsonNodeFactory.instance.objectNode()
                 .put(preferenceKey, preferenceValue);
         assertThat(actualPreferences, is(expectedPreferences));
+    }
+
+    @Test
+    public void testGetLoggingPreferencesGetsTheRightOptions() throws IOException {
+        WebDriverConfig webDriverConfig = JsonUtils.fromFile(
+                ClassLoader.getSystemResourceAsStream("fixtures/sample-config-with-chrome-logging-preferences.json"),
+                WebDriverConfig.class);
+
+        assertThat(webDriverConfig.getChromeLoggingPreferences(), is(Optional.of("ALL")));
+    }
+
+    @Test
+    public void testWrongLogKeyReturnsEmptyOptional() throws IOException {
+        String logKey = "wrongLogKey";
+        String logValue = "ALL";
+        String inputConfigJson = String.format("{ \"chromeLoggingPreferences\": {\"%s\": \"%s\"}}}", logKey, logValue);
+
+        WebDriverConfig webDriverConfig = JsonUtils.fromString(inputConfigJson, WebDriverConfig.class);
+
+        Optional<String> actualPreferences = webDriverConfig.getChromeLoggingPreferences();
+        assertThat(actualPreferences, is(Optional.empty()));
+    }
+
+    @Test
+    public void testBlankLogLevelAndValueReturnsEmptyOptional() throws IOException {
+        String logKey = "";
+        String logValue = "";
+        String inputConfigJson = String.format("{ \"chromeLoggingPreferences\": {\"%s\": \"%s\"}}}", logKey, logValue);
+
+        WebDriverConfig webDriverConfig = JsonUtils.fromString(inputConfigJson, WebDriverConfig.class);
+
+        Optional<String> actualPreferences = webDriverConfig.getChromeLoggingPreferences();
+        assertThat(actualPreferences, is(Optional.empty()));
+    }
+
+    @Test
+    public void testMultipleLogLevelsReturnsFirstElement() throws IOException {
+
+        String inputConfigJson = "{ \"chromeLoggingPreferences\": {\"logLevel\": \"All\", \"logLevel\": \"FINE\"}}}";
+
+        WebDriverConfig webDriverConfig = JsonUtils.fromString(inputConfigJson, WebDriverConfig.class);
+
+        Optional<String> actualPreferences = webDriverConfig.getChromeLoggingPreferences();
+        assertThat(actualPreferences, is(Optional.of("FINE")));
     }
 
     @Test
